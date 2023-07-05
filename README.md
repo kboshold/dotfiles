@@ -11,7 +11,7 @@
    </p>
    <hr>
    <p>
-      My awesome .dotfiles
+      <h2>My awesome .dotfiles</h2>
       <br>
       <strong>THIS FILES ARE STILL UNDER DEVELOPMENT - DO NOT USE IT FOR PRODUCTION USE</strong>
    </p>
