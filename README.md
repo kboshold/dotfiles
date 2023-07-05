@@ -19,6 +19,17 @@
 
 ## Get started
 
+### Prerequirements
+
+The dotfiles are managed via [chezmoi](https://www.chezmoi.io/), so this must be installed first. 
+Install the correct binary for your operating system and architecture in `~/.local/bin` with a single command:
+
+```bash
+sh -c "$(curl -fsLS get.chezmoi.io/lb)"
+```
+
+There are also many other ways to [install chezmoi](https://www.chezmoi.io/install/).
+
 ## Overview
 
 ### Programs
