@@ -1,5 +1,6 @@
 {{if eq .chezmoi.osRelease.id "ubuntu"}} 
-sudo apt-get install ripgrep ninja-build gettext cmake unzip curl
+sudo apt update
+sudo apt install ripgrep ninja-build gettext cmake unzip curl
 {{else if eq .chezmoi.osRelease.id "centos"}}
 sudo dnf -y install ninja-build cmake gcc make unzip gettext curl ripgrep
 {{end}}
