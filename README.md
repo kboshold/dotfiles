@@ -25,7 +25,7 @@ The dotfiles are managed via [chezmoi](https://www.chezmoi.io/), so this must be
 Install the correct binary for your operating system and architecture in `~/.local/bin` with a single command:
 
 ```bash
-sh -c "$(curl -fsLS get.chezmoi.io/lb)" -- init --apply kpalatzky
+sh -c "$(curl -fsLS get.chezmoi.io/lb)" -- init --apply git@github.com:kpalatzky/dotfiles.git
 ```
 
 There are also many other ways to [install chezmoi](https://www.chezmoi.io/install/).
