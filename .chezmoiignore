@@ -1,5 +1,6 @@
 .github/
 assets/
+scripts/
 install.sh
 LICENSE
 README.md
