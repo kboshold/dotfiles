@@ -19,23 +19,39 @@ def get_arguments(content, startIndex):
     subContent = content[startIndex:]
     args = [""]
     pstack = []
- 
+    
+    is_line_start = False
+    is_comment = False
     for index, character in enumerate(subContent):
-        if character == '(':
+        if (is_comment and character == '\n'):
+            is_comment = False
+
+        if character == '(' and not is_comment:
             if (len(pstack) != 0):
                 args[-1] += character
             pstack.append(index)
-        elif character == ')':
+        elif character == ')' and not is_comment:
             if len(pstack) == 0:
                 raise IndexError("No matching closing parens at: " + str(index))
             elif len(pstack) == 1:
                 return args
             pstack.pop()
             args[-1] += character;
-        elif character == ',' and len(pstack) == 1:
+        elif character == ',' and len(pstack) == 1 and not is_comment:
             args.append("");
         else:
             args[-1] += character;
+            if character == '\n':
+                is_line_start = True;
+
+        next_character = subContent[index + 1] if subContent[index+1:] else ''
+        if (character == '-' and next_character == '-'):
+            is_comment = True
+
+        if (re.match("\S", character)): 
+            is_line_start = False
+        
+
 
     if len(pstack) > 0:
         raise IndexError("No matching opening parens at: " + str(pstack.pop()))
