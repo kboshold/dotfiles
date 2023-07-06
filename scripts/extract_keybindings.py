@@ -42,14 +42,20 @@ def get_arguments(content, startIndex):
 
     return args
 
-def to_table(rows):
+def to_table(rows, widths = None):
+    if (widths == None):
+        widths = [0] * len(rows)
+    
     output = "<table>\n"
-    for index, row in enumerate(rows):
-        type = 'th' if index == 0 else 'td'
+    for row_index, row in enumerate(rows):
+        type = 'th' if row_index == 0 else 'td'
         output += "<tr>\n"
         for index, col in enumerate(row):
             output += "<%s>\n\n" % type
             output += col
+            if (row_index == 0):
+                width = widths[index]
+                output += "&nbsp;" * max(width - len(col), 0)
             output += "\n\n</%s>\n" % type
         output += "</tr>\n"
 
@@ -67,7 +73,7 @@ def replace_template(marker, content, readme_content):
 luaFiles = list((basePath / 'dot_config/nvim').glob('**/*.lua'))
 
 vimTable = [
-    ["Keybinding<img width=200>", "Mode<img width=100>", "Description<img width=300>", "Description<img width=600>"],
+    ["Keybinding", "Mode", "Description", "Description"],
 ]
 for luaFile in luaFiles:
     with open(luaFile, 'r') as f:
@@ -99,7 +105,7 @@ for luaFile in luaFiles:
             "```lua\n%s\n```" % fnBinding, 
         ])
 
-vim_table_html = to_table(vimTable)
+vim_table_html = to_table(vimTable, [20, 10, 30, 40])
 readme_content = replace_template("NVIM", vim_table_html, readme_content)
 
 # Update file
