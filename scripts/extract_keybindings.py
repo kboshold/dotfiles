@@ -105,7 +105,7 @@ for luaFile in luaFiles:
             "```lua\n%s\n```" % fnBinding, 
         ])
 
-vim_table_html = to_table(vimTable, [30, 20, 50, 100])
+vim_table_html = to_table(vimTable, [30, 20, 70, 140])
 readme_content = replace_template("NVIM", vim_table_html, readme_content)
 
 # Update file
