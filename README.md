@@ -77,14 +77,14 @@ Normal
 </td>
 <td>
 
-```lua
-require('gitsigns').prev_hunk
-```
+
 
 </td>
 <td>
 
-
+```lua
+require('gitsigns').prev_hunk
+```
 
 </td>
 </tr>
@@ -101,14 +101,14 @@ Normal
 </td>
 <td>
 
-```lua
-require('gitsigns').next_hunk
-```
+
 
 </td>
 <td>
 
-
+```lua
+require('gitsigns').next_hunk
+```
 
 </td>
 </tr>
@@ -125,14 +125,14 @@ Normal
 </td>
 <td>
 
-```lua
-require('gitsigns').preview_hunk
-```
+
 
 </td>
 <td>
 
-
+```lua
+require('gitsigns').preview_hunk
+```
 
 </td>
 </tr>
@@ -149,14 +149,14 @@ Normal
 </td>
 <td>
 
-```lua
-vim.cmd.Ex
-```
+
 
 </td>
 <td>
 
-
+```lua
+vim.cmd.Ex
+```
 
 </td>
 </tr>
@@ -173,14 +173,14 @@ Normal
 </td>
 <td>
 
-```lua
-vim.diagnostic.goto_prev
-```
+Go to previous diagnostic message
 
 </td>
 <td>
 
-Go to previous diagnostic message
+```lua
+vim.diagnostic.goto_prev
+```
 
 </td>
 </tr>
@@ -197,14 +197,14 @@ Normal
 </td>
 <td>
 
-```lua
-vim.diagnostic.goto_next
-```
+Go to next diagnostic message
 
 </td>
 <td>
 
-Go to next diagnostic message
+```lua
+vim.diagnostic.goto_next
+```
 
 </td>
 </tr>
@@ -221,14 +221,14 @@ Normal
 </td>
 <td>
 
-```lua
-vim.diagnostic.open_float
-```
+Open floating diagnostic message
 
 </td>
 <td>
 
-Open floating diagnostic message
+```lua
+vim.diagnostic.open_float
+```
 
 </td>
 </tr>
@@ -245,14 +245,14 @@ Normal
 </td>
 <td>
 
-```lua
-vim.diagnostic.setloclist
-```
+Open diagnostics list
 
 </td>
 <td>
 
-Open diagnostics list
+```lua
+vim.diagnostic.setloclist
+```
 
 </td>
 </tr>
@@ -269,14 +269,14 @@ Normal
 </td>
 <td>
 
-```lua
-func
-```
+
 
 </td>
 <td>
 
-
+```lua
+func
+```
 
 </td>
 </tr>
@@ -293,14 +293,14 @@ Normal
 </td>
 <td>
 
-```lua
-builtin.oldfiles
-```
+[?] Find recently opened files
 
 </td>
 <td>
 
-[?] Find recently opened files
+```lua
+builtin.oldfiles
+```
 
 </td>
 </tr>
@@ -317,14 +317,14 @@ Normal
 </td>
 <td>
 
-```lua
-builtin.buffers
-```
+[ ] Find existing buffers
 
 </td>
 <td>
 
-[ ] Find existing buffers
+```lua
+builtin.buffers
+```
 
 </td>
 </tr>
@@ -341,15 +341,15 @@ Normal
 </td>
 <td>
 
-```lua
-function()
-  -- You can pass additional configuration to telescope to change theme
-```
+
 
 </td>
 <td>
 
-
+```lua
+function()
+  -- You can pass additional configuration to telescope to change theme
+```
 
 </td>
 </tr>
@@ -366,14 +366,14 @@ Normal
 </td>
 <td>
 
-```lua
-builtin.git_files
-```
+Search [G]it [F]iles
 
 </td>
 <td>
 
-Search [G]it [F]iles
+```lua
+builtin.git_files
+```
 
 </td>
 </tr>
@@ -390,14 +390,14 @@ Normal
 </td>
 <td>
 
-```lua
-builtin.find_files
-```
+[S]earch [F]iles
 
 </td>
 <td>
 
-[S]earch [F]iles
+```lua
+builtin.find_files
+```
 
 </td>
 </tr>
@@ -414,14 +414,14 @@ Normal
 </td>
 <td>
 
-```lua
-builtin.help_tags
-```
+[S]earch [H]elp
 
 </td>
 <td>
 
-[S]earch [H]elp
+```lua
+builtin.help_tags
+```
 
 </td>
 </tr>
@@ -438,14 +438,14 @@ Normal
 </td>
 <td>
 
-```lua
-builtin.grep_string
-```
+[S]earch current [W]ord
 
 </td>
 <td>
 
-[S]earch current [W]ord
+```lua
+builtin.grep_string
+```
 
 </td>
 </tr>
@@ -462,14 +462,14 @@ Normal
 </td>
 <td>
 
-```lua
-builtin.live_grep
-```
+[S]earch by [G]rep
 
 </td>
 <td>
 
-[S]earch by [G]rep
+```lua
+builtin.live_grep
+```
 
 </td>
 </tr>
@@ -486,14 +486,14 @@ Normal
 </td>
 <td>
 
-```lua
-builtin.diagnostics
-```
+[S]earch [D]iagnostics
 
 </td>
 <td>
 
-[S]earch [D]iagnostics
+```lua
+builtin.diagnostics
+```
 
 </td>
 </tr>
@@ -510,16 +510,16 @@ Normal
 </td>
 <td>
 
+
+
+</td>
+<td>
+
 ```lua
 function()
 	builtin.grep_string({ search = vim.fn.input("Grep > ") })
 end
 ```
-
-</td>
-<td>
-
-
 
 </td>
 </tr>
