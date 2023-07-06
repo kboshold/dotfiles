@@ -1,8 +1,9 @@
-name: ci
+name: CI
 
 on:
   push:
-  pull_request:
+    branches:
+      - main
 
 jobs:
   clone-and-install:

@@ -33,3 +33,12 @@ sh -c "$(curl -fsLS get.chezmoi.io/lb)" -- init --apply git@github.com:kpalatzky
 ### Programs
 
 ### Keybindings
+
+
+#### NVIM
+
+
+<!-- Mark start/end of keybindings to automatically update them -->
+<!-- @GENERATED_TEMPLATE_START:NVIM -->
+
+<!-- @GENERATED_TEMPLATE_END:NVIM -->
