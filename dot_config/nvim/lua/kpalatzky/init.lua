@@ -4,6 +4,9 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+-- Load functions
+require('kpalatzky.functions')
+
 -- Load package manager
 require('kpalatzky.lazy')
 
