@@ -95,14 +95,15 @@ for luaFile in luaFiles:
     with open(luaFile, 'r') as f:
         lines = f.read()
     
-    for match in re.finditer("vim\\.keymap\\.set", lines):
+    for match in re.finditer("set_key", lines):
         end_position = match.span()[1];
         args = get_arguments(lines, end_position)
 
         mode = (re.sub("(^[\"']|[\"']$)", "", args[0])).strip()
         keybinding = (re.sub("(^\s*[\"']|[\"']\s*$)", "", args[1])).strip()
-        fnBinding = (args[2] if args[2:] else "").strip()
-        options = (args[3] if args[3:] else "{}").strip()
+        fnBinding = args[2].strip()
+        desc = (re.sub("(^\s*[\"']|[\"']\s*$)", "", args[3])).strip()
+        context = (re.sub("(^\s*[\"']|[\"']\s*$)", "", args[4])).strip() if args[4:] else ''
 
         modes = {
             'i': 'Insert',
@@ -113,7 +114,6 @@ for luaFile in luaFiles:
         }
         modeName = modes.get(mode, 'None')
 
-        desc = m[1] if (m:=re.search("desc\\s*=\\s*['\"](.*?)['\"]", options)) else ''
         vimTable.append([
             "`%s`" % keybinding, 
             modeName, 
