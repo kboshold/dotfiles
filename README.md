@@ -45,22 +45,22 @@ sh -c "$(curl -fsLS get.chezmoi.io/lb)" -- init --apply git@github.com:kpalatzky
 <tr>
 <th>
 
-Keybinding
+<span style='width:200px'>Keybinding</span>
 
 </th>
 <th>
 
-Mode
+<span style='width:100px'>Mode</span>
 
 </th>
 <th>
 
-Command
+<span style='width:300px'>Description</span>
 
 </th>
 <th>
 
-Description
+<span style='width:600px'>Description</span>
 
 </th>
 </tr>
