@@ -77,7 +77,7 @@ Normal
 </td>
 <td>
 
-
+[G]o to [P]revious Hunk
 
 </td>
 <td>
@@ -101,7 +101,7 @@ Normal
 </td>
 <td>
 
-
+[G]o to [N]ext Hunk
 
 </td>
 <td>
@@ -125,7 +125,7 @@ Normal
 </td>
 <td>
 
-
+[P]review [H]unk
 
 </td>
 <td>
@@ -149,7 +149,7 @@ Normal
 </td>
 <td>
 
-
+Open [p]arent [v]iew
 
 </td>
 <td>
@@ -173,7 +173,7 @@ Normal
 </td>
 <td>
 
-Go to previous diagnostic message
+Go to previous [d]iagnostic message
 
 </td>
 <td>
@@ -197,7 +197,7 @@ Normal
 </td>
 <td>
 
-Go to next diagnostic message
+Go to next [d]iagnostic message
 
 </td>
 <td>
@@ -252,6 +252,30 @@ Open diagnostics list
 
 ```lua
 vim.diagnostic.setloclist
+```
+
+</td>
+</tr>
+<tr>
+<td>
+
+`keys`
+
+</td>
+<td>
+
+None
+
+</td>
+<td>
+
+desc
+
+</td>
+<td>
+
+```lua
+func
 ```
 
 </td>
@@ -829,7 +853,7 @@ Normal
 </td>
 <td>
 
-
+Telescope [S]earch
 
 </td>
 <td>
@@ -838,30 +862,6 @@ Normal
 function()
 	require('telescope.builtin').grep_string({ search = vim.fn.input("Grep > ") })
 end
-```
-
-</td>
-</tr>
-<tr>
-<td>
-
-`keys`
-
-</td>
-<td>
-
-None
-
-</td>
-<td>
-
-desc
-
-</td>
-<td>
-
-```lua
-func
 ```
 
 </td>
