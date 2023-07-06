@@ -62,12 +62,12 @@ def replace_template(marker, content, readme_content):
 
 
 ####################################################################
-##### NeoVim
+##### NeoVim<span style='width:200px'>
 ####################################################################
 luaFiles = list((basePath / 'dot_config/nvim').glob('**/*.lua'))
 
 vimTable = [
-    ["Keybinding", "Mode", "Command", "Description"],
+    ["<span style='width:200px'>Keybinding</span>", "<span style='width:100px'>Mode</span>", "<span style='width:300px'>Description</span>", "<span style='width:600px'>Description</span>"],
 ]
 for luaFile in luaFiles:
     with open(luaFile, 'r') as f:
