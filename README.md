@@ -67,7 +67,7 @@ Action&nbsp;(Lua)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb
 <tr>
 <td>
 
-`<leader>?`
+`<leader>gp`
 
 </td>
 <td>
@@ -77,13 +77,13 @@ Normal
 </td>
 <td>
 
-[?] Find recently opened files
+
 
 </td>
 <td>
 
 ```lua
-require('telescope.builtin').oldfiles
+require('gitsigns').prev_hunk
 ```
 
 </td>
@@ -91,7 +91,7 @@ require('telescope.builtin').oldfiles
 <tr>
 <td>
 
-`<leader><space>`
+`<leader>gn`
 
 </td>
 <td>
@@ -101,13 +101,13 @@ Normal
 </td>
 <td>
 
-[ ] Find existing buffers
+
 
 </td>
 <td>
 
 ```lua
-require('telescope.builtin').buffers
+require('gitsigns').next_hunk
 ```
 
 </td>
@@ -115,7 +115,7 @@ require('telescope.builtin').buffers
 <tr>
 <td>
 
-`<leader>/`
+`<leader>ph`
 
 </td>
 <td>
@@ -125,19 +125,13 @@ Normal
 </td>
 <td>
 
-[/] Fuzzily search in current buffer
+
 
 </td>
 <td>
 
 ```lua
-function()
-  -- You can pass additional configuration to telescope to change theme, layout, etc.
-  require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-    winblend = 10,
-    previewer = false,
-  })
-end
+require('gitsigns').preview_hunk
 ```
 
 </td>
@@ -145,7 +139,7 @@ end
 <tr>
 <td>
 
-`<leader>gf`
+`<leader>pv`
 
 </td>
 <td>
@@ -155,13 +149,13 @@ Normal
 </td>
 <td>
 
-Search [G]it [F]iles
+
 
 </td>
 <td>
 
 ```lua
-require('telescope.builtin').git_files
+vim.cmd.Ex
 ```
 
 </td>
@@ -169,7 +163,7 @@ require('telescope.builtin').git_files
 <tr>
 <td>
 
-`<leader>sf`
+`[d`
 
 </td>
 <td>
@@ -179,13 +173,13 @@ Normal
 </td>
 <td>
 
-[S]earch [F]iles
+Go to previous diagnostic message
 
 </td>
 <td>
 
 ```lua
-require('telescope.builtin').find_files
+vim.diagnostic.goto_prev
 ```
 
 </td>
@@ -193,7 +187,7 @@ require('telescope.builtin').find_files
 <tr>
 <td>
 
-`<leader>sh`
+`]d`
 
 </td>
 <td>
@@ -203,13 +197,13 @@ Normal
 </td>
 <td>
 
-[S]earch [H]elp
+Go to next diagnostic message
 
 </td>
 <td>
 
 ```lua
-require('telescope.builtin').help_tags
+vim.diagnostic.goto_next
 ```
 
 </td>
@@ -217,7 +211,7 @@ require('telescope.builtin').help_tags
 <tr>
 <td>
 
-`<leader>sw`
+`<leader>e`
 
 </td>
 <td>
@@ -227,13 +221,13 @@ Normal
 </td>
 <td>
 
-[S]earch current [W]ord
+Open floating diagnostic message
 
 </td>
 <td>
 
 ```lua
-require('telescope.builtin').grep_string
+vim.diagnostic.open_float
 ```
 
 </td>
@@ -241,7 +235,7 @@ require('telescope.builtin').grep_string
 <tr>
 <td>
 
-`<leader>sg`
+`<leader>q`
 
 </td>
 <td>
@@ -251,63 +245,13 @@ Normal
 </td>
 <td>
 
-[S]earch by [G]rep
+Open diagnostics list
 
 </td>
 <td>
 
 ```lua
-require('telescope.builtin').live_grep
-```
-
-</td>
-</tr>
-<tr>
-<td>
-
-`<leader>sd`
-
-</td>
-<td>
-
-Normal
-
-</td>
-<td>
-
-[S]earch [D]iagnostics
-
-</td>
-<td>
-
-```lua
-require('telescope.builtin').diagnostics
-```
-
-</td>
-</tr>
-<tr>
-<td>
-
-`<leader>ps`
-
-</td>
-<td>
-
-Normal
-
-</td>
-<td>
-
-
-
-</td>
-<td>
-
-```lua
-function()
-	require('telescope.builtin').grep_string({ search = vim.fn.input("Grep > ") })
-end
+vim.diagnostic.setloclist
 ```
 
 </td>
@@ -677,7 +621,7 @@ function()
 <tr>
 <td>
 
-`<leader>gp`
+`<leader>?`
 
 </td>
 <td>
@@ -687,13 +631,13 @@ Normal
 </td>
 <td>
 
-
+[?] Find recently opened files
 
 </td>
 <td>
 
 ```lua
-require('gitsigns').prev_hunk
+require('telescope.builtin').oldfiles
 ```
 
 </td>
@@ -701,7 +645,7 @@ require('gitsigns').prev_hunk
 <tr>
 <td>
 
-`<leader>gn`
+`<leader><space>`
 
 </td>
 <td>
@@ -711,13 +655,13 @@ Normal
 </td>
 <td>
 
-
+[ ] Find existing buffers
 
 </td>
 <td>
 
 ```lua
-require('gitsigns').next_hunk
+require('telescope.builtin').buffers
 ```
 
 </td>
@@ -725,7 +669,7 @@ require('gitsigns').next_hunk
 <tr>
 <td>
 
-`<leader>ph`
+`<leader>/`
 
 </td>
 <td>
@@ -735,13 +679,19 @@ Normal
 </td>
 <td>
 
-
+[/] Fuzzily search in current buffer
 
 </td>
 <td>
 
 ```lua
-require('gitsigns').preview_hunk
+function()
+  -- You can pass additional configuration to telescope to change theme, layout, etc.
+  require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+    winblend = 10,
+    previewer = false,
+  })
+end
 ```
 
 </td>
@@ -749,7 +699,7 @@ require('gitsigns').preview_hunk
 <tr>
 <td>
 
-`<leader>pv`
+`<leader>gf`
 
 </td>
 <td>
@@ -759,13 +709,13 @@ Normal
 </td>
 <td>
 
-
+Search [G]it [F]iles
 
 </td>
 <td>
 
 ```lua
-vim.cmd.Ex
+require('telescope.builtin').git_files
 ```
 
 </td>
@@ -773,7 +723,7 @@ vim.cmd.Ex
 <tr>
 <td>
 
-`[d`
+`<leader>sf`
 
 </td>
 <td>
@@ -783,13 +733,13 @@ Normal
 </td>
 <td>
 
-Go to previous diagnostic message
+[S]earch [F]iles
 
 </td>
 <td>
 
 ```lua
-vim.diagnostic.goto_prev
+require('telescope.builtin').find_files
 ```
 
 </td>
@@ -797,7 +747,7 @@ vim.diagnostic.goto_prev
 <tr>
 <td>
 
-`]d`
+`<leader>sh`
 
 </td>
 <td>
@@ -807,13 +757,13 @@ Normal
 </td>
 <td>
 
-Go to next diagnostic message
+[S]earch [H]elp
 
 </td>
 <td>
 
 ```lua
-vim.diagnostic.goto_next
+require('telescope.builtin').help_tags
 ```
 
 </td>
@@ -821,7 +771,7 @@ vim.diagnostic.goto_next
 <tr>
 <td>
 
-`<leader>e`
+`<leader>sw`
 
 </td>
 <td>
@@ -831,13 +781,13 @@ Normal
 </td>
 <td>
 
-Open floating diagnostic message
+[S]earch current [W]ord
 
 </td>
 <td>
 
 ```lua
-vim.diagnostic.open_float
+require('telescope.builtin').grep_string
 ```
 
 </td>
@@ -845,7 +795,7 @@ vim.diagnostic.open_float
 <tr>
 <td>
 
-`<leader>q`
+`<leader>sg`
 
 </td>
 <td>
@@ -855,13 +805,63 @@ Normal
 </td>
 <td>
 
-Open diagnostics list
+[S]earch by [G]rep
 
 </td>
 <td>
 
 ```lua
-vim.diagnostic.setloclist
+require('telescope.builtin').live_grep
+```
+
+</td>
+</tr>
+<tr>
+<td>
+
+`<leader>sd`
+
+</td>
+<td>
+
+Normal
+
+</td>
+<td>
+
+[S]earch [D]iagnostics
+
+</td>
+<td>
+
+```lua
+require('telescope.builtin').diagnostics
+```
+
+</td>
+</tr>
+<tr>
+<td>
+
+`<leader>ps`
+
+</td>
+<td>
+
+Normal
+
+</td>
+<td>
+
+
+
+</td>
+<td>
+
+```lua
+function()
+	require('telescope.builtin').grep_string({ search = vim.fn.input("Grep > ") })
+end
 ```
 
 </td>
