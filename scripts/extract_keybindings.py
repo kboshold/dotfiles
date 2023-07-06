@@ -73,7 +73,7 @@ def replace_template(marker, content, readme_content):
 luaFiles = list((basePath / 'dot_config/nvim').glob('**/*.lua'))
 
 vimTable = [
-    ["Keybinding", "Mode", "Description", "Description"],
+    ["Keybinding", "Mode", "Description", "Action (Lua)"],
 ]
 for luaFile in luaFiles:
     with open(luaFile, 'r') as f:
