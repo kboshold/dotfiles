@@ -43,27 +43,17 @@ def get_arguments(content, startIndex):
     return args
 
 def to_table(rows):
-    colLengths = [0 for i in rows[0]];
-
-    for row in rows:
+    output = "<table>\n"
+    for index, row in enumerate(rows):
+        type = 'th' if index == 0 else 'td'
+        output += "<tr>\n"
         for index, col in enumerate(row):
-            length = len(col)
-            colLength = colLengths[index] if colLengths[index:] else 0
-            if (length > colLength):
-                colLengths[index] = length
+            output += "<%s>\n\n" % type
+            output += col
+            output += "\n\n</%s>\n" % type
+        output += "</tr>\n"
 
-    output = ""
-    for row in rows:
-        output += "|"
-        for index, col in enumerate(row):
-            if (index != 0):
-                output += "|"
-            length = len(col)
-            lengthDiff = colLengths[index] - length
-            space = " " * lengthDiff
-            output += col + space
-
-        output += "|\n"
+    output += "</table>"
 
     return output
 
@@ -78,7 +68,6 @@ luaFiles = list((basePath / 'dot_config/nvim').glob('**/*.lua'))
 
 vimTable = [
     ["Keybinding", "Mode", "Command", "Description"],
-    ["---", "---", "---", "---"],
 ]
 for luaFile in luaFiles:
     with open(luaFile, 'r') as f:
@@ -106,7 +95,7 @@ for luaFile in luaFiles:
         vimTable.append([
             "`%s`" % keybinding, 
             modeName, 
-            "`%s`" % re.sub("[\n\t]", " ", fnBinding), 
+            "```lua\n%s\n```" % fnBinding, 
             desc
         ])
 
