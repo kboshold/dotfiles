@@ -93,10 +93,19 @@ for luaFile in luaFiles:
         fnBinding = (args[2] if args[2:] else "").strip()
         options = (args[3] if args[3:] else "{}").strip()
 
+        modes = {
+            'i': 'Insert',
+            'n': 'Normal',
+            'v': 'Visual',
+            'c': 'Command',
+            'r': 'Replace',
+        }
+        modeName = modes.get(mode, 'None')
+
         desc = m[1] if (m:=re.search("desc\\s*=\\s*['\"](.*?)['\"]", options)) else ''
         vimTable.append([
             "`%s`" % keybinding, 
-            mode, 
+            modeName, 
             "`%s`" % re.sub("[\n\t]", " ", fnBinding), 
             desc
         ])
