@@ -41,26 +41,26 @@ sh -c "$(curl -fsLS get.chezmoi.io/lb)" -- init --apply git@github.com:kpalatzky
 <!-- Mark start/end of keybindings to automatically update them -->
 <!-- @GENERATED_TEMPLATE_START:NVIM -->
 
-|Keybinding|Mode             |Command                                                                             |Description                      |
-|---       |---              |---                                                                                 |---                              |
-|n         |`<leader>gp`     |`require('gitsigns').prev_hunk`                                                     |                                 |
-|n         |`<leader>gn`     |`require('gitsigns').next_hunk`                                                     |                                 |
-|n         |`<leader>ph`     |`require('gitsigns').preview_hunk`                                                  |                                 |
-|n         |`<leader>pv`     |`vim.cmd.Ex`                                                                        |                                 |
-|n         |`[d`             |`vim.diagnostic.goto_prev`                                                          |Go to previous diagnostic message|
-|n         |`]d`             |`vim.diagnostic.goto_next`                                                          |Go to next diagnostic message    |
-|n         |`<leader>e`      |`vim.diagnostic.open_float`                                                         |Open floating diagnostic message |
-|n         |`<leader>q`      |`vim.diagnostic.setloclist`                                                         |Open diagnostics list            |
-|n         |`keys`           |`func`                                                                              |                                 |
-|n         |`<leader>?`      |`builtin.oldfiles`                                                                  |[?] Find recently opened files   |
-|n         |`<leader><space>`|`builtin.buffers`                                                                   |[ ] Find existing buffers        |
-|n         |`<leader>/`      |`function()   -- You can pass additional configuration to telescope to change theme`|                                 |
-|n         |`<leader>gf`     |`builtin.git_files`                                                                 |Search [G]it [F]iles             |
-|n         |`<leader>sf`     |`builtin.find_files`                                                                |[S]earch [F]iles                 |
-|n         |`<leader>sh`     |`builtin.help_tags`                                                                 |[S]earch [H]elp                  |
-|n         |`<leader>sw`     |`builtin.grep_string`                                                               |[S]earch current [W]ord          |
-|n         |`<leader>sg`     |`builtin.live_grep`                                                                 |[S]earch by [G]rep               |
-|n         |`<leader>sd`     |`builtin.diagnostics`                                                               |[S]earch [D]iagnostics           |
-|n         |`<leader>ps`     |`function()  builtin.grep_string({ search = vim.fn.input("Grep > ") }) end`         |                                 |
+|Keybinding       |Mode|Command                                                                             |Description                      |
+|---              |--- |---                                                                                 |---                              |
+|`<leader>gp`     |n   |`require('gitsigns').prev_hunk`                                                     |                                 |
+|`<leader>gn`     |n   |`require('gitsigns').next_hunk`                                                     |                                 |
+|`<leader>ph`     |n   |`require('gitsigns').preview_hunk`                                                  |                                 |
+|`<leader>pv`     |n   |`vim.cmd.Ex`                                                                        |                                 |
+|`[d`             |n   |`vim.diagnostic.goto_prev`                                                          |Go to previous diagnostic message|
+|`]d`             |n   |`vim.diagnostic.goto_next`                                                          |Go to next diagnostic message    |
+|`<leader>e`      |n   |`vim.diagnostic.open_float`                                                         |Open floating diagnostic message |
+|`<leader>q`      |n   |`vim.diagnostic.setloclist`                                                         |Open diagnostics list            |
+|`keys`           |n   |`func`                                                                              |                                 |
+|`<leader>?`      |n   |`builtin.oldfiles`                                                                  |[?] Find recently opened files   |
+|`<leader><space>`|n   |`builtin.buffers`                                                                   |[ ] Find existing buffers        |
+|`<leader>/`      |n   |`function()   -- You can pass additional configuration to telescope to change theme`|                                 |
+|`<leader>gf`     |n   |`builtin.git_files`                                                                 |Search [G]it [F]iles             |
+|`<leader>sf`     |n   |`builtin.find_files`                                                                |[S]earch [F]iles                 |
+|`<leader>sh`     |n   |`builtin.help_tags`                                                                 |[S]earch [H]elp                  |
+|`<leader>sw`     |n   |`builtin.grep_string`                                                               |[S]earch current [W]ord          |
+|`<leader>sg`     |n   |`builtin.live_grep`                                                                 |[S]earch by [G]rep               |
+|`<leader>sd`     |n   |`builtin.diagnostics`                                                               |[S]earch [D]iagnostics           |
+|`<leader>ps`     |n   |`function()  builtin.grep_string({ search = vim.fn.input("Grep > ") }) end`         |                                 |
 
 <!-- @GENERATED_TEMPLATE_END:NVIM -->
