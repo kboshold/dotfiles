@@ -95,8 +95,8 @@ for luaFile in luaFiles:
 
         desc = m[1] if (m:=re.search("desc\\s*=\\s*['\"](.*?)['\"]", options)) else ''
         vimTable.append([
-            mode, 
             "`%s`" % keybinding, 
+            mode, 
             "`%s`" % re.sub("[\n\t]", " ", fnBinding), 
             desc
         ])
