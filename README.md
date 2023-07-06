@@ -259,30 +259,6 @@ vim.diagnostic.setloclist
 <tr>
 <td>
 
-`keys`
-
-</td>
-<td>
-
-Normal
-
-</td>
-<td>
-
-
-
-</td>
-<td>
-
-```lua
-func
-```
-
-</td>
-</tr>
-<tr>
-<td>
-
 `<leader>rn`
 
 </td>
@@ -862,6 +838,30 @@ Normal
 function()
 	require('telescope.builtin').grep_string({ search = vim.fn.input("Grep > ") })
 end
+```
+
+</td>
+</tr>
+<tr>
+<td>
+
+`keys`
+
+</td>
+<td>
+
+None
+
+</td>
+<td>
+
+desc
+
+</td>
+<td>
+
+```lua
+func
 ```
 
 </td>

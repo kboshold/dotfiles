@@ -1,8 +1,8 @@
 
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+set_key("n", "<leader>pv", vim.cmd.Ex, "Open [p]arent [v]iew")
 
 -- Diagnostic keymaps
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
+set_key('n', '[d', vim.diagnostic.goto_prev, 'Go to previous [d]iagnostic message')
+set_key('n', ']d', vim.diagnostic.goto_next, 'Go to next [d]iagnostic message')
+set_key('n', '<leader>e', vim.diagnostic.open_float, 'Open floating diagnostic message')
+set_key('n', '<leader>q', vim.diagnostic.setloclist, 'Open diagnostics list')
