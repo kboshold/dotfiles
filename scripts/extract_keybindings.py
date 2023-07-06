@@ -95,8 +95,8 @@ for luaFile in luaFiles:
         vimTable.append([
             "`%s`" % keybinding, 
             modeName, 
+            desc,
             "```lua\n%s\n```" % fnBinding, 
-            desc
         ])
 
 vim_table_html = to_table(vimTable)
