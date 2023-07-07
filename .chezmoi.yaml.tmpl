@@ -6,7 +6,7 @@
 {{- $mode := "none" -}}
 {{- $git_user := "" -}}
 {{- $git_email := "" -}}
-{{- $decrypt_data := "false" -}}
+{{- $decrypt_data := false -}}
 
 {{- $is_kpalatzky := promptBool "Are you kpalatzky? [Yn]" true -}}
 {{- if $is_kpalatzky -}}
@@ -18,7 +18,7 @@
 {{-     if eq $mode "w" -}}
 {{-         $mode = "work" -}}
 {{-     end -}}
-{{- $decrypt_data = "a" -}}
+{{- $decrypt_data = true -}}
 {{- else -}}
 {{-     $mode = "custom" -}}
 {{-     $git_user = promptStringOnce . "git.user" "Git User:" -}}
