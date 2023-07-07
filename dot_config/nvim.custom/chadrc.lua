@@ -1,0 +1,1 @@
+M.plugins = "custom.plugins"
