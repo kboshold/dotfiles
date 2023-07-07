@@ -29,8 +29,9 @@
 {{-     end -}}
 {{- end -}}
 
+{{- $data := false -}}
 {{- if eq $mode "personal" -}}
-{{ joinPath .chezmoi.sourceDir ".personal_data.yaml.age" | include | decrypt }}
+{{- $data = (joinPath .chezmoi.sourceDir ".personal_data.yaml.age" | include | decrypt | fromYaml) -}}
 {{- else if eq $mode "work" -}}
 {{- end -}}
 
