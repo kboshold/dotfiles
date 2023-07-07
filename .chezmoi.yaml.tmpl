@@ -11,7 +11,8 @@
 {{- $is_kpalatzky := promptBool "Are you kpalatzky? [Yn]" true -}}
 
 {{- if $is_kpalatzky -}}
-{{-     $mode = lower promptString "Template: [H]ome,[w]ork" "h" -}}
+{{-     $mode = promptString "Template: [H]ome,[w]ork" "h" -}}
+{{-     $mode = lower $mode -}}
 {{-     if eq $mode "h" -}}
 {{-         $mode = "home" -}}
 {{-     end -}}
