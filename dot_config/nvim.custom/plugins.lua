@@ -19,6 +19,7 @@ local plugins = {
       return {
         default = {
           command = "deepl_free",
+          output = "floating",
         },
         preset = {
             output = {
