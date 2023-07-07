@@ -5,7 +5,7 @@ import os
 import re
 
 # get project folder as base path
-basePath = Path(os.getcwd()) / '..'
+basePath = Path(os.getcwd())
 
 readme_content = ''
 with open(basePath / 'README.md', 'r') as f:
