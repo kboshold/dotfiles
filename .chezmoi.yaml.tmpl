@@ -12,10 +12,10 @@
 
 {{- if $is_kpalatzky -}}
 {{-     $mode = lower promptString "Template: [H]ome,[w]ork" "h" -}}
-{{-     if $mode == "h" -}}
+{{-     if eq $mode "h" -}}
 {{-         $mode = "home" -}}
 {{-     end -}}
-{{-     if $mode == "w" -}}
+{{-     if eq $mode "w" -}}
 {{-         $mode = "work" -}}
 {{-     end -}}
 {{-     $decrypt_data := true -}}
