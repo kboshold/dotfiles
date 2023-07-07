@@ -9,12 +9,11 @@
 {{- $git_email := "" -}}
 
 {{- $is_kpalatzky := promptBool "Are you kpalatzky? [Yn]" true -}}
-
 {{- if $is_kpalatzky -}}
-{{-     $mode = promptString "Template: [H]ome,[w]ork" "h" -}}
+{{-     $mode = promptString "Template: [P]ersonal,[w]ork" "p" -}}
 {{-     $mode = lower $mode -}}
-{{-     if eq $mode "h" -}}
-{{-         $mode = "home" -}}
+{{-     if eq $mode "p" -}}
+{{-         $mode = "personal" -}}
 {{-     end -}}
 {{-     if eq $mode "w" -}}
 {{-         $mode = "work" -}}
@@ -36,6 +35,11 @@ age:
     identity: {{ .chezmoi.sourceDir }}/key.txt
     recipient: age12xj4kwr50r6rgdtmndlwznd2smeey08hyj85atwakgrl2w7dx3gq809dj3
 {{- end }}
+
+
+{{- if eq $mode "personal" -}}
+{{- else if eq $mode "work" -}}
+{{- end -}}
 
 data:
     opts:
