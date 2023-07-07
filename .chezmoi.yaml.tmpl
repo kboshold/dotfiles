@@ -2,11 +2,11 @@
 {{- $interactive := stdinIsATTY -}}
 
 {{- /* Template file for chezmoi config file */ -}}
-{{- $decrypt_data := "false" -}}
 {{- $deepl_api_key := "" -}}
 {{- $mode := "none" -}}
 {{- $git_user := "" -}}
 {{- $git_email := "" -}}
+{{- $decrypt_data := "false" -}}
 
 {{- $is_kpalatzky := promptBool "Are you kpalatzky? [Yn]" true -}}
 {{- if $is_kpalatzky -}}
