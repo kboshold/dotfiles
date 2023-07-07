@@ -31,8 +31,12 @@
 
 {{- $data := false -}}
 {{- if eq $mode "personal" -}}
-{{- $data = (joinPath .chezmoi.sourceDir ".personal_data.yaml.age" | include | decrypt | fromYaml) -}}
+{{-     $data = (joinPath .chezmoi.sourceDir ".personal_data.yaml.age" | include | decrypt | fromYaml) -}}
 {{- else if eq $mode "work" -}}
+{{- end -}}
+
+{{- if $data }}
+{{-     $git_user = $data.git.user -}}
 {{- end -}}
 
 format: yaml
