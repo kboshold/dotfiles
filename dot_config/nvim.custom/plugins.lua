@@ -13,6 +13,7 @@ local plugins = {
 
   {
     "uga-rosa/translate.nvim",
+    cmd = { "Translate" },
     opts = function()
       vim.g.deepl_api_auth_key = data.deeplApiKey
       return {
