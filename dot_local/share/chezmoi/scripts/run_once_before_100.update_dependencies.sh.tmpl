@@ -3,9 +3,9 @@
 # install depencdencies
 {{if eq .chezmoi.osRelease.id "ubuntu"}} 
 sudo apt update
-sudo apt install ripgrep ninja-build gettext cmake unzip curl tmux
+sudo apt install ripgrep ninja-build gettext cmake unzip curl tmux fontconfig
 {{else if eq .chezmoi.osRelease.id "centos"}}
-sudo dnf -y install ninja-build cmake gcc make unzip gettext curl ripgrep tmux
+sudo dnf -y install ninja-build cmake gcc make unzip gettext curl ripgrep tmux fontconfig
 {{end}}
 
 # Install JetBrains Nerd Fonts
