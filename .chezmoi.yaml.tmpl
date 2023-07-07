@@ -2,12 +2,12 @@
 {{- $interactive := stdinIsATTY -}}
 
 {{- /* Template file for chezmoi config file */ -}}
-{{- $agekey := false -}}{{/* true if this machine has agekey to decrypt secret */}}
+{{- $decrypt_data := false -}}{{ /* true if this machine should decrypt data */}}
 
-{{- if hasKey . "agekey" -}}
-{{-   $agekey = .agekey -}}
+{{- if hasKey . "decrypt_data" -}}
+{{-   $decrypt_data = .decrypt_data -}}
 {{- else if $interactive -}}
-{{-   $agekey = promptBool "Decrypt data?" -}}
+{{-   $decrypt_data = promptBool "Decrypt data?" -}}
 {{- end -}}
 
 {{- if $interactive -}}
@@ -15,11 +15,11 @@
 {{- end -}}
 
 data:
-    agekey: {{ $agekey }}
+    decrypt_data: {{ $decrypt_data }}
 
 format: yaml
 
-{{- if $agekey }}
+{{- if $decrypt_data }}
 encryption: age
 age:
     identity: {{ .chezmoi.sourceDir }}/key.txt
