@@ -30,7 +30,7 @@
 {{- end -}}
 
 {{- if eq $mode "personal" -}}
-
+{{ joinPath .chezmoi.sourceDir ".personal_data.yaml.age" | include | decrypt }}
 {{- else if eq $mode "work" -}}
 {{- end -}}
 
