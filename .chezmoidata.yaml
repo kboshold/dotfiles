@@ -1,3 +1,6 @@
 git:
     user: "Kevin Palatzky"
     email: "kevin.palatzky@gmail.com"
+
+secrets:
+    deeplApiKey: ""
