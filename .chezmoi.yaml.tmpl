@@ -11,11 +11,11 @@
 {{- $is_kpalatzky := promptBool "Are you kpalatzky? [Yn]" true -}}
 
 {{- if $is_kpalatzky -}}
-{{-     $mode = promptString "Template: [H]ome,[w]ork" "h" -}}
-{{-     if lower $mode = "h" -}}
+{{-     $mode = lower promptString "Template: [H]ome,[w]ork" "h" -}}
+{{-     if $mode == "h" -}}
 {{-         $mode = "home" -}}
 {{-     end -}}
-{{-     if lower $mode = "w" -}}
+{{-     if $mode == "w" -}}
 {{-         $mode = "work" -}}
 {{-     end -}}
 {{-     $decrypt_data := true -}}
