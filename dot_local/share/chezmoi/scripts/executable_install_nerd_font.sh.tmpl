@@ -1,5 +1,0 @@
-mkdir -p {{ .chezmoi.homeDir }}/.local/share/fonts
-curl -o /tmp/JetBrainsMono.zip -LO https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip 
-unzip /tmp/JetBrainsMono.zip {{ .chezmoi.homeDir }}/.local/share/fonts
-rm /tmp/JetBrainsMono.zip
-fc-cache ~/.local/share/fonts
