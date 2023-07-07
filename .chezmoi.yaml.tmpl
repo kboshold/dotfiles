@@ -38,19 +38,6 @@ age:
     recipient: age12xj4kwr50r6rgdtmndlwznd2smeey08hyj85atwakgrl2w7dx3gq809dj3
 {{- end }}
 
-{{- $data := false -}}
-{{- if eq $mode "personal" -}}
-{{-     $data = (joinPath .chezmoi.sourceDir ".personal_data.yaml.age" | include | decrypt | fromYaml) -}}
-{{- else if eq $mode "work" -}}
-{{-     $data = (joinPath .chezmoi.sourceDir ".work_data.yaml.age" | include | decrypt | fromYaml) -}}
-{{- end -}}
-
-{{- if $data }}
-{{-     $git_user = $data.git.user -}}
-{{-     $git_email = $data.git.email -}}
-{{-     $deepl_api_key = $data.secrets.deeplApiKey -}}
-{{- end -}}
-
 data:
     opts:
         decrypt_data: {{ $decrypt_data }}
@@ -60,8 +47,6 @@ data:
         email: {{ $git_email }}
     secrets:
         deeplApiKey: {{ $deepl_api_key }}
-
-
 
 merge:
     command: nvim
