@@ -3,29 +3,24 @@
 
 {{- /* Template file for chezmoi config file */ -}}
 {{- $decrypt_data := false -}}{{- /* true if this machine should decrypt data */ -}}
-
-{{- if hasKey . "decrypt_data" -}}
-{{-     $decrypt_data = .decrypt_data -}}
-{{- else if $interactive -}}
-{{-     $decrypt_data = promptBool "Decrypt data?" -}}
-{{- end -}}
+{{- $deepl_api_key := "" -}}
 
 {{- $is_kpalatzky := promptBool "Are you kpalatzky? [Yn]" true -}}
 
 {{- if $is_kpalatzky -}}
-{{-     $mode := promptString "Template: [H]ome,[w]ork" "h" -}}
+{{-     $mode = promptString "Template: [H]ome,[w]ork" "h" -}}
 {{-     if lower $mode == "h" -}}
-{{-         $mode := "home" -}}
+{{-         $mode = "home" -}}
 {{-     end -}}
 {{-     if lower $mode == "w" -}}
-{{-         $mode := "work" -}}
+{{-         $mode = "work" -}}
 {{-     end -}}
 {{-     $decrypt_data := true -}}
 {{- else -}}
-{{-     $mode := "custom" -}}
-{{-     $git_user := promptStringOnce . "git_user" "Git User:" -}}
-{{-     $git_email := promptStringOnce . "git_email" "Git E-Mail:" -}}
-
+{{-     $mode = "custom" -}}
+{{-     $git_user = promptStringOnce . "git.user" "Git User:" -}}
+{{-     $git_email = promptStringOnce . "git.email" "Git E-Mail:" -}}
+{{-     $deepl_api_key = promptStringOnce . "secrets.deeplApiKey" "DeepL Api Key:" -}}
 {{-     if $interactive -}}
 {{-         writeToStdout "💡 Tip: you can re-enter your data with `chezmoi init --data=false`.\n" -}}
 {{-     end -}}
@@ -39,16 +34,16 @@ age:
 {{- end }}
 
 data:
+    opts:
+        decrypt_data: {{ $decrypt_data }}
     git:
         user: {{ $git_user }}
         email: {{ $git_email }}
     secrets:
         deeplApiKey: {{ $deepl_api_key }}
 
-    decrypt_data: {{ $decrypt_data }}
 
 format: yaml
-
 
 merge:
     command: nvim
