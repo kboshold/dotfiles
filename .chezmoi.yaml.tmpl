@@ -2,7 +2,7 @@
 {{- $interactive := stdinIsATTY -}}
 
 {{- /* Template file for chezmoi config file */ -}}
-{{- $decrypt_data := false -}}{{ /* true if this machine should decrypt data */}}
+{{- $decrypt_data := false -}}{{- /* true if this machine should decrypt data */ -}}
 
 {{- if hasKey . "decrypt_data" -}}
 {{-   $decrypt_data = .decrypt_data -}}
