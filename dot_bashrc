@@ -1,4 +1,0 @@
-alias vim="nvim"
-
-export PATH="/home/kpalatzky/.local/bin/:$PATH"
-export EDITOR="vim"
