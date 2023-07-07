@@ -5,19 +5,31 @@
 {{- $decrypt_data := false -}}{{- /* true if this machine should decrypt data */ -}}
 
 {{- if hasKey . "decrypt_data" -}}
-{{-   $decrypt_data = .decrypt_data -}}
+{{-     $decrypt_data = .decrypt_data -}}
 {{- else if $interactive -}}
-{{-   $decrypt_data = promptBool "Decrypt data?" -}}
+{{-     $decrypt_data = promptBool "Decrypt data?" -}}
 {{- end -}}
 
-{{- if $interactive -}}
-{{-   writeToStdout "💡 Tip: you can re-enter your data with `chezmoi init --data=false`.\n" -}}
+{{- $is_kpalatzky := promptBool "Are you kpalatzky? [Yn]" true -}}
+
+{{- if $is_kpalatzky -}}
+{{-     $mode := promptString "Template: [H]ome,[w]ork" "h" -}}
+{{-     if lower $mode == "h" -}}
+{{-         $mode := "home" -}}
+{{-     end -}}
+{{-     if lower $mode == "w" -}}
+{{-         $mode := "work" -}}
+{{-     end -}}
+{{-     $decrypt_data := true -}}
+{{- else -}}
+{{-     $mode := "custom" -}}
+{{-     $git_user := promptStringOnce . "git_user" "Git User:" -}}
+{{-     $git_email := promptStringOnce . "git_email" "Git E-Mail:" -}}
+
+{{-     if $interactive -}}
+{{-         writeToStdout "💡 Tip: you can re-enter your data with `chezmoi init --data=false`.\n" -}}
+{{-     end -}}
 {{- end -}}
-
-data:
-    decrypt_data: {{ $decrypt_data }}
-
-format: yaml
 
 {{- if $decrypt_data }}
 encryption: age
@@ -25,6 +37,18 @@ age:
     identity: {{ .chezmoi.sourceDir }}/key.txt
     recipient: age12xj4kwr50r6rgdtmndlwznd2smeey08hyj85atwakgrl2w7dx3gq809dj3
 {{- end }}
+
+data:
+    git:
+        user: {{ $git_user }}
+        email: {{ $git_email }}
+    secrets:
+        deeplApiKey: {{ $deepl_api_key }}
+
+    decrypt_data: {{ $decrypt_data }}
+
+format: yaml
+
 
 merge:
     command: nvim
