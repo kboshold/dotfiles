@@ -3,7 +3,7 @@
 # check key.txt exists
 if [ ! -f "{{ .chezmoi.sourceDir }}/key.txt" ]; then
   # check if should decrypt
-  if test "{{ .decrypt_data }}" = "true"; then
+  if test "{{ .opts.decrypt_data }}" = "true"; then
     # check age is installed
     if ! command -v age &> /dev/null; then
       age --decrypt --output "{{ .chezmoi.sourceDir }}/key.txt" "{{ .chezmoi.sourceDir }}/key.txt.age"
