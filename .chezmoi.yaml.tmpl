@@ -4,15 +4,18 @@
 {{- /* Template file for chezmoi config file */ -}}
 {{- $decrypt_data := false -}}{{- /* true if this machine should decrypt data */ -}}
 {{- $deepl_api_key := "" -}}
+{{- $mode := "none" -}}
+{{- $git_user := "" -}}
+{{- $git_email := "" -}}
 
 {{- $is_kpalatzky := promptBool "Are you kpalatzky? [Yn]" true -}}
 
 {{- if $is_kpalatzky -}}
 {{-     $mode = promptString "Template: [H]ome,[w]ork" "h" -}}
-{{-     if lower $mode == "h" -}}
+{{-     if lower $mode = "h" -}}
 {{-         $mode = "home" -}}
 {{-     end -}}
-{{-     if lower $mode == "w" -}}
+{{-     if lower $mode = "w" -}}
 {{-         $mode = "work" -}}
 {{-     end -}}
 {{-     $decrypt_data := true -}}
