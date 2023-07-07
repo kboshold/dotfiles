@@ -29,7 +29,7 @@
 {{-     end -}}
 {{- end -}}
 
-{{- if eq $decrypt_data "true" }}
+{{- if eq $decrypt_data }}
 encryption: age
 age:
     identity: {{ .chezmoi.sourceDir }}/key.txt
