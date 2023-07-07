@@ -6,7 +6,7 @@
 {{- $mode := "none" -}}
 {{- $git_user := "" -}}
 {{- $git_email := "" -}}
-{{- $decrypt_data := "false" -}}
+{{- $decrypt_data := false -}}
 
 {{- $is_kpalatzky := promptBool "Are you kpalatzky? [Yn]" true -}}
 {{- if $is_kpalatzky -}}
@@ -18,7 +18,7 @@
 {{-     if eq $mode "w" -}}
 {{-         $mode = "work" -}}
 {{-     end -}}
-{{- $decrypt_data = "true" -}}
+{{-     $decrypt_data = true -}}
 {{- else -}}
 {{-     $mode = "custom" -}}
 {{-     $git_user = promptStringOnce . "git.user" "Git User:" -}}
@@ -28,13 +28,6 @@
 {{-         writeToStdout "💡 Tip: you can re-enter your data with `chezmoi init --data=false`.\n" -}}
 {{-     end -}}
 {{- end -}}
-
-{{- if eq $decrypt_data "trdue" }}
-encryption: age
-age:
-    identity: {{ .chezmoi.sourceDir }}/key.txt
-    recipient: age12xj4kwr50r6rgdtmndlwznd2smeey08hyj85atwakgrl2w7dx3gq809dj3
-{{- end }}
 
 {{- if eq $mode "personal" -}}
 
@@ -53,6 +46,13 @@ data:
 
 
 format: yaml
+
+{{- if $decrypt_data }}
+encryption: age
+age:
+    identity: {{ .chezmoi.sourceDir }}/key.txt
+    recipient: age12xj4kwr50r6rgdtmndlwznd2smeey08hyj85atwakgrl2w7dx3gq809dj3
+{{- end }}
 
 merge:
     command: nvim
