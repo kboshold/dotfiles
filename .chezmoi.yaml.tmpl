@@ -10,7 +10,6 @@
 
 {{- $is_kpalatzky := promptBool "Are you kpalatzky? [Yn]" true -}}
 {{- if $is_kpalatzky -}}
-{{-     $decrypt_data = true -}}
 {{-     $mode = promptString "Template: [P]ersonal,[w]ork" "p" -}}
 {{-     $mode = lower $mode -}}
 {{-     if eq $mode "p" -}}
@@ -19,6 +18,7 @@
 {{-     if eq $mode "w" -}}
 {{-         $mode = "work" -}}
 {{-     end -}}
+{{-     $decrypt_data := true -}}
 {{- else -}}
 {{-     $mode = "custom" -}}
 {{-     $git_user = promptStringOnce . "git.user" "Git User:" -}}
@@ -37,6 +37,7 @@ age:
 {{- end }}
 
 {{- if eq $mode "personal" -}}
+
 {{- else if eq $mode "work" -}}
 {{- end -}}
 
