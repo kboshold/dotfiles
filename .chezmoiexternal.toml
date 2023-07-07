@@ -4,3 +4,22 @@
     refreshPeriod = "168h"
     [".config/nvim".pull]
         args = ["--ff-only"]
+
+[".oh-my-zsh"]
+    type = "git-repo"
+    url = "https://github.com/ohmyzsh/ohmyzsh"
+    refreshPeriod = "168h"
+    [".oh-my-zsh".pull]
+        args = ["--ff-only"]
+[".oh-my-zsh/custom/plugins/zsh-syntax-highlighting"]
+    type = "git-repo"
+    url = "https://github.com/zsh-users/zsh-syntax-highlighting"
+    refreshPeriod = "168h"
+    [".oh-my-zsh/custom/plugins/zsh-syntax-highlighting".pull]
+        args = ["--ff-only"]
+[".oh-my-zsh/custom/themes/powerlevel10k"]
+    type = "git-repo"
+    url = "https://github.com/romkatv/powerlevel10k"
+    refreshPeriod = "168h"
+    [".oh-my-zsh/custom/themes/powerlevel10k".pull]
+        args = ["--ff-only"]
