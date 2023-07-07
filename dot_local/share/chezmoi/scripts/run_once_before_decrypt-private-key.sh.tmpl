@@ -2,10 +2,13 @@
 
 # check key.txt exists
 if [ ! -f "{{ .chezmoi.sourceDir }}/key.txt" ]; then
+  echo "no key.txt"
   # check if should decrypt
   if [ "{{ .decrypt_data}}" == "true" ]; then
+    echo "should decrypt"
     # check age is installed
     if ! command -v age &> /dev/null; then
+      echo "got age"
       age --decrypt --output "{{ .chezmoi.sourceDir }}/key.txt" "{{ .chezmoi.sourceDir }}/key.txt.age"
       chmod 600 "{{ .chezmoi.sourceDir }}/key.txt"
     fi
