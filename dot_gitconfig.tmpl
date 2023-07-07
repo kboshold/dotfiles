@@ -1,6 +1,6 @@
 [user]
-    user = {{ .user | quote }}
-    email = {{ .email | quote }}
+    user = {{ .git.user | quote }}
+    email = {{ .git.email | quote }}
     signingKey = {{ .chezmoi.homeDir }}/.ssh/id_rsa.pub
 [commit]
     gpgSign = true
