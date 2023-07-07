@@ -19,7 +19,7 @@ if [ ! -f "{{ .chezmoi.homeDir }}/.local/share/fonts/JetBrainsMonoNLNerdFontMono
 fi
 
 # Install NeoVIM 0.9
-if [ ! -f "{{.chezmoi.homeDir}}/.local/neovim" ]; then
+if [ ! -d "{{.chezmoi.homeDir}}/.local/neovim" ]; then
     echo "Install NeoVIM 0.9..."
     git clone https://github.com/neovim/neovim.git {{.chezmoi.homeDir}}/.local/neovim
     cd {{.chezmoi.homeDir}}/.local/neovim 
