@@ -18,6 +18,7 @@
 {{-     if eq $mode "w" -}}
 {{-         $mode = "work" -}}
 {{-     end -}}
+{{- $decrypt_data = "a" -}}
 {{- else -}}
 {{-     $mode = "custom" -}}
 {{-     $git_user = promptStringOnce . "git.user" "Git User:" -}}
