@@ -10,6 +10,7 @@
 
 # write to file
 {{ if $data }} 
+{{ .git := {} }}
 {{ .git.user := $data.git.user }}
 {{ .git.email := $data.git.email }}
 {{ .secrets.deeplApiKey := $data.secrets.deeplApiKey  }}
