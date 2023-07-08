@@ -1,18 +1,11 @@
 #!/bin/sh
 
-echo "RUN BEFORE DECRYT 1"
 # check key.txt exists
 if [ ! -f "{{ .chezmoi.sourceDir }}/key.txt" ]; then
-
-  echo "RUN BEFORE DECRYT 2"
   # check if should decrypt
   if test "{{ .opts.decrypt_data }}" = "true"; then
-  
-    echo "RUN BEFORE DECRYT 3"
     # check age is installed
     if ! command -v age &> /dev/null; then
-    
-      echo "RUN BEFORE DECRYT 4"
       age --decrypt --output "{{ .chezmoi.sourceDir }}/key.txt" "{{ .chezmoi.sourceDir }}/key.txt.age"
       chmod 600 "{{ .chezmoi.sourceDir }}/key.txt"
     fi
