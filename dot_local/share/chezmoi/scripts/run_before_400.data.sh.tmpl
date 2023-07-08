@@ -16,12 +16,4 @@ git:
 secrets:
     deeplApiKey: {{ $data.secrets.deeplApiKey }}
 EOF
-{{- else -}} 
-cat << EOF > {{ .chezmoi.sourceDir }}/.chezmoidata.yml
-git:
-    user: "DECRYPTION FAILED"
-    email: "DECRYPTION FAILED"
-secrets:
-    deeplApiKey: "DECRYPTION FAILED"
-EOF
 {{- end -}} 
