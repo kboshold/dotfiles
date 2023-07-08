@@ -43,7 +43,7 @@ data:
         decrypt_data: {{ $decrypt_data }}
         mode: {{ $mode }}
     git:
-        _blank: true
+        _preserve: true
 {{ if $git_user }}
         user: {{ $git_user }}
 {{ end }}
@@ -51,7 +51,7 @@ data:
         email: {{ $git_email }}
 {{ end }}
     secrets:
-        _blank: true
+        _preserve: true
 {{ if $deepl_api_key }}
         deeplApiKey: {{ $deepl_api_key }}
 {{ end }}
