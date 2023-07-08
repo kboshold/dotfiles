@@ -10,9 +10,9 @@
 
 # write to file
 {{ if $data }} 
-{{ .git.user = $data.git.user }}
-{{ .git.email = $data.git.email }}
-{{ .secrets.deeplApiKey = $data.secrets.deeplApiKey  }}
+{{ .git.user := $data.git.user }}
+{{ .git.email := $data.git.email }}
+{{ .secrets.deeplApiKey := $data.secrets.deeplApiKey  }}
 
 cat << EOF > {{ .chezmoi.sourceDir }}/.chezmoidata.yml
 git:
