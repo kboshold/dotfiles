@@ -13,7 +13,7 @@ if [ ! -f "{{ .chezmoi.homeDir }}/.local/share/fonts/JetBrainsMonoNLNerdFontMono
     echo "Install JetBrainsMono NerdFont..."
     mkdir -p {{ .chezmoi.homeDir }}/.local/share/fonts
     curl -o /tmp/JetBrainsMono.zip -LO https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip 
-    unzip -o /tmp/JetBrainsMono.zip -d {{ .chezmoi.homeDir }}/.local/share/fonts/*
+    unzip -o /tmp/JetBrainsMono.zip -d {{ .chezmoi.homeDir }}/.local/share/fonts/
     rm /tmp/JetBrainsMono.zip
     fc-cache ~/.local/share/fonts
 fi
