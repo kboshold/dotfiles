@@ -7,6 +7,7 @@
 {{-     $data = (joinPath .chezmoi.sourceDir ".work_data.yaml.age" | include | decrypt | fromYaml) -}}
 {{- end -}}
 
+# write to file
 cat << EOF > {{ .chezmoi.sourceDir }}/.chezmoidata.yml
 git:
     user: {{ $data.git.user }}
