@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-echo "LOAD DATA"
 {{- $data := false -}}
 {{- if eq .opts.mode "personal" -}}
 {{-     $data = (joinPath .chezmoi.sourceDir ".personal_data.yaml.age" | include | decrypt | fromYaml) -}}
