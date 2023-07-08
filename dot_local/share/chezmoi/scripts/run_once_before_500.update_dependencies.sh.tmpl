@@ -4,7 +4,7 @@ echo "INSTALL"
 # install depencdencies
 {{if eq .chezmoi.osRelease.id "ubuntu"}} 
 sudo apt update
-sudo apt -y install ripgrep ninja-build gettext cmake unzip curl tmux fontconfig unzip
+sudo apt -y install ripgrep ninja-build gettext cmake unzip curl tmux fontconfig unzip age
 {{else if eq .chezmoi.osRelease.id "centos"}}
 sudo dnf -y install ninja-build cmake gcc make unzip gettext curl ripgrep tmux fontconfig unzip
 {{end}}
