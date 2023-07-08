@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-{{- $data := false -}}
+{{ $data := false }}
 {{- if eq .opts.mode "personal" -}}
 {{-     $data = (joinPath .chezmoi.sourceDir ".personal_data.yaml.age" | include | decrypt | fromYaml) -}}
 {{- else if eq .opts.mode "work" -}}
