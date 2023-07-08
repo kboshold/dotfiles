@@ -34,7 +34,7 @@ format: yaml
 {{- if $decrypt_data }}
 encryption: age
 age:
-    identity: {{ .chezmoi.sourceDir }}/key.txt
+    identity: {{ .chezmoi.sourceDir }}/.key.txt
     recipient: age12xj4kwr50r6rgdtmndlwznd2smeey08hyj85atwakgrl2w7dx3gq809dj3
 {{- end }}
 
