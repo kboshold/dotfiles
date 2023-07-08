@@ -1,0 +1,6 @@
+# Just default values to not get errors, will be overrides
+git:
+    user: "<unset>"
+    email: "<unset>"
+secrets:
+    deeplApiKey: "<unset>"
