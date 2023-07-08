@@ -10,10 +10,9 @@
 
 # write to file
 {{ if $data }} 
-{{ .git := {} }}
-{{ .git.user := $data.git.user }}
-{{ .git.email := $data.git.email }}
-{{ .secrets.deeplApiKey := $data.secrets.deeplApiKey  }}
+{{ . | setValueAtPath (list "git" "user") $data.git.user }}
+{{ . | setValueAtPath (list "git" "email") $data.git.email }}
+{{ . | setValueAtPath (list "secrets" "deeplApiKey") $data.secrets.deeplApiKey }}
 
 cat << EOF > {{ .chezmoi.sourceDir }}/.chezmoidata.yml
 git:
