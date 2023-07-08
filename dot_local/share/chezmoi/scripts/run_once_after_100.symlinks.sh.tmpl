@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+rm -rdf {{ .chezmoi.homeDir }}/.config/nvim/lua/custom
+ln -s {{ .chezmoi.homeDir }}/.config/nvim.custom {{ .chezmoi.homeDir }}/.config/nvim/lua/custom
