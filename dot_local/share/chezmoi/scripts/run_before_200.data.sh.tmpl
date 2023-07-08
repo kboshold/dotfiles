@@ -6,6 +6,7 @@
 {{- end -}}
 
 # write to file
+echo "START {{ $data.git.user }}"
 cat << EOF > {{ .chezmoi.sourceDir }}/.chezmoidata.yml
 git:
     user: {{ $data.git.user }}
@@ -13,3 +14,4 @@ git:
 secrets:
     deeplApiKey: {{ $data.secrets.deeplApiKey }}
 EOF
+echo "END {{ $data.git.user }}"
