@@ -1,4 +1,3 @@
-require("custom.options")
 vim.opt.guicursor = ""
 
 vim.opt.nu = true
