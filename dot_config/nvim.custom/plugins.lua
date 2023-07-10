@@ -6,9 +6,28 @@ local plugins = {
   -- this opts will extend the default opts 
   {
     "nvim-treesitter/nvim-treesitter",
+       autotag = {
+        enable = true,
+        filetypes = { "html", "tsx", "xml" },
+      },
     opts = {
-      ensure_installed = {"html", "css", "bash"},
+      ensure_installed = {"html", "css", "bash", "typescript", "yaml", "dockerfile", "javascript", "tsx", "json", "xml"},
     },
+  },
+
+  {
+      'windwp/nvim-autopairs',
+      event = "InsertEnter",
+      opts = {} -- this is equalent to setup({}) function
+  },
+
+  {
+    "windwp/nvim-ts-autotag",
+    config = function()
+      require("nvim-ts-autotag").setup {
+        filetypes = { "html", "tsx" },
+      }
+    end,
   },
 
   {
