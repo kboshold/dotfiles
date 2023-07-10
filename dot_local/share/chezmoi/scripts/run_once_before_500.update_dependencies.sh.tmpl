@@ -28,7 +28,7 @@ if [ ! -d "{{.chezmoi.homeDir}}/.local/neovim" ]; then
     sudo make install
 fi
 
-if [ ! -d "{{.chezmoi.homeDir}}/.local/neovim" ]; then
+if [ ! -d "{{.chezmoi.homeDir}}/.local/fzf" ]; then
     echo "Install FZF"
     git clone --depth 1 https://github.com/junegunn/fzf.git {{.chezmoi.homeDir}}/.local/fzf
     cd {{.chezmoi.homeDir}}/.local/fzf 
