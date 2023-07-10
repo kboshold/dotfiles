@@ -23,7 +23,7 @@ local plugins = {
   {
     'editorconfig/editorconfig-vim',
     lazy = false
-  }
+  },
   {
     "windwp/nvim-ts-autotag",
     config = function()
