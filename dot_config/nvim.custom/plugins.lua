@@ -33,6 +33,21 @@ local plugins = {
      end,
   },
 
+   {
+   "williamboman/mason.nvim",
+   opts = {
+      ensure_installed = {
+        "lua-language-server",
+        "html-lsp",
+        "prettier",
+        "stylua",
+        "angular-language-server",
+        "eslint-lsp",
+        "lua-language-server",
+        "typescript-language-server",
+      },
+    },
+  }
 }
 
 return plugins
