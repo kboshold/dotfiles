@@ -17,6 +17,18 @@
     refreshPeriod = "168h"
     [".oh-my-zsh/custom/plugins/zsh-syntax-highlighting".pull]
         args = ["--ff-only"]
+[".oh-my-zsh/custom/plugins/zsh-completions"]
+    type = "git-repo"
+    url = "https://github.com/zsh-users/zsh-completions"
+    refreshPeriod = "168h"
+    [".oh-my-zsh/custom/plugins/zsh-completions".pull]
+        args = ["--ff-only"]
+[".oh-my-zsh/custom/plugins/zsh-autosuggestions"]
+    type = "git-repo"
+    url = "https://github.com/zsh-users/zsh-autosuggestions"
+    refreshPeriod = "168h"
+    [".oh-my-zsh/custom/plugins/zsh-autosuggestions".pull]
+        args = ["--ff-only"]
 [".oh-my-zsh/custom/themes/powerlevel10k"]
     type = "git-repo"
     url = "https://github.com/romkatv/powerlevel10k"
