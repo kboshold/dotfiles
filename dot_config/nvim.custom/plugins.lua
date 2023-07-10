@@ -8,10 +8,10 @@ local plugins = {
     "nvim-treesitter/nvim-treesitter",
        autotag = {
         enable = true,
-        filetypes = { "html", "tsx", "xml" },
+        filetypes = { "html", "tsx" },
       },
     opts = {
-      ensure_installed = {"html", "css", "bash", "typescript", "yaml", "dockerfile", "javascript", "tsx", "json", "xml"},
+      ensure_installed = {"html", "css", "bash", "typescript", "yaml", "dockerfile", "javascript", "tsx", "json"},
     },
   },
 
