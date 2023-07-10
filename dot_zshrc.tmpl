@@ -151,8 +151,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-source "$HOME/.sdkman/bin/sdkman-init.sh"
-source /etc/environment
+[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+[ -s "/etc/environment" ] &&  source /etc/environment
 
 eval `ssh-agent` &>/dev/null
 ssh-add $(grep -lrnw ~/.ssh -e 'PRIVATE KEY') &>/dev/null
