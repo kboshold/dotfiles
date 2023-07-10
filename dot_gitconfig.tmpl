@@ -1,5 +1,5 @@
 [user]
-    user = {{ .git.user | quote }}
+    name = {{ .git.user | quote }}
     email = {{ .git.email | quote }}
     signingKey = {{ .chezmoi.homeDir }}/.ssh/id_rsa.pub
 [commit]
