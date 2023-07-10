@@ -31,7 +31,6 @@ vim.opt.updatetime = 50
 vim.opt.colorcolumn = "120"
 vim.opt.shortmess:append("I")
 
-vim.opt.listchars:append({ eol = '' })
-vim.opt.listchars:append({ tab = '' })
-vim.opt.listchars:append({ space = '·' })
+vim.opt.listchars = { eol = '' }
+
 vim.opt.list = true
