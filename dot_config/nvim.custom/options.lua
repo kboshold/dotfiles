@@ -33,6 +33,7 @@ vim.opt.shortmess:append("I")
 
 vim.opt.listchars = {
   eol = '',
-  space = '·'
+  space = '·',
+  tab = ' '
 }
 vim.opt.list = true
