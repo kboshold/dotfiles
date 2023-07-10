@@ -20,7 +20,10 @@ local plugins = {
       event = "InsertEnter",
       opts = {} -- this is equalent to setup({}) function
   },
-
+  {
+    'editorconfig/editorconfig-vim',
+    lazy = false
+  }
   {
     "windwp/nvim-ts-autotag",
     config = function()
