@@ -8,7 +8,7 @@ local plugins = {
     "nvim-treesitter/nvim-treesitter",
        autotag = {
         enable = true,
-        filetypes = { "html", "tsx" },
+        filetypes = { "html", "tsx", "xml" },
       },
     opts = {
       ensure_installed = {"html", "css", "bash", "typescript", "yaml", "dockerfile", "javascript", "tsx", "json"},
@@ -25,7 +25,7 @@ local plugins = {
     "windwp/nvim-ts-autotag",
     config = function()
       require("nvim-ts-autotag").setup {
-        filetypes = { "html", "tsx" },
+        filetypes = { "html", "tsx", "xml" },
       }
     end,
   },
@@ -46,7 +46,9 @@ local plugins = {
 
   {
     'mattn/emmet-vim',
-  },
+    opt = {},
+    ft = {'xml','ts','html','htm','tsx','jsx'},
+  }
 
   {
     "neovim/nvim-lspconfig",
