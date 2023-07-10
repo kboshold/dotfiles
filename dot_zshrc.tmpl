@@ -77,7 +77,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git npm docker yum docker-compose zsh-completions zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -109,6 +109,34 @@ alias nano="$EDITOR"
 alias emacs="$EDITOR"
 alias e="$EDITOR"
 
+# create lang definitions
+export LANGUAGE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
+# set zsh options
+setopt correct             # Turn on spelling correction
+setopt histignoredups      # Don't save duplicates in command history
+setopt noclobber           # Don't allow accidental file over-writes
+setopt nobeep              # Disable beep
+setopt chasedots           # Remove unnesseary directories. eg: './foo/bar/..' to './foo'
+setopt pushd_ignore_dups   # Do not push the same directory multible times to the stack
+
+# prevent typos
+alias dc="cd"
+alias cd..="cd .."
+alias cd--="cd --"
+alias cdl='cd "$@" && ll'
+alias cl="cdl"
+alias sl="ls"
+alias pdw="pwd"
+alias clr="clear"
+alias dir="ls"
+
+# tar aliases
+alias tarc="tar czvf"
+alias tarx="tar xzvf"
+alias tart="tar tzvf"
+
 export PATH="{{ .chezmoi.homeDir }}/.local/bin:$PATH"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -117,3 +145,12 @@ export PATH="{{ .chezmoi.homeDir }}/.local/bin:$PATH"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+source "$HOME/.sdkman/bin/sdkman-init.sh"
+source /etc/environment
+
+eval `ssh-agent` &>/dev/null
+ssh-add $(grep -lrnw ~/.ssh -e 'PRIVATE KEY') &>/dev/null
+
+# Check module size
+if [[ $(df -k | awk '{if($6 ~ /^\/$/) print $5}' | sed 's/%//') -gt '90' ]]; then echo -e "\n\e[1m\e[31m\e[7m> Hard disk space occupied over 90%! <\e[0m\n"; fi
