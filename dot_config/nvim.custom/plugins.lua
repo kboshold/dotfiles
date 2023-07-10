@@ -48,7 +48,7 @@ local plugins = {
     'mattn/emmet-vim',
     opt = {},
     ft = {'xml','ts','html','htm','tsx','jsx'},
-  }
+  },
 
   {
     "neovim/nvim-lspconfig",
