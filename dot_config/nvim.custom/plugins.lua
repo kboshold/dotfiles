@@ -7,6 +7,8 @@ local plugins = {
         dependencies = {
             "nvim-lua/plenary.nvim",
         },
+            
+          cmd = { "LazyGit" },
     },
   -- this opts will extend the default opts 
   {
