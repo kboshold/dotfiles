@@ -1,15 +1,13 @@
 local data = require('custom.data')
 
 local plugins = {
-  {
-    "tpope/vim-fugitive",
-    opt = true,
-    cmd = {
-      "G", "Git", "Gdiffsplit", "Gvdiffsplit", "Gedit", "Gsplit",
-      "Gread", "Gwrite", "Ggrep", "Glgrep", "Gmove",
-      "Gdelete", "Gremove", "Gbrowse",
+      {
+        "kdheepak/lazygit.nvim",
+        -- optional for floating window border decoration
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+        },
     },
-  },
   -- this opts will extend the default opts 
   {
     "nvim-treesitter/nvim-treesitter",
