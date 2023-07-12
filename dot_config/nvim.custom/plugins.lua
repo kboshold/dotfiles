@@ -1,7 +1,15 @@
 local data = require('custom.data')
 
 local plugins = {
-      {'akinsho/toggleterm.nvim', version = "*", config = true},
+      {
+            'akinsho/toggleterm.nvim',
+            version = "*", 
+            config = function()
+                  require "custom.configs.toggleterm"   
+            end,
+            cmp = { "LazyGitToggle", "LazyDockerToggle" },
+            
+      },
     --   {
     --     "kdheepak/lazygit.nvim",
     --     -- optional for floating window border decoration
