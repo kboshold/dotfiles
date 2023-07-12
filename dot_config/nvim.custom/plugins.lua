@@ -34,7 +34,7 @@ local plugins = {
         filetypes = { "html", "tsx", "xml" },
       },
     opts = {
-      ensure_installed = {"html", "css", "bash", "typescript", "yaml", "dockerfile", "javascript", "tsx", "json"},
+      ensure_installed = {"html", "css", "bash", "typescript", "yaml", "dockerfile", "javascript", "tsx", "json", "markdown", "markdown_inline", "scss", "toml", "regex", "php", "kotlin"},
     },
   },
 
