@@ -7,7 +7,7 @@ local plugins = {
             config = function()
                   require "custom.configs.toggleterm"   
             end,
-            cmp = { "LazyGitToggle", "LazyDockerToggle" },
+            cmp = { "LazyGitToggle", "LazyDockerToggle" , "ToggleTerm"},
             
       },
     --   {
