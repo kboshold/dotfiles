@@ -4,8 +4,8 @@ local plugins = {
       {
             'akinsho/toggleterm.nvim',
             version = "*", 
-            config = true,
-            cmp = { "LazyGitToggle", "LazyDockerToggle" , "ToggleTerm"},
+            opts = {},
+            cmd = { "ToggleTerm" },
             
       },
     --   {
