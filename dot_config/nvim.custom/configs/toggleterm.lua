@@ -27,8 +27,8 @@ local lazygit_client = Terminal:new {
 
 vim.api.nvim_create_user_command("LazyGitToggle", function()
     lazygit_client:toggle()
-end)
+end, {})
 
 vim.api.nvim_create_user_command("LazyDockerToggle", function()
   lazydocker_client:toggle()
-end)
+end, {})
