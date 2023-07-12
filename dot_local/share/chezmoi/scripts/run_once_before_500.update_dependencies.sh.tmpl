@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
 
 # install depencdencies
-{{if eq .chezmoi.osRelease.id "ubuntu"}} 
+{{if eq .chezmoi.osRelease.idLike "debian"}} 
 sudo apt update
 sudo apt -y install ripgrep ninja-build gettext cmake unzip curl tmux fontconfig unzip zsh
-{{else if eq .chezmoi.osRelease.id "centos"}}
-sudo dnf -y install ninja-build cmake gcc make unzip gettext curl ripgrep tmux fontconfig unzip zsh
+{{else if eq .chezmoi.osRelease.idLike "rhel fedora""}}
+sudo dnf copr enable atim/lazygit -y
+sudo dnf -y install ninja-build cmake gcc make unzip gettext curl ripgrep tmux fontconfig unzip zsh lazygit
 {{end}}
 
 # Install JetBrains Nerd Fonts
@@ -35,5 +36,13 @@ if [ ! -d "{{.chezmoi.homeDir}}/.local/fzf" ]; then
     {{.chezmoi.homeDir}}/.local/fzf/install
 fi
 
-# sudo apt install zsh
-# chsh -s /usr/bin/zsh kpalatzky
+if ! command -v lazygit &> /dev/null; then
+    LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
+    curl -o /tmp/lazygit.tar.gz -LO "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+    tar xf /tmp/lazygit.tar.gz {{.chezmoi.homeDir}}/.local/lazygit
+    sudo install {{.chezmoi.homeDir}}/.local/lazygit /usr/local/bin
+fi
+
+if ! command -v lazydocker &> /dev/null; then
+    curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
+fi
