@@ -12,7 +12,7 @@ local plugins = {
             },
             config = function()
                   require "custom.configs.toggleterm"
-            end
+            end,
             cmd = { "ToggleTerm", "TermExec", "LazyGitToggle", "LazyDockerToggle" },
             keys = { "<leader>gg", "<leader>dd" }
             
