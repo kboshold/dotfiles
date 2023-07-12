@@ -2,6 +2,13 @@ local data = require("custom.data")
 
 local plugins = {
     {
+        "melkster/modicator.nvim",
+        event = "BufWinEnter",
+        config = function()
+            require "custom.configs.modicator"
+        end
+    },
+    {
         "akinsho/toggleterm.nvim",
         version = "*",
         opts = {
