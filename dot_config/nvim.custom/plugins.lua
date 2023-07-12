@@ -2,6 +2,13 @@ local data = require("custom.data")
 
 local plugins = {
     {
+        "mbbill/undotree",
+        cmd = { "UndotreeToggle" }
+        config = function() {
+            require "custom.config.undotree"
+        }
+    },
+    {
         "melkster/modicator.nvim",
         event = "BufWinEnter",
         config = function()
