@@ -17,6 +17,14 @@ local plugins = {
             keys = { "<leader>gg", "<leader>dd" }
             
       },
+        {
+    "code-biscuits/nvim-biscuits",
+    event = "BufRead",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    config = function()
+      require "custom.configs.biscuits"
+    end,
+  },
   {
     "nvim-treesitter/nvim-treesitter",
        autotag = {
