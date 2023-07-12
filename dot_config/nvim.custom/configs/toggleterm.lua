@@ -1,3 +1,4 @@
+local M = {}
 local toggleterm = require "toggleterm"
 local Terminal = require("toggleterm.terminal").Terminal
 
