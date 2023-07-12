@@ -3,7 +3,7 @@ local data = require("custom.data")
 local plugins = {
     {
         "melkster/modicator.nvim",
-        event = "BufWinEnter"
+        event = "BufWinEnter",
         opts = {}
     },
     {
