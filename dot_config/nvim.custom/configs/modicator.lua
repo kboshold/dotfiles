@@ -5,7 +5,8 @@ modicator.setup {
     show_warnings = true,
     highlights = {
         defaults = {
-            bold = true
+            bold = true,
+            italic = true
         }
     }
 }
