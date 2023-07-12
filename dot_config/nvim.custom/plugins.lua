@@ -4,6 +4,7 @@ local plugins = {
     {
         "melkster/modicator.nvim",
         event = "BufWinEnter"
+        opts = {}
     },
     {
         "akinsho/toggleterm.nvim",
