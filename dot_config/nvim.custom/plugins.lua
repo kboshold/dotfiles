@@ -3,10 +3,7 @@ local data = require("custom.data")
 local plugins = {
     {
         "melkster/modicator.nvim",
-        event = "BufWinEnter",
-        config = function()
-            require "custom.configs.modicator"
-        end
+        event = "BufWinEnter"
     },
     {
         "akinsho/toggleterm.nvim",
@@ -31,6 +28,9 @@ local plugins = {
         "code-biscuits/nvim-biscuits",
         event = "BufRead",
         dependencies = {"nvim-treesitter/nvim-treesitter"},
+        config = function()
+            require "custom.configs.biscuits"
+        end
     },
     {
         "nvim-treesitter/nvim-treesitter",
