@@ -1,4 +1,4 @@
-local M = {}
+local autocmd = vim.api.nvim_create_autocmd
 local toggleterm = require "toggleterm"
 local Terminal = require("toggleterm.terminal").Terminal
 
@@ -13,10 +13,6 @@ local lazydocker_client = Terminal:new {
   },
 }
 
-function M.lazydocker_client_toggle()
-  lazydocker_client:toggle()
-end
-
 -- LazyGit
 local lazygit_client = Terminal:new {
   cmd = "lazygit",
@@ -28,11 +24,14 @@ local lazygit_client = Terminal:new {
   },
 }
 
-function M.lazygit_client_toggle()
-  lazygit_client:toggle()
-end
+autocmd("LazyGitToggle", {
+  callback = function()
+    lazygit_client:toggle()
+  end
+})
 
-vim.api.nvim_add_user_command("LazyGitToggle", M.lazygit_client_toggle)
-vim.api.nvim_add_user_command("LazyDockerToggle", M.lazydocker_client_toggle)
-
-return M
+autocmd("LazyDockerToggle", {
+  callback = function()
+    lazydocker_client:toggle()
+  end
+})
