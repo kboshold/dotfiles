@@ -4,7 +4,12 @@ local plugins = {
       {
             'akinsho/toggleterm.nvim',
             version = "*", 
-            opts = {},
+            opts = {
+                  direction = "float",
+                  float_opts = {
+                        border = "double",
+                  },
+            },
             cmd = { "ToggleTerm" },
             
       },
