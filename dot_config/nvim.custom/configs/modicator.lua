@@ -24,7 +24,11 @@ modicator.setup {
 
       for _, mode in pairs(modes) do
         local hl = vim.api.nvim_get_hl(0, { name = "St_" .. mode .. "Mode", link = false })
-        vim.api.nvim_set_hl(0, mode .. "Mode", { fg = hl.bg, bold = true })
+        vim.api.nvim_set_hl(0, mode .. "Mode", { 
+                fg = hl.bg, 
+                italic = true,
+                bold = true 
+        })
       end
     end
 
