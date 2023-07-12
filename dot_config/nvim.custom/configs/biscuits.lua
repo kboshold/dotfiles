@@ -1,8 +1,4 @@
-local present, biscuits = pcall(require, "nvim-biscuits")
-
-if not present then
-  return
-end
+local biscuits = require "nvim-biscuits"
 
 biscuits.setup {
   cursor_line_only = true,
