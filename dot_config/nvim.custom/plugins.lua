@@ -10,6 +10,9 @@ local plugins = {
                         border = "double",
                   },
             },
+            config = function()
+                  require "custom.configs.toggleterm"
+            end
             cmd = { "ToggleTerm", "TermExec", "LazyGitToggle", "LazyDockerToggle" },
             keys = { "<leader>gg", "<leader>dd" }
             
