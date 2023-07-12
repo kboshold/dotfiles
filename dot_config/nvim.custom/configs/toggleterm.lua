@@ -1,8 +1,6 @@
 local toggleterm = require "toggleterm"
 local Terminal = require("toggleterm.terminal").Terminal
 
-toggleterm.setup()
-
 -- LazyDocker
 local lazydocker_client = Terminal:new {
   cmd = "lazydocker",
