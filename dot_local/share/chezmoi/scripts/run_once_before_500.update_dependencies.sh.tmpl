@@ -3,7 +3,7 @@
 # install depencdencies
 {{if eq .chezmoi.osRelease.idLike "debian"}} 
 sudo apt update
-sudo apt -y install ripgrep ninja-build gettext cmake unzip curl tmux fontconfig unzip zsh
+sudo apt -y install ripgrep ninja-build gettext cmake unzip curl tmux fontconfig unzip zsh build-essential
 {{else if eq .chezmoi.osRelease.idLike "rhel fedora"}}
 sudo dnf copr enable atim/lazygit -y
 sudo dnf -y install ninja-build cmake gcc make unzip gettext curl ripgrep tmux fontconfig unzip zsh lazygit
