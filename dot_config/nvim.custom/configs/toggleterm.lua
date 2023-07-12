@@ -32,4 +32,7 @@ function M.lazygit_client_toggle()
   lazygit_client:toggle()
 end
 
+vim.api.nvim_add_user_command("LazyGitToggle", M.lazygit_client_toggle)
+vim.api.nvim_add_user_command("LazyDockerToggle", M.lazydocker_client_toggle)
+
 return M
