@@ -1,15 +1,16 @@
 local data = require('custom.data')
 
 local plugins = {
-      {
-        "kdheepak/lazygit.nvim",
-        -- optional for floating window border decoration
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-        },
+      {'akinsho/toggleterm.nvim', version = "*", config = true},
+    --   {
+    --     "kdheepak/lazygit.nvim",
+    --     -- optional for floating window border decoration
+    --     dependencies = {
+    --         "nvim-lua/plenary.nvim",
+    --     },
             
-          cmd = { "LazyGit" },
-    },
+    --       cmd = { "LazyGit" },
+    -- },
   -- this opts will extend the default opts 
   {
     "nvim-treesitter/nvim-treesitter",
