@@ -10,7 +10,8 @@ local plugins = {
                         border = "double",
                   },
             },
-            cmd = { "ToggleTerm" },
+            cmd = { "ToggleTerm", "TermExec },
+            keys = { "<leader>gg", "<leader>dd" }
             
       },
     --   {
