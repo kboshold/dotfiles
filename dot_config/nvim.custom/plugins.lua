@@ -4,8 +4,15 @@ local plugins = {
     {
         "melkster/modicator.nvim",
         event = "BufWinEnter",
-        config = function() 
+        config = function()
             require "custom.configs.modicator"
+        end
+    },
+    {
+        "Pocco81/auto-save.nvim",
+        event = "BufReadPost",
+        config = function()
+            require "custom.configs.autosave"
         end
     },
     {
