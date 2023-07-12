@@ -10,7 +10,7 @@ local plugins = {
                         border = "double",
                   },
             },
-            cmd = { "ToggleTerm", "TermExec },
+            cmd = { "ToggleTerm", "TermExec", "LazyGitToggle", "LazyDockerToggle" },
             keys = { "<leader>gg", "<leader>dd" }
             
       },
