@@ -9,7 +9,7 @@ M.override = {}
 ---@type HLTable
 M.add = {
 
-  VirtColumn = { guifg = "#444444" }
+  VirtColumn = { guifg = "#333333" }
 
 }
 
