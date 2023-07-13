@@ -2,6 +2,79 @@ local data = require("custom.data")
 
 local plugins = {
     {
+    "mfussenegger/nvim-dap",
+    dependencies = {
+      {
+        "theHamsta/nvim-dap-virtual-text",
+        config = function()
+          require "custom.configs.virtual-text"
+        end,
+      },
+      {
+        "rcarriga/nvim-dap-ui",
+        config = function()
+          require "custom.configs.dapui"
+        end,
+      },
+    },
+  },
+     {
+    "nvim-treesitter/nvim-treesitter-context",
+    event = "BufWinEnter",
+    config = function()
+      require "custom.configs.context"
+    end,
+  },
+     {
+    "lukas-reineke/virt-column.nvim",
+    event = "BufReadPost",
+    config = function()
+      require("virt-column").setup {
+        char = "┃",
+        virtcolumn = "120",
+      }
+    end,
+  },
+      {
+    "rest-nvim/rest.nvim",
+    ft = { "http" },
+    config = function()
+      require("rest-nvim").setup {
+        result_split_horizontal = true,
+      }
+    end,
+  },
+    {
+    "zbirenbaum/neodim",
+    event = "LspAttach",
+    branch = "v2",
+    config = function()
+      require("neodim").setup {
+        refresh_delay = 75,
+        alpha = 0.75,
+        blend_color = "#000000",
+        hide = { underline = true, virtual_text = true, signs = true },
+        priority = 150,
+        disable = {},
+      }
+    end,
+  },
+    {
+    "sindrets/diffview.nvim",
+    cmd = "DiffviewOpen",
+    config = function()
+      require("diffview").setup {
+        enhanced_diff_hl = true,
+        view = {
+          merge_tool = {
+            layout = "diff3_mixed",
+            disable_diagnostics = true,
+          },
+        },
+      }
+    end,
+  },
+    {
         "mbbill/undotree",
         cmd = { "UndotreeToggle" },
         opts = {}
