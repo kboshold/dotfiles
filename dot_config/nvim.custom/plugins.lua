@@ -27,7 +27,7 @@ local plugins = {
   },
      {
     "lukas-reineke/virt-column.nvim",
-    event = "BufReadPost",
+    event = "BufWinEnter",
     config = function()
       require("virt-column").setup {
         char = "┃",
