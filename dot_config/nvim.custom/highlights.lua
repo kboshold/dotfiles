@@ -7,6 +7,10 @@ local M = {}
 M.override = {}
 
 ---@type HLTable
-M.add = {}
+M.add = {
+
+  VirtColumn = { guifg = "#444444" }
+
+}
 
 return M
