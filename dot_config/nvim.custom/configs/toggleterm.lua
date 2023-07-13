@@ -17,7 +17,6 @@ local lazydocker_client = Terminal:new {
   on_close = function(term)
     vim.cmd("startinsert!")
   end,
-})
 }
 
 -- LazyGit
@@ -36,7 +35,6 @@ local lazygit_client = Terminal:new {
   on_close = function(term)
     vim.cmd("startinsert!")
   end,
-})
 }
 
 vim.api.nvim_create_user_command("LazyGitToggle", function()
