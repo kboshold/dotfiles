@@ -8,6 +8,12 @@ M.general = {
     ["<leader>gg"] = { "<CMD>LazyGitToggle<CR>", "Open LazyGit"},
     ["<leader>dd"] = { "<CMD>LazyDockerToggle<CR>", "Open LazyDocker"},
     ["<leader>u"] = { "<CMD>UndotreeToggle<CR>", "Open UndoTree"},
+    ["<leader>rs"] = {
+      function()
+        require("rest-nvim").run()
+      end,
+      "󰖟 RestNvim Run",
+    },
   },
   v = {
     ["<leader>te"] = { "<CMD>'<,'>Translate EN<CR>", "Translate selection to englisch", { nowait = true}},
