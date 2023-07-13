@@ -11,8 +11,13 @@ local lazydocker_client = Terminal:new {
     border = "double",
   },
   on_open = function(term)
+    vim.cmd("startinsert!")
     vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", {noremap = true, silent = true})
   end,
+  on_close = function(term)
+    vim.cmd("startinsert!")
+  end,
+})
 }
 
 -- LazyGit
@@ -25,8 +30,13 @@ local lazygit_client = Terminal:new {
     border = "double",
   },
   on_open = function(term)
+    vim.cmd("startinsert!")
     vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", {noremap = true, silent = true})
   end,
+  on_close = function(term)
+    vim.cmd("startinsert!")
+  end,
+})
 }
 
 vim.api.nvim_create_user_command("LazyGitToggle", function()
