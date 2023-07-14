@@ -2,6 +2,12 @@ local data = require("custom.data")
 
 local plugins = {
     {
+  "folke/tokyonight.nvim",
+  lazy = false,
+  priority = 1000,
+  opts = {},
+},
+    {
     "mfussenegger/nvim-dap",
     dependencies = {
       {
