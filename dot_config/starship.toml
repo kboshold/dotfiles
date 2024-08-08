@@ -1,6 +1,38 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
+#format = """
+#[ ](bg:#9A348E)\
+#[](bg:#DA627D fg:#9A348E)\
+#$directory\
+#[](fg:#DA627D bg:#FCA17D)\
+#[](fg:#FCA17D bg:#33658A)\
+#[ ](fg:#33658A)\
+#$line_break$character
+#"""
+#
+#right_format = """
+#[\n](fg:#9A348E)\
+#$c\
+#$elixir\
+#$elm\
+#$golang\
+#$gradle\
+#$haskell\
+#$java\
+#$julia\
+#$nodejs\
+#$nim\
+#$rust\
+#$scala\
+#$docker_context\
+#$cmd_duration\
+#[](fg:#FCA17D bg:#9A348E)\
+#$git_branch\
+#$git_status\
+#[ ](bg:#FCA17D)
+#"""
+
 format = """
 [ ](bg:#9A348E)\
 [](bg:#DA627D fg:#9A348E)\
@@ -8,30 +40,36 @@ $directory\
 [](fg:#DA627D bg:#FCA17D)\
 [](fg:#FCA17D bg:#33658A)\
 [ ](fg:#33658A)\
+$fill\
+[](fg:#FCA17D bg:#9A348E)\
+[test]()\
+$git_branch\
+$git_status\
+[a](bg:#FCA17D)\
 $line_break$character
 """
 
-right_format = """
-[\n](fg:#9A348E)\
-$c\
-$elixir\
-$elm\
-$golang\
-$gradle\
-$haskell\
-$java\
-$julia\
-$nodejs\
-$nim\
-$rust\
-$scala\
-$docker_context\
-$cmd_duration\
-[](fg:#FCA17D bg:#9A348E)\
-$git_branch\
-$git_status\
-[ ](bg:#FCA17D)
-"""
+#right_format = """
+#[\n](fg:#9A348E)\
+#$c\
+#$elixir\
+#$elm\
+#$golang\
+#$gradle\
+#$haskell\
+#$java\
+#$julia\
+#$nodejs\
+#$nim\
+#$rust\
+#$scala\
+#$docker_context\
+#$cmd_duration\
+#[](fg:#FCA17D bg:#9A348E)\
+#$git_branch\
+#$git_status\
+#[ ](bg:#FCA17D)
+#"""
 
 # Disable the blank line at the start of the prompt
 add_newline = true
