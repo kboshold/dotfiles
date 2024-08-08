@@ -3,7 +3,7 @@
     email = {{ .git.email | quote }}
     signingKey = {{ .chezmoi.homeDir }}/.ssh/id_rsa.pub
 [commit]
-    gpgSign = false
+    gpgSign = true
 [gpg]
     format = ssh
 [status]
