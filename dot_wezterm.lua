@@ -2,7 +2,6 @@
 local wezterm = require 'wezterm'
 local mux = wezterm.mux
 
-
 -- This table will hold the configuration.
 local config = {}
 
@@ -16,11 +15,7 @@ end
 
 -- For example, changing the color scheme:
 config.font = wezterm.font 'JetBrainsMono NL NFM'
-config.colors = {
-    background = '#262626'
-}
 config.enable_tab_bar = false
-
 
 wezterm.on("gui-startup", function()
   local _tab, _pane, window = mux.spawn_window{}

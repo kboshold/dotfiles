@@ -1,0 +1,43 @@
+layout {
+	default_tab_template {
+		children
+			pane size=1 borderless=true {
+				plugin location="https://github.com/dj95/zjstatus/releases/latest/download/zjstatus.wasm" {
+					format_left   "{mode}{tabs}"
+					format_right  "#[fg=#505050]#[bg=#505050,fg=#EEEEEE] cpu {command_cpu} #[fg=#303030,bg=#505050]#[bg=#303030,fg=#EEEEEE] ram {command_mem}  #[fg=#202020,bg=#303030]#[bg=#202020,fg=#89B4FA,bold] {session} "
+					format_space  ""
+
+					mode_normal        "#[bg=#5f5faf,fg=#EEEEEE,bold] N #[fg=#5f5faf]"
+					mode_locked        "#[bg=#B30000,fg=#EEEEEE,bold] L #[fg=#B30000]"
+					mode_resize        "#[bg=#e6e600,fg=#000000,bold] R #[fg=#e6e600]"
+					mode_pane          "#[bg=#00ffcc,fg=#000000,bold] P #[fg=#00ffcc]"
+					mode_tab           "#[bg=#B3FF66,fg=#000000,bold] T #[fg=#B3FF66]"
+					mode_scroll        "#[bg=#89B4FA,fg=#000000,bold] S #[fg=#89B4FA]"
+					mode_enter_search  "#[bg=#89B4FA,fg=#000000,bold] S #[fg=#89B4FA]"
+					mode_search        "#[bg=#89B4FA,fg=#000000,bold] S #[fg=#89B4FA]"
+					mode_rename_tab    "#[bg=#89B4FA,fg=#000000,bold] R #[fg=#89B4FA]"
+					mode_rename_pane   "#[bg=#89B4FA,fg=#000000,bold] R #[fg=#89B4FA]"
+					mode_session       "#[bg=#89B4FA,fg=#000000,bold] S #[fg=#89B4FA]"
+					mode_move          "#[bg=#89B4FA,fg=#000000,bold] M #[fg=#89B4FA]"
+					mode_prompt        "#[bg=#89B4FA,fg=#000000,bold] P #[fg=#89B4FA]"
+					mode_tmux          "#[bg=#ffc387,fg=#000000,bold] T #[fg=#ffc387]"
+
+					tab_active   "#[fg=#7373df]#[bg=#7373df,fg=#EEEEEE] {index} #[fg=#7373df,bg=#5f5faf]#[bg=#5f5faf,fg=#EEEEEE,bold] {name} #[fg=#5f5faf]"
+					tab_normal   "#[fg=#505050]#[bg=#505050,fg=#EEEEEE] {index} #[fg=#505050,bg=#404040]#[bg=#404040,fg=#EEEEEE,bold] {name} #[fg=#404040]"
+
+					datetime        "#[fg=#6C7086,bold] {format} "
+					datetime_format "%A, %d %b %Y %H:%M"
+					datetime_timezone "Europe/Berlin"
+
+					command_cpu_command "bash -c 'nu -c \\'sys cpu | get cpu_usage | math avg | math round -p 2\\' || echo 0'"
+					command_cpu_format "{stdout}%"
+					command_cpu_interval 5
+
+					command_mem_command "bash -c 'nu -c \\'sys cpu | get cpu_usage | math avg | math round -p 1\\' || echo 0'"
+					command_mem_format "{stdout}%"
+					command_mem_interval 5
+				}
+			}
+	}
+}
+
