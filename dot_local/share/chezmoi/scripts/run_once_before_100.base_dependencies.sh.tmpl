@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-# install base depencdencies
-{{if eq .chezmoi.osRelease.idLike "debian"}} 
-sudo apt update
-sudo apt -y install age
-{{else}}
-
-{{end}}

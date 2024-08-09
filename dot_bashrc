@@ -21,5 +21,8 @@ if [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z
   fi
 fi
 
+export PATH=$PATH:$HOME/.local/bin
+
 # Start starship
-eval "$(starship init bash)"
+# eval "$(starship init bash)"
+eval "$(oh-my-posh init bash --config ~/.config/oh-my-posh/config.json)"
