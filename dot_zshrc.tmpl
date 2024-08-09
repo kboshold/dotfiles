@@ -1,22 +1,6 @@
 # If not running interactively, dont do anything
 [[ $- != *i* ]] && return
 
-# Check if zellij or tmux should be used as terminal mutiplexer
-if [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ] && [ -z "$ZELLIJ" ]; then
-
-  # Use Zellij over tmux if possible
-  if [[ "$ZELLIJ_AUTO_ATTACH" == "true" ]]; then
-    exec zellij attach -c
-  else
-    exec zellij
-  fi
-
-  # Fallback: tmux
-  if command -v tmux &> /dev/null; then
-    exec tmux
-  fi
-fi
-
 # Enable colors
 autoload -U colors && colors
 
