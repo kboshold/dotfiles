@@ -23,8 +23,9 @@ $env.NU_PLUGIN_DIRS = [
     ($nu.default-config-dir | path join 'plugins') # add <nushell-config-dir>/plugins
 ]
 
-mkdir ~/.cache/starship
+mkdir ~/.cache/starship ~/.cache/oh-my-posh
 starship init nu | save -f ~/.cache/starship/init.nu
+# oh-my-posh init nu --config ~/.config/oh-my-posh/config.json --print | safe -v ~/.cache/oh-my-posh/init.nu
 
 def get_transient_prompt_command_right [] {
     mut result = "";

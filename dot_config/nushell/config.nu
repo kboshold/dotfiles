@@ -3,6 +3,7 @@
 # version = "0.96.1"
 
 use ~/.cache/starship/init.nu
+# use ~/.cache/oh-my-posh/init.nu
 
 # For more information on defining custom themes, see
 # https://www.nushell.sh/book/coloring_and_theming.html
