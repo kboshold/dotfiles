@@ -1,95 +1,59 @@
 # Get editor completions based on the config schema
-"$schema" = 'https://starship.rs/config-schema.json'
-
-#format = """
-#[ ](bg:#9A348E)\
-#[](bg:#DA627D fg:#9A348E)\
-#$directory\
-#[](fg:#DA627D bg:#FCA17D)\
-#[](fg:#FCA17D bg:#33658A)\
-#[ ](fg:#33658A)\
-#$line_break$character
-#"""
-#
-#right_format = """
-#[\n](fg:#9A348E)\
-#$c\
-#$elixir\
-#$elm\
-#$golang\
-#$gradle\
-#$haskell\
-#$java\
-#$julia\
-#$nodejs\
-#$nim\
-#$rust\
-#$scala\
-#$docker_context\
-#$cmd_duration\
-#[](fg:#FCA17D bg:#9A348E)\
-#$git_branch\
-#$git_status\
-#[ ](bg:#FCA17D)
-#"""
+"$schema" = "https://starship.rs/config-schema.json"
 
 format = """
-[ ](bg:#9A348E)\
-[](bg:#DA627D fg:#9A348E)\
+[ ](bg:#202020)\
+$shell\
+[](bg:#303030 fg:#202020)\
 $directory\
-[](fg:#DA627D bg:#FCA17D)\
-[](fg:#FCA17D bg:#33658A)\
-[ ](fg:#33658A)\
+[](fg:#303030 bg:#404040)\
+[](fg:#404040)\
+\
 $fill\
-[](fg:#FCA17D bg:#9A348E)\
-[test]()\
+\
+[](fg:#404040)\
+[](fg:#404040 bg:#303030)\
 $git_branch\
 $git_status\
-[a](bg:#FCA17D)\
-$line_break$character
+[](bg:#202020 fg:#303030)\
+$c\
+$elixir\
+$elm\
+$golang\
+$gradle\
+$haskell\
+$java\
+$julia\
+$nodejs\
+$nim\
+$rust\
+$scala\
+$docker_context\
+[ ](bg:#202020)\
+$line_break$character\
 """
 
-#right_format = """
-#[\n](fg:#9A348E)\
-#$c\
-#$elixir\
-#$elm\
-#$golang\
-#$gradle\
-#$haskell\
-#$java\
-#$julia\
-#$nodejs\
-#$nim\
-#$rust\
-#$scala\
-#$docker_context\
-#$cmd_duration\
-#[](fg:#FCA17D bg:#9A348E)\
-#$git_branch\
-#$git_status\
-#[ ](bg:#FCA17D)
-#"""
+right_format = """
+$status$cmd_duration$time\
+"""
 
-# Disable the blank line at the start of the prompt
+
 add_newline = true
-
 command_timeout = 300
 scan_timeout = 20
-continuation_prompt = '[ : ](fg:#444444)'
+continuation_prompt = "[ : ](fg:#444444)"
 
 [fill]
-symbol = ' '
+symbol = " "
 
 [character]
-format = " $symbol "
-#success_symbol = "[>](bold italic bright-yellow)"
-#error_symbol = "[○](italic purple)"
-#vimcmd_symbol = "[■](italic dimmed green)"
-# not supported in zsh
-# vimcmd_replace_one_symbol = "◌"
-# vimcmd_replace_symbol = "□"
-# vimcmd_visual_symbol = "▼"
+format = "$symbol "
+success_symbol = "[❯](bold fg:#5f5faf)[❯](bold fg:#7598d1)"
+error_symbol = "[❯](bold fg:#540a0a)[❯](bold fg:#990f84)"
+vimcmd_symbol = "[❯](bold fg:#5f5faf)[❯](bold fg:#7598d1)"
+vimcmd_replace_one_symbol = "[r](bold fg:#5f5faf)[❯](bold fg:#7598d1)"
+vimcmd_replace_symbol = "[R](bold fg:#5f5faf)[❯](bold fg:#7598d1)"
+vimcmd_visual_symbol = "[V](bold fg:#0da5a8)[❯](bold fg:#93a80d)"
 
 # You can also replace your username with a neat symbol like   or disable this
 # and use the os module below
@@ -97,7 +61,7 @@ format = " $symbol "
 show_always = true
 style_user = "bg:#9A348E"
 style_root = "bg:#9A348E"
-format = '[$user ]($style)'
+format = "[$user ]($style)"
 disabled = true
 
 # An alternative to the username module which displays a symbol that
@@ -106,81 +70,100 @@ disabled = true
 style = "bg:#9A348E"
 disabled = true # Disabled by default
 
-[directory]
-style = "bg:#DA627D"
-format = "[ $path ]($style)"
-truncation_length = 6
-truncation_symbol = "…/"
-
 [sudo]
 format = "[$symbol]($style)"
 style = "bold italic bright-purple"
 symbol = "⋈┈"
 disabled = false
 
-# Here is how you can shorten some long paths by text replacement
-# similar to mapped_locations in Oh My Posh:
+[shell]
+unknown_indicator = "?"
+nu_indicator = "❯"
+bash_indicator = ""
+fish_indicator = "󰈺"
+zsh_indicator = "󰏰"
+ion_indicator = ""
+elvish_indicator = ""
+powershell_indicator = ""
+cmd_indicator = ""
+xonsh_indicator = "󰽯"
+tcsh_indicator = "󰇴"
+format = "[$indicator ]($style)"
+style = "bg:#202020 fg:#2e4363"
+disabled = false
+
+[directory]
+style = "bg:#303030 fg:#7598d1"
+format = "[ $path ]($style)"
+truncation_length = 6
+truncation_symbol = "…/"
+
+
 [directory.substitutions]
+"~/workspace" = "󰵮 "
 "~/Documents" = "󰈙 "
 "~/Downloads" = " "
 "~/Music" = " "
 "~/Pictures" = " "
-"~/workspace" = "w "
-# Keep in mind that the order matters. For example:
-# "Important Documents" = " 󰈙 "
-# will not be replaced, because "Documents" was already substituted before.
-# So either put "Important Documents" before "Documents" or use the substituted version:
-# "Important 󰈙 " = " 󰈙 "
 
-[docker_context]
-symbol = " "
-style = "bg:#06969A"
-format = '[ $symbol $context ]($style)'
 
 [git_branch]
 symbol = ""
-style = "bg:#FCA17D"
-format = '[ $symbol $branch ]($style)'
+style = "bg:#303030 fg:#7598d1"
+format = "[ $symbol $branch ]($style)"
 
 [git_status]
-style = "bg:#FCA17D"
-format = '[$all_status$ahead_behind ]($style)'
+style = "bg:#303030 fg:#7598d1"
+format = "[$all_status$ahead_behind ]($style)"
 
 [time]
-disabled = true
+format = "[at $time](fg:#1c2a40)"
+disabled = false
 
 [cmd_duration]
-format = "[◄ $duration ](italic white)"
+min_time = 2_000
+show_milliseconds = true
+format = "[took $duration](fg:#1c2a40) "
+
+[status]
+disabled = false
+symbol = "󱗗 "
+style = "fg:#540a0a"
 
 # Languges
+[docker_context]
+symbol = " "
+style = "bg:#202020"
+format = "[ $symbol $context ]($style)"
+
 [c]
 symbol = " "
-style = "bg:#86BBD8"
-format = '[ $symbol ($version) ]($style)'
+style = "bg:#202020"
+format = "[ $symbol ($version) ]($style)"
 
 [golang]
 symbol = " "
-style = "bg:#86BBD8"
-format = '[ $symbol ($version) ]($style)'
+style = "bg:#202020"
+format = "[ $symbol ($version) ]($style)"
 
 [gradle]
-style = "bg:#86BBD8"
-format = '[ $symbol ($version) ]($style)'
+style = "bg:#202020"
+format = "[ $symbol ($version) ]($style)"
 
 [java]
 symbol = " "
-style = "bg:#86BBD8"
-format = '[ $symbol ($version) ]($style)'
+style = "bg:#202020"
+format = "[ $symbol ($version) ]($style)"
 
 [nodejs]
 symbol = ""
-style = "bg:#86BBD8"
-format = '[ $symbol ($version) ]($style)'
+style = "bg:#202020"
+format = "[ $symbol ($version) ]($style)"
 
 [rust]
 symbol = ""
-style = "bg:#86BBD8"
-format = '[ $symbol ($version) ]($style)'
+style = "bg:#202020"
+format = "[ $symbol ($version) ]($style)"
 
 [package]
 format = " [pkg](italic dimmed) [$symbol$version]($style)"
@@ -197,3 +180,10 @@ style = "bold bright-yellow"
 [deno]
 format = " [deno](italic) [∫ $version](green bold)"
 version_format = "${raw}"
+
+#[custom.directory]
+##Add: ${custom.directory}\
+#style = "bg:#303030 fg:#CCCCCC"
+#format = "[ $output ]($style)"
+#when = true
+#shell = [ 'pwd' ]

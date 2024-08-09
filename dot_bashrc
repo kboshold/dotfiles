@@ -1,14 +1,18 @@
+source "$HOME/.cargo/env"
+
 # If not running interactively, dont do anything
 [[ $- != *i* ]] && return
 
 # Check if zellij or tmux should be used as terminal mutiplexer
 if [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ] && [ -z "$ZELLIJ" ]; then
 
+  ZELLIJ_AUTO_ATTACH=true
+  return
   # Use Zellij over tmux if possible
   if [[ "$ZELLIJ_AUTO_ATTACH" == "true" ]]; then
-    exec zellij attach -c
+    zellij attach -c zellij && exit
   else
-    exec zellij
+    zellij && exit
   fi
 
   # Fallback: tmux
