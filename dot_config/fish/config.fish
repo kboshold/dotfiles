@@ -25,14 +25,18 @@ if status is-interactive
 
     function starship_transient_prompt_func
         starship module character
-     end
-     
-     function starship_transient_rprompt_func
-        starship module time
-     end
-     starship init fish | source
-     enable_transience
-    
+    end
+        
+    function starship_transient_rprompt_func
+        starship prompt --right $argv
+    end
+
+    # Use custom prompt until https://github.com/starship/starship/issues/6180 is released
+    cat /home/kboshold/.config/fish/prompt.fish | source
+    # starship init fish | source
+
+    enable_transience
+
     function fish_greeting
     end
 end
