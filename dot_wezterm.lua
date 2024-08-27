@@ -1,25 +1,26 @@
 -- Pull in the wezterm API
 local wezterm = require 'wezterm'
-local mux = wezterm.mux
 
--- This table will hold the configuration.
-local config = {}
+-- This will hold the configuration.
+local config = wezterm.config_builder()
 
--- In newer versions of wezterm, use the config_builder which will
--- help provide clearer error messages
-if wezterm.config_builder then
-  config = wezterm.config_builder()
-end
-
--- This is where you actually apply your config choices
-
--- For example, changing the color scheme:
-config.font = wezterm.font 'JetBrainsMono NL NFM'
+-- Disable tabs since we are using zellij
 config.enable_tab_bar = false
+config.use_fancy_tab_bar = false
 
-wezterm.on("gui-startup", function()
-  local _tab, _pane, window = mux.spawn_window{}
-  window:gui_window():maximize()
+-- Disable scrollback since we are using zellij
+config.scrollback_lines = 0
+
+-- Use Ubuntu 22.04 WSL by default
+-- config.default_prog = { 'ubuntu2204.exe' }
+
+-- JetBrainsMono is the best font ever created and it is shipped with wezterm
+config.font = wezterm.font('JetBrains Mono')
+config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
+
+-- Just use a static title
+require'wezterm'.on('format-window-title', function ()
+	return 'Wezterm'
 end)
 
 -- and finally, return the configuration to wezterm
