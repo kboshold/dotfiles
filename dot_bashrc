@@ -16,7 +16,7 @@ if [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z
 
   # Use Zellij over tmux if possible
   if [[ "$ZELLIJ_AUTO_ATTACH" == "true" ]]; then
-    zellij attach -c zellij && exit
+    zellij attach -c main && exit
   else
     zellij && exit
   fi

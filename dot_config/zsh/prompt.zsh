@@ -90,3 +90,38 @@ setopt promptsubst
 PROMPT='$('/usr/local/bin/starship' prompt --terminal-width="$COLUMNS" --keymap="${KEYMAP:-}" --status="$STARSHIP_CMD_STATUS" --pipestatus="${STARSHIP_PIPE_STATUS[*]}" --cmd-duration="${STARSHIP_DURATION:-}" --jobs="$STARSHIP_JOBS_COUNT")'
 RPROMPT='$('/usr/local/bin/starship' prompt --right --terminal-width="$COLUMNS" --keymap="${KEYMAP:-}" --status="$STARSHIP_CMD_STATUS" --pipestatus="${STARSHIP_PIPE_STATUS[*]}" --cmd-duration="${STARSHIP_DURATION:-}" --jobs="$STARSHIP_JOBS_COUNT")'
 PROMPT2="$(/usr/local/bin/starship prompt --continuation)"
+
+
+## CUSTOM
+
+function enable_transience() {
+
+}
+
+
+# Create a widget with the specified OMP function.
+# An existing widget will be preserved and decorated with the function.
+function __starship_create_widget() {
+  # The name of the widget to create/decorate.
+  local widget=$1
+  # The name of the OMP function.
+  local omp_func=$2
+
+  case ${widgets[$widget]:-''} in
+  # Already decorated: do nothing.
+  user:_omp_decorated_*) ;;
+
+  # Non-existent: just create it.
+  '')
+    zle -N $widget $omp_func
+    ;;
+
+  # User-defined or builtin: backup and decorate it.
+  *)
+    # Back up the original widget. The leading dot in widget name is to work around bugs when used with zsh-syntax-highlighting in Zsh v5.8 or lower.
+    zle -A $widget ._omp_original::$widget
+    eval "_omp_decorated_${(q)widget}() { _omp_call_widget ${(q)omp_func} ._omp_original::${(q)widget} -- \"\$@\" }"
+    zle -N $widget _omp_decorated_$widget
+    ;;
+  esac
+}
