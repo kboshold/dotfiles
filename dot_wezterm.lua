@@ -14,9 +14,19 @@ config.scrollback_lines = 0
 -- Use Ubuntu 22.04 WSL by default
 -- config.default_prog = { 'ubuntu2204.exe' }
 
+-- Catppuccin Mocha
+config.color_scheme = 'Catppuccin Mocha'	
+
 -- JetBrainsMono is the best font ever created and it is shipped with wezterm
 config.font = wezterm.font('JetBrains Mono')
 config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
+
+config.window_padding = {
+	left = 2,
+	right = 2,
+	top = 0,
+	bottom = 0,
+  }
 
 -- Just use a static title
 require'wezterm'.on('format-window-title', function ()
