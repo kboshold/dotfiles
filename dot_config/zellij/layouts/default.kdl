@@ -49,7 +49,7 @@ layout {
 					command_cpu_format "{stdout}%"
 					command_cpu_interval 5
 
-					command_mem_command "bash -c 'nu -c \\'sys cpu | get available\\' || echo 0 GB'"
+					command_mem_command "bash -c 'nu -c \\'sys mem | get available\\' || echo 0 GB'"
 					command_mem_format "{stdout}"
 					command_mem_interval 5
 				}
