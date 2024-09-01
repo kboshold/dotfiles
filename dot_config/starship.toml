@@ -2,20 +2,21 @@
 "$schema" = "https://starship.rs/config-schema.json"
 
 format = """
-[ ](bg:#202020)\
+[ ](bg:blue)\
 $shell\
-[](bg:#303030 fg:#202020)\
+[](fg:blue)\
+\
+[](fg:lavender)\
 $directory\
-[](fg:#303030 bg:#404040)\
-[](fg:#404040)\
+[](fg:lavender)\
 \
 $fill\
 \
-[](fg:#404040)\
-[](fg:#404040 bg:#303030)\
+\
 $git_branch\
 $git_status\
-[](bg:#202020 fg:#303030)\
+\
+\
 $c\
 $elixir\
 $elm\
@@ -29,7 +30,7 @@ $nim\
 $rust\
 $scala\
 $docker_context\
-[ ](bg:#202020)\
+\
 $line_break$character\
 """
 
@@ -42,14 +43,15 @@ add_newline = true
 command_timeout = 300
 scan_timeout = 20
 continuation_prompt = "[ : ](fg:#444444)"
+palette = "catppuccin_mocha"
 
 [fill]
 symbol = " "
 
 [character]
 format = "$symbol "
-success_symbol = "[❯](bold fg:#5f5faf)[❯](bold fg:#7598d1)"
-error_symbol = "[❯](bold fg:#540a0a)[❯](bold fg:#990f84)"
+success_symbol = "[❯](bold blue)[❯](bold lavender)"
+error_symbol = "[❯](bold peach)[❯](bold red)"
 vimcmd_symbol = "[❯](bold fg:#5f5faf)[❯](bold fg:#7598d1)"
 vimcmd_replace_one_symbol = "[r](bold fg:#5f5faf)[❯](bold fg:#7598d1)"
 vimcmd_replace_symbol = "[R](bold fg:#5f5faf)[❯](bold fg:#7598d1)"
@@ -89,11 +91,11 @@ cmd_indicator = ""
 xonsh_indicator = "󰽯"
 tcsh_indicator = "󰇴"
 format = "[$indicator ]($style)"
-style = "bg:#202020 fg:#2e4363"
+style = "bg:blue fg:base"
 disabled = false
 
 [directory]
-style = "bg:#303030 fg:#7598d1"
+style = "bg:lavender fg:mantle"
 format = "[ $path ]($style)"
 truncation_length = 6
 truncation_symbol = "…/"
@@ -109,61 +111,61 @@ truncation_symbol = "…/"
 
 [git_branch]
 symbol = ""
-style = "bg:#303030 fg:#7598d1"
-format = "[ $symbol $branch ]($style)"
+style = "bg:red fg:mantle"
+format = "[](fg:red)[ $symbol $branch]($style)"
 
 [git_status]
-style = "bg:#303030 fg:#7598d1"
-format = "[$all_status$ahead_behind ]($style)"
+style = "bg:red fg:mantle"
+format = "[ $all_status$ahead_behind]($style)[](fg:red)"
 
 [time]
-format = "[at $time](fg:#1c2a40)"
+format = "[at $time](fg:lavender)"
 disabled = false
 
 [cmd_duration]
 min_time = 2_000
 show_milliseconds = true
-format = "[took $duration](fg:#1c2a40) "
+format = "[took $duration](fg:peach) "
 
 [status]
 disabled = false
 symbol = "󱗗 "
-style = "fg:#540a0a"
+style = "fg:red"
 
 # Languges
 [docker_context]
 symbol = " "
-style = "bg:#202020"
-format = "[ $symbol $context ]($style)"
+style = "bg:sky fg:mantle"
+format = "[](fg:sky)[ $symbol $context ]($style)"
 
 [c]
 symbol = " "
-style = "bg:#202020"
-format = "[ $symbol ($version) ]($style)"
+style = "bg:sky fg:mantle"
+format = "[](fg:sky)[ $symbol ($version) ]($style)"
 
 [golang]
 symbol = " "
-style = "bg:#202020"
-format = "[ $symbol ($version) ]($style)"
+style = "bg:sky fg:mantle"
+format = "[](fg:sky)[ $symbol ($version) ]($style)"
 
 [gradle]
-style = "bg:#202020"
-format = "[ $symbol ($version) ]($style)"
+style = "bg:sky fg:mantle"
+format = "[](fg:sky)[ $symbol ($version) ]($style)"
 
 [java]
 symbol = " "
-style = "bg:#202020"
-format = "[ $symbol ($version) ]($style)"
+style = "bg:sky fg:mantle"
+format = "[](fg:sky)[ $symbol ($version) ]($style)"
 
 [nodejs]
 symbol = ""
-style = "bg:#202020"
-format = "[ $symbol ($version) ]($style)"
+style = "bg:sky fg:mantle"
+format = "[](fg:sky)[ $symbol ($version) ]($style)"
 
 [rust]
 symbol = ""
-style = "bg:#202020"
-format = "[ $symbol ($version) ]($style)"
+style = "bg:sky fg:mantle"
+format = "[](fg:sky)[ $symbol ($version) ]($style)"
 
 [package]
 format = " [pkg](italic dimmed) [$symbol$version]($style)"
@@ -187,3 +189,31 @@ version_format = "${raw}"
 #format = "[ $output ]($style)"
 #when = true
 #shell = [ 'pwd' ]
+
+[palettes.catppuccin_mocha]
+rosewater = "#f5e0dc"
+flamingo = "#f2cdcd"
+pink = "#f5c2e7"
+mauve = "#cba6f7"
+red = "#f38ba8"
+maroon = "#eba0ac"
+peach = "#fab387"
+yellow = "#f9e2af"
+green = "#a6e3a1"
+teal = "#94e2d5"
+sky = "#89dceb"
+sapphire = "#74c7ec"
+blue = "#89b4fa"
+lavender = "#b4befe"
+text = "#cdd6f4"
+subtext1 = "#bac2de"
+subtext0 = "#a6adc8"
+overlay2 = "#9399b2"
+overlay1 = "#7f849c"
+overlay0 = "#6c7086"
+surface2 = "#585b70"
+surface1 = "#45475a"
+surface0 = "#313244"
+base = "#1e1e2e"
+mantle = "#181825"
+crust = "#11111b"
