@@ -33,7 +33,7 @@ def get_transient_prompt_command_right [] {
         $result += $"(ansi --escape {fg: '#f38ba8'})󱗗 ($env.LAST_EXIT_CODE)(ansi reset) "
     }
     if ($env.CMD_DURATION_MS | into int) > 2000 {
-        $result += $"(ansi --escape {fg: '#b4befe'})took ($env.CMD_DURATION_MS + "ms" | into duration)(ansi reset) "
+        $result += $"(ansi --escape {fg: '#fe640b'})took ($env.CMD_DURATION_MS + "ms" | into duration)(ansi reset) "
     }
     $result += $"(ansi --escape {fg: '#b4befe'})at (date now | format date '%H:%M:%S')(ansi reset)"
     return $result
