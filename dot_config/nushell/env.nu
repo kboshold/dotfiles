@@ -30,16 +30,16 @@ starship init nu | save -f ~/.cache/starship/init.nu
 def get_transient_prompt_command_right [] {
     mut result = "";
     if ($env.LAST_EXIT_CODE) != 0 {
-        $result += $"(ansi --escape {fg: '#540a0a'})󱗗 ($env.LAST_EXIT_CODE)(ansi reset) "
+        $result += $"(ansi --escape {fg: '#f38ba8'})󱗗 ($env.LAST_EXIT_CODE)(ansi reset) "
     }
     if ($env.CMD_DURATION_MS | into int) > 2000 {
-        $result += $"(ansi --escape {fg: '#1c2a40'})took ($env.CMD_DURATION_MS + "ms" | into duration)(ansi reset) "
+        $result += $"(ansi --escape {fg: '#b4befe'})took ($env.CMD_DURATION_MS + "ms" | into duration)(ansi reset) "
     }
-    $result += $"(ansi --escape {fg: '#1c2a40'})at (date now | format date '%H:%M:%S')(ansi reset)"
+    $result += $"(ansi --escape {fg: '#b4befe'})at (date now | format date '%H:%M:%S')(ansi reset)"
     return $result
 }
 
-$env.TRANSIENT_PROMPT_COMMAND = {|| $"\n(ansi --escape {fg: '#5f5faf'})❯(ansi --escape {fg: '#7598d1'})❯(ansi reset) " }
+$env.TRANSIENT_PROMPT_COMMAND = {|| $"\n(ansi --escape {fg: '#89b4fa'})❯(ansi --escape {fg: '#b4befe'})❯(ansi reset) " }
 $env.TRANSIENT_PROMPT_COMMAND_RIGHT = {|| $"(get_transient_prompt_command_right)" }
 $env.TRANSIENT_PROMPT_INDICATOR = {|| "" }
 $env.TRANSIENT_PROMPT_INDICATOR_VI_INSERT = {|| "" }

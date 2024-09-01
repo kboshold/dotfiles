@@ -3,83 +3,162 @@
 # version = "0.96.1"
 
 use ~/.cache/starship/init.nu
-# use ~/.cache/oh-my-posh/init.nu
 
-# For more information on defining custom themes, see
-# https://www.nushell.sh/book/coloring_and_theming.html
-# And here is the theme collection
-# https://github.com/nushell/nu_scripts/tree/main/themes
-let dark_theme = {
-    # color for nushell primitives
-    separator: white
-    leading_trailing_space_bg: { attr: n } # no fg, no bg, attr none effectively turns this off
-    header: green_bold
-    empty: blue
-    # Closures can be used to choose colors for specific values.
-    # The value (in this case, a bool) is piped into the closure.
-    # eg) {|| if $in { 'light_cyan' } else { 'light_gray' } }
-    bool: light_cyan
-    int: white
-    filesize: cyan
-    duration: white
-    date: purple
-    range: white
-    float: white
-    string: white
-    nothing: white
-    binary: white
-    cell-path: white
-    row_index: green_bold
-    record: white
-    list: white
-    block: white
-    hints: dark_gray
-    search_result: { bg: red fg: white }
-    shape_and: purple_bold
-    shape_binary: purple_bold
-    shape_block: blue_bold
-    shape_bool: light_cyan
-    shape_closure: green_bold
-    shape_custom: green
-    shape_datetime: cyan_bold
-    shape_directory: cyan
-    shape_external: cyan
-    shape_externalarg: green_bold
-    shape_external_resolved: light_yellow_bold
-    shape_filepath: cyan
-    shape_flag: blue_bold
-    shape_float: purple_bold
-    # shapes are used to change the cli syntax highlighting
-    shape_garbage: { fg: white bg: red attr: b }
-    shape_glob_interpolation: cyan_bold
-    shape_globpattern: cyan_bold
-    shape_int: purple_bold
-    shape_internalcall: cyan_bold
-    shape_keyword: cyan_bold
-    shape_list: cyan_bold
-    shape_literal: blue
-    shape_match_pattern: green
-    shape_matching_brackets: { attr: u }
-    shape_nothing: light_cyan
-    shape_operator: yellow
-    shape_or: purple_bold
-    shape_pipe: purple_bold
-    shape_range: yellow_bold
-    shape_record: cyan_bold
-    shape_redirection: purple_bold
-    shape_signature: green_bold
-    shape_string: green
-    shape_string_interpolation: cyan_bold
-    shape_table: blue_bold
-    shape_variable: purple
-    shape_vardecl: purple
-    shape_raw_string: light_purple
+let catppuccin = {
+  latte: {
+    rosewater: "#dc8a78"
+    flamingo: "#dd7878"
+    pink: "#ea76cb"
+    mauve: "#8839ef"
+    red: "#d20f39"
+    maroon: "#e64553"
+    peach: "#fe640b"
+    yellow: "#df8e1d"
+    green: "#40a02b"
+    teal: "#179299"
+    sky: "#04a5e5"
+    sapphire: "#209fb5"
+    blue: "#1e66f5"
+    lavender: "#7287fd"
+    text: "#4c4f69"
+    subtext1: "#5c5f77"
+    subtext0: "#6c6f85"
+    overlay2: "#7c7f93"
+    overlay1: "#8c8fa1"
+    overlay0: "#9ca0b0"
+    surface2: "#acb0be"
+    surface1: "#bcc0cc"
+    surface0: "#ccd0da"
+    crust: "#dce0e8"
+    mantle: "#e6e9ef"
+    base: "#eff1f5"
+  }
+  frappe: {
+    rosewater: "#f2d5cf"
+    flamingo: "#eebebe"
+    pink: "#f4b8e4"
+    mauve: "#ca9ee6"
+    red: "#e78284"
+    maroon: "#ea999c"
+    peach: "#ef9f76"
+    yellow: "#e5c890"
+    green: "#a6d189"
+    teal: "#81c8be"
+    sky: "#99d1db"
+    sapphire: "#85c1dc"
+    blue: "#8caaee"
+    lavender: "#babbf1"
+    text: "#c6d0f5"
+    subtext1: "#b5bfe2"
+    subtext0: "#a5adce"
+    overlay2: "#949cbb"
+    overlay1: "#838ba7"
+    overlay0: "#737994"
+    surface2: "#626880"
+    surface1: "#51576d"
+    surface0: "#414559"
+    base: "#303446"
+    mantle: "#292c3c"
+    crust: "#232634"
+  }
+  macchiato: {
+    rosewater: "#f4dbd6"
+    flamingo: "#f0c6c6"
+    pink: "#f5bde6"
+    mauve: "#c6a0f6"
+    red: "#ed8796"
+    maroon: "#ee99a0"
+    peach: "#f5a97f"
+    yellow: "#eed49f"
+    green: "#a6da95"
+    teal: "#8bd5ca"
+    sky: "#91d7e3"
+    sapphire: "#7dc4e4"
+    blue: "#8aadf4"
+    lavender: "#b7bdf8"
+    text: "#cad3f5"
+    subtext1: "#b8c0e0"
+    subtext0: "#a5adcb"
+    overlay2: "#939ab7"
+    overlay1: "#8087a2"
+    overlay0: "#6e738d"
+    surface2: "#5b6078"
+    surface1: "#494d64"
+    surface0: "#363a4f"
+    base: "#24273a"
+    mantle: "#1e2030"
+    crust: "#181926"
+  }
+  mocha: {
+    rosewater: "#f5e0dc"
+    flamingo: "#f2cdcd"
+    pink: "#f5c2e7"
+    mauve: "#cba6f7"
+    red: "#f38ba8"
+    maroon: "#eba0ac"
+    peach: "#fab387"
+    yellow: "#f9e2af"
+    green: "#a6e3a1"
+    teal: "#94e2d5"
+    sky: "#89dceb"
+    sapphire: "#74c7ec"
+    blue: "#89b4fa"
+    lavender: "#b4befe"
+    text: "#cdd6f4"
+    subtext1: "#bac2de"
+    subtext0: "#a6adc8"
+    overlay2: "#9399b2"
+    overlay1: "#7f849c"
+    overlay0: "#6c7086"
+    surface2: "#585b70"
+    surface1: "#45475a"
+    surface0: "#313244"
+    base: "#1e1e2e"
+    mantle: "#181825"
+    crust: "#11111b"
+  }
 }
 
-# External completer example
-# let carapace_completer = {|spans|
-#     carapace $spans.0 nushell ...$spans | from json
-# }
+let palette = $catppuccin.mocha
+
+let theme = {
+  separator: $palette.overlay0
+  leading_trailing_space_bg: $palette.overlay0
+  header: $palette.green
+  date: $palette.mauve
+  filesize: $palette.blue
+  row_index: $palette.pink
+  bool: $palette.peach
+  int: $palette.peach
+  duration: $palette.peach
+  range: $palette.peach
+  float: $palette.peach
+  string: $palette.green
+  nothing: $palette.peach
+  binary: $palette.peach
+  cellpath: $palette.peach
+  hints: dark_gray
+
+  shape_garbage: { fg: $palette.crust bg: $palette.red attr: b }
+  shape_bool: $palette.blue
+  shape_int: { fg: $palette.mauve attr: b}
+  shape_float: { fg: $palette.mauve attr: b}
+  shape_range: { fg: $palette.yellow attr: b}
+  shape_internalcall: { fg: $palette.blue attr: b}
+  shape_external: { fg: $palette.blue attr: b}
+  shape_externalarg: $palette.text 
+  shape_literal: $palette.blue
+  shape_operator: $palette.yellow
+  shape_signature: { fg: $palette.green attr: b}
+  shape_string: $palette.green
+  shape_filepath: $palette.yellow
+  shape_globpattern: { fg: $palette.blue attr: b}
+  shape_variable: $palette.text
+  shape_flag: { fg: $palette.blue attr: b}
+  shape_custom: {attr: b}
+}
+
+
 
 # The default config record. This is where much of your global configuration is setup.
 $env.config = {
@@ -161,7 +240,7 @@ $env.config = {
         vi_normal: underscore
     }
 
-    color_config: $dark_theme
+    color_config: $theme
     use_grid_icons: true
     footer_mode: 25 # always, never, number_of_rows, auto
     float_precision: 2 # the precision for displaying floats in tables

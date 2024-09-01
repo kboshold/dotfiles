@@ -5,9 +5,6 @@ layout {
 
 				// plugin location="https://github.com/dj95/zjstatus/releases/latest/download/zjstatus.wasm" {
 				plugin location="file:~/.config/zellij/plugins/zjstatus.wasm" {
-					color_blue   "#89B4FA"
-					color_yellow "yellow"
-					color_bg     "#181825"
 
 					format_left   "{mode}{tabs}"
 					format_right  "#[fg=#f2cdcd]#[bg=#f2cdcd,fg=#181825] {command_cpu} #[fg=#f2cdcd]#[fg=#a6e3a1]#[bg=#a6e3a1,fg=#181825] {command_mem}  #[fg=#a6e3a1]#[fg=#cba6f7]#[bg=#cba6f7,fg=#181825,bold] {session} "
