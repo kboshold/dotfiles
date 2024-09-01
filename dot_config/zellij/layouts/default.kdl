@@ -7,7 +7,7 @@ layout {
 				plugin location="file:~/.config/zellij/plugins/zjstatus.wasm" {
 
 					format_left   "{mode}{tabs}"
-					format_right  "#[fg=#f2cdcd]#[bg=#f2cdcd,fg=#181825] {command_cpu} #[fg=#f2cdcd]#[fg=#a6e3a1]#[bg=#a6e3a1,fg=#181825] {command_mem}  #[fg=#a6e3a1]#[fg=#cba6f7]#[bg=#cba6f7,fg=#181825,bold] {session} "
+					format_right  "#[fg=#f2cdcd]#[bg=#f2cdcd,fg=#181825] {command_cpu} #[fg=#f2cdcd]#[fg=#a6e3a1]#[bg=#a6e3a1,fg=#181825] {command_mem} #[fg=#a6e3a1]#[fg=#cba6f7]#[bg=#cba6f7,fg=#181825,bold] {session} "
 					format_space  ""
 					
 					format_precedence         "lrc"
@@ -45,11 +45,11 @@ layout {
 					datetime_format "%A, %d %b %Y %H:%M"
 					datetime_timezone "Europe/Berlin"
 
-					command_cpu_command "bash -c 'nu -c \\'sys cpu | get cpu_usage | math avg | math round -p 2\\' || echo 4'"
+					command_cpu_command "bash -c 'nu -c \\'sys cpu | get cpu_usage | math avg | math round -p 2\\' || echo 0'"
 					command_cpu_format "{stdout}%"
 					command_cpu_interval 5
 
-					command_mem_command "bash -c 'nu -c \\'sys cpu | get available\\' || echo 12.4 GB'"
+					command_mem_command "bash -c 'nu -c \\'sys cpu | get available\\' || echo 0 GB'"
 					command_mem_format "{stdout}"
 					command_mem_interval 5
 				}
