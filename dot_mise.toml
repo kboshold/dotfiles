@@ -4,3 +4,8 @@ python = 'latest'
 java = 'lts'
 bun = 'latest'
 deno = 'latest'
+# rust = 'lts' # Should not be used atm. Use rustup directly for now.
+
+# May add other software too?
+# "npm:@angular/cli" = "latest"
+# "ubi:neovim/neovim" = "latest"
