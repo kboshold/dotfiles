@@ -23,12 +23,29 @@ $env.NU_PLUGIN_DIRS = [
     ($nu.default-config-dir | path join 'plugins') # add <nushell-config-dir>/plugins
 ]
 
-mkdir ~/.cache/starship ~/.cache/oh-my-posh
-starship init nu | save -f ~/.cache/starship/init.nu
-# oh-my-posh init nu --config ~/.config/oh-my-posh/config.json --print | safe -v ~/.cache/oh-my-posh/init.nu
+mkdir ~/.cache/starship ~/.cache/oh-my-posh ~/.cache/zoxide ~/.cache/atuin
+if (which starship | is-not-empty) {
+    echo "" | save -f ~/.cache/oh-my-posh/init.nu
+    starship init nu | save -f ~/.cache/starship/init.nu
+} else if (which oh-my-posh | is-not-empty) {
+    echo "" | save -f ~/.cache/starship/init.nu
+    oh-my-posh init nu --config ~/.config/oh-my-posh/config.json --print | safe -f ~/.cache/oh-my-posh/init.nu
+} else {
+    echo "" | save -f ~/.cache/starship/init.nu
+    echo "" | save -f ~/.cache/oh-my-posh/init.nu
+}
 
-let mise_path = $nu.default-config-dir | path join mise.nu
-^mise activate nu | save $mise_path --force
+if (which atuin  | is-not-empty) {
+    atuin init nu | save ~/.cache/atuin/init.nu
+} else {
+    echo "" | save -f ~/.cache/atuin/init.nu
+}
+
+if (which zoxide | is-not-empty) {
+    zoxide init nushell | save -f  ~/.cache/zoxide/init.nu
+} else {
+    echo "" | save -f ~/.cache/zoxide/init.nu
+}
 
 def get_transient_prompt_command_right [] {
     mut result = "";

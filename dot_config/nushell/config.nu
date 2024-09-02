@@ -2,7 +2,10 @@
 #
 # version = "0.96.1"
 
-use ~/.cache/starship/init.nu
+use ~/.cache/starship/init.nu;
+use ~/.cache/oh-my-posh/init.nu;
+source ~/.cache/zoxide/init.nu;
+source ~/.cache/atuin/init.nu;
 
 let catppuccin = {
   latte: {
@@ -159,6 +162,9 @@ let theme = {
 }
 
 
+let zoxide_completer = {|spans|
+    $spans | skip 1 | zoxide query -l ...$in | lines | where {|x| $x != $env.PWD}
+}
 
 # The default config record. This is where much of your global configuration is setup.
 $env.config = {
@@ -224,7 +230,7 @@ $env.config = {
         external: {
             enable: true # set to false to prevent nushell looking into $env.PATH to find more suggestions, `false` recommended for WSL users as this look up may be very slow
             max_results: 100 # setting it lower can improve completion performance at the cost of omitting some options
-            completer: null # check 'carapace_completer' above as an example
+            completer: null
         }
         use_ls_colors: true # set this to true to enable file/path/directory completions using LS_COLORS
     }
@@ -906,5 +912,7 @@ $env.config = {
     ]
 }
 
+alias ll = ls -la
+alias la = ls -a
+alias cd = z
 
-use mise.nu
