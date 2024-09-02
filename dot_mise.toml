@@ -21,3 +21,4 @@ deno = 'latest'
 "cargo:nu" = "latest"
 "cargo:atuin" = "latest"
 "cargo:bat" = "latest"
+"cargo:exa" = "latest"
