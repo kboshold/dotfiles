@@ -20,3 +20,4 @@ deno = 'latest'
 "cargo:zoxide" = "latest"
 "cargo:nu" = "latest"
 "cargo:atuin" = "latest"
+"cargo:bat" = "latest"
