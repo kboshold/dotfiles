@@ -905,3 +905,6 @@ $env.config = {
         }
     ]
 }
+
+
+use mise.nu

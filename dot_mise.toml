@@ -1,0 +1,6 @@
+[tools]
+node = 'lts'
+python = 'latest'
+java = 'lts'
+bun = 'latest'
+deno = 'latest'

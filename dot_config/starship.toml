@@ -80,10 +80,10 @@ disabled = false
 
 [shell]
 unknown_indicator = "?"
-nu_indicator = "❯"
+nu_indicator = ">"
 bash_indicator = ""
 fish_indicator = "󰈺"
-zsh_indicator = "󰏰"
+zsh_indicator = "%"
 ion_indicator = ""
 elvish_indicator = ""
 powershell_indicator = ""
@@ -99,15 +99,14 @@ style = "bg:lavender fg:mantle"
 format = "[ $path ]($style)"
 truncation_length = 6
 truncation_symbol = "…/"
+truncate_to_repo = false
 
-
-[directory.substitutions]
-"~/workspace" = "󰵮 "
-"~/Documents" = "󰈙 "
-"~/Downloads" = " "
-"~/Music" = " "
-"~/Pictures" = " "
-
+# [directory.substitutions]
+# "~/workspace" = "󰵮 "
+# "~/Documents" = "󰈙 "
+# "~/Downloads" = " "
+# "~/Music" = " "
+# "~/Pictures" = " "
 
 [git_branch]
 symbol = ""
@@ -160,7 +159,7 @@ format = "[](fg:sky)[ $symbol ($version) ]($style)"
 [nodejs]
 symbol = ""
 style = "bg:sky fg:mantle"
-format = "[](fg:sky)[ $symbol ($version) ]($style)"
+format = "[](fg:sky)[ $symbol ($version) ]($style)"
 
 [rust]
 symbol = ""
