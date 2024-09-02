@@ -45,11 +45,11 @@ layout {
 					datetime_format "%A, %d %b %Y %H:%M"
 					datetime_timezone "Europe/Berlin"
 
-					command_cpu_command "bash -c 'nu -c \\'sys cpu | get cpu_usage | math avg | math round -p 2\\' || echo 0'"
+					command_cpu_command "nu -c 'sys cpu | get cpu_usage | math avg | math round -p 2'"
 					command_cpu_format "{stdout}%"
 					command_cpu_interval 5
 
-					command_mem_command "bash -c 'nu -c \\'sys mem | get available\\' || echo 0 GB'"
+					command_mem_command "nu -c 'sys mem | get available'"
 					command_mem_format "{stdout}"
 					command_mem_interval 5
 				}
