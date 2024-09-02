@@ -22,3 +22,4 @@ deno = 'latest'
 "cargo:atuin" = "latest"
 "cargo:bat" = "latest"
 "cargo:exa" = "latest"
+"cargo:bottom" = "latest"
