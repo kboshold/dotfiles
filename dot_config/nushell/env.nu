@@ -27,6 +27,9 @@ mkdir ~/.cache/starship ~/.cache/oh-my-posh
 starship init nu | save -f ~/.cache/starship/init.nu
 # oh-my-posh init nu --config ~/.config/oh-my-posh/config.json --print | safe -v ~/.cache/oh-my-posh/init.nu
 
+let mise_path = $nu.default-config-dir | path join mise.nu
+^mise activate nu | save $mise_path --force
+
 def get_transient_prompt_command_right [] {
     mut result = "";
     if ($env.LAST_EXIT_CODE) != 0 {
@@ -49,3 +52,5 @@ $env.TRANSIENT_PROMPT_MULTILINE_INDICATOR = {|| "   " }
 $env.PROMPT_INDICATOR_VI_INSERT = ""
 $env.PROMPT_INDICATOR_VI_NORMAL = {|| $"\b\b\b(ansi --escape {fg: '#5f5faf'})N(ansi --escape {fg: '#7598d1'})❯(ansi reset) " }
 $env.PROMPT_MULTILINE_INDICATOR = ""
+
+

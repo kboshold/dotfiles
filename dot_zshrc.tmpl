@@ -38,8 +38,14 @@ alias tart="tar tzvf"
 
 export PATH=$PATH:$HOME/.local/bin:/opt/nvim/bin
 
-# Start starship
-# eval "$(starship init zsh)"
-eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/config.json)"
+# Better PS1
+if command -v starship &> /dev/null; then
+    eval "$(starship init zsh)"
+elif command -v oh-my-posh &> /dev/null; then
+    eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/config.json)"
+fi
 
-
+# Add version manager
+if command -v mise &> /dev/null; then
+    eval "$(mise activate zsh)"
+fi
