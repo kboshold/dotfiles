@@ -6,7 +6,11 @@ source "$HOME/.cargo/env"
 # We all know WSL is the best so fix their issues :) 
 if [ ! -z ${WSL_DISTRO_NAME-} ] && [ ! -d "/run/user/$UID" ]; then 
 	echo -e "Sorry to keep you from your work...\nUnfortunately, it has been determined that your WSL has not created a \`/run/user/$UID\` folder for you.\nSince this requires privileged rights, your password is required:\n";
-	sudo mkdir -p /run/user/$UID && sudo chown $USER:$USER /run/user/$UID;
+  read -r -p "Continue? [Y/n]" response
+  response=${response,,} # tolower
+  if [[ $response =~ ^(y| ) ]] || [[ -z $response ]]; then
+    sudo mkdir -p /run/user/$UID && sudo chown $USER:$USER /run/user/$UID;
+  fi
 fi
 
 if command -v mise &> /dev/null; then
