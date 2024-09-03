@@ -31,6 +31,8 @@ end
 # General settings
 fish_vi_key_bindings 
 
+fish_add_path -g ~/.local/bin /usr/local/sbin /opt/nvim/bin
+
 # Load mise
 if command -sq mise
     # mise activate fish | source
