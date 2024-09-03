@@ -12,7 +12,7 @@ deno = 'latest'
 # "go:github.com/junegunn/fzf" = "latest"
 # "ubi:junegunn/fzf" = "latest"
 
-# TODO: Replace with ubi
+# TODO: Replace with ubi otherwise you have to wait 20min on the first installation :)
 "cargo:yazi-fm" = "latest"
 "cargo:yazi-cli" = "latest"
 "cargo:ripgrep" = "latest"
@@ -23,4 +23,5 @@ deno = 'latest'
 "cargo:bat" = "latest"
 "cargo:exa" = "latest"
 "cargo:bottom" = "latest"
-"cargo:starship" = "latest"
+"cargo:starship" = "latest" # Required Software: cmake
+"cargo:gitui" = "latest"
