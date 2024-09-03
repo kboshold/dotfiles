@@ -52,10 +52,10 @@ symbol = " "
 format = "$symbol "
 success_symbol = "[❯](bold blue)[❯](bold lavender)"
 error_symbol = "[❯](bold peach)[❯](bold red)"
-vimcmd_symbol = "[❯](bold fg:#5f5faf)[❯](bold fg:#7598d1)"
-vimcmd_replace_one_symbol = "[r](bold fg:#5f5faf)[❯](bold fg:#7598d1)"
-vimcmd_replace_symbol = "[R](bold fg:#5f5faf)[❯](bold fg:#7598d1)"
-vimcmd_visual_symbol = "[V](bold fg:#0da5a8)[❯](bold fg:#93a80d)"
+vimcmd_symbol = "[:](bold blue)[❯](bold lavender)"
+vimcmd_replace_one_symbol = "[r](bold blue)[❯](bold lavender)"
+vimcmd_replace_symbol = "[R](bold blue)[❯](bold lavender)"
+vimcmd_visual_symbol = "[V](bold blue)[❯](bold lavender)"
 
 # You can also replace your username with a neat symbol like   or disable this
 # and use the os module below

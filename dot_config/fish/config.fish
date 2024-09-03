@@ -25,29 +25,17 @@ if ! status is-interactive
     exit;
 end
 
-function starship_transient_prompt_func
-    starship module character
-end
-    
-function starship_transient_rprompt_func
-    starship prompt --right $argv
-end
-
-# Use custom prompt until https://github.com/starship/starship/issues/6180 is released
-cat /home/kboshold/.config/fish/prompt.fish | source
-# starship init fish | source
-
-enable_transience
-
-
-if command --query zoxide
-    zoxide init --cmd cd fish | source
-end
-
-if command --query atuin
-    atuin init fish | source
-     atuin gen-completions --shell fish | source
-end
-
 function fish_greeting
 end
+
+# General settings
+fish_vi_key_bindings 
+
+# Load mise
+if command -sq mise
+    mise activate fish | source
+end
+
+# Modules must be loaded using `|source', otherwise the missing packages will not be available.
+cat ~/.config/fish/modules.fish | source
+
