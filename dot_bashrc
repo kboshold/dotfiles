@@ -1,3 +1,42 @@
-if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-  exec tmux
+source "$HOME/.cargo/env"
+
+# If not running interactively, dont do anything
+[[ $- != *i* ]] && return
+
+# We all know WSL is the best so fix their issues :) 
+if [ ! -z ${WSL_DISTRO_NAME-} ] && [ ! -d "/run/user/$UID" ]; then 
+	echo -e "Sorry to keep you from your work...\nUnfortunately, it has been determined that your WSL has not created a \`/run/user/$UID\` folder for you.\nSince this requires privileged rights, your password is required:\n";
+  read -r -p "Continue? [Y/n]" response
+  response=${response,,} # tolower
+  if [[ $response =~ ^(y| ) ]] || [[ -z $response ]]; then
+    sudo mkdir -p /run/user/$UID && sudo chown $USER:$USER /run/user/$UID;
+  fi
 fi
+
+if command -v mise &> /dev/null; then
+    eval "$(mise activate bash)"
+fi
+
+# Check if zellij or tmux should be used as terminal mutiplexer
+if [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ] && [ -z "$ZELLIJ" ]; then
+
+  ZELLIJ_AUTO_ATTACH=true
+
+  # Use Zellij over tmux if possible
+  if [[ "$ZELLIJ_AUTO_ATTACH" == "true" ]]; then
+    zellij attach -c main && exit
+  else
+    zellij && exit
+  fi
+
+  # Fallback: tmux
+  if command -v tmux &> /dev/null; then
+    exec tmux
+  fi
+fi
+
+export PATH=$PATH:$HOME/.local/bin:/opt/nvim/bin
+
+# Start starship
+eval "$(starship init bash)"
+# eval "$(oh-my-posh init bash --config ~/.config/oh-my-posh/config.json)"

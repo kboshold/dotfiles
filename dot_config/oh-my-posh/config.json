@@ -1,0 +1,170 @@
+{
+    "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+    "blocks": [
+        {
+            "alignment": "left",
+            "segments": [
+                {
+                    "background": "#404040",
+                    "foreground": "#404040",
+                    "style": "powerline",
+                    "template": "\n",
+                    "type": "text"
+                },
+                {
+                    "background": "#202020",
+                    "foreground": "#2e4363",
+                    "style": "diamond",
+                    "trailing_diamond": "\ue0bc",
+                    "type": "shell",
+                    "template": " {{ .Name }} ",
+                     "properties": {
+                         "mapped_shell_names": {
+                             "nu": "❯",
+                             "bash": "",
+                             "fish": "󰈺",
+                             "zsh": "󰏰",
+                             "ion": "",
+                             "elvish": "",
+                             "powershell": "",
+                             "cmd": "",
+                             "xonsh": "󰽯",
+                             "tcsh": "󰇴"
+                         }
+                     }
+                },
+                {
+                    "background": "#303030",
+                    "foreground": "#7598d1",
+                    "properties": {
+       
+                    },
+                    "style": "diamond",
+                    "template": " {{ .Path }} ",
+                    "trailing_diamond": "\ue0bc",
+                    "type": "path"
+                },
+                {
+                    "background": "#404040",
+                    "foreground": "#404040",
+                    "trailing_diamond": "\ue0bc",
+                    "style": "diamond",
+                    "template": "\u200B",
+                    "type": "text"
+                }
+            ],
+            "type": "prompt"
+        },
+        {
+            "alignment": "right",
+            "segments": [
+                {
+                    "background": "#404040",
+                    "foreground": "#404040",
+                    "leading_diamond": "\ue0ba",
+                    "style": "diamond",
+                    "template": "\u200B",
+                    "type": "text"
+                },
+                {
+                    "type": "git",
+                    "leading_diamond": "\ue0ba",
+                    "style": "diamond",
+                    "foreground": "#DDDDDD",
+                    "background": "#303030",
+                    "background_templates": [],
+                    "template": " {{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }}",
+                    "properties": {
+                        "fetch_status": true,
+                        "fetch_upstream_icon": true,
+                        "source": "cli",
+                        "always_enabled": true
+                    }
+                }
+            ],
+            "type": "prompt"
+        },
+        {
+            "alignment": "right",
+            "segments": [
+                {
+                    "type": "status",
+                    "style": "diamond",
+                    "foreground": "#540a0a",
+                    "background": "transparent",
+                    "template": "󱗗 {{ .Code }} "
+       
+                },
+                {
+                    "type": "executiontime",
+                    "style": "powerline",
+                    "foreground": "#1c2a40",
+                    "background": "transparent",
+                    "template": "took {{ .FormattedMs }} ",
+                    "properties": {
+                        "threshold": 2000,
+                        "style": "roundrock",
+                        "always_enabled": false
+                    }
+                },
+                {
+                    "type": "time",
+                    "style": "plain",
+                    "background": "transparent",
+                    "foreground": "#1c2a40",
+                    "template": "at {{ .CurrentDate | date .Format }}",
+                    "properties": {
+                        "time_format": "15:04:05"
+                    }
+                }
+            ],
+            "type": "rprompt"
+        },
+        {
+            "alignment": "left",
+            "newline": true,
+            "alias": "Prompt",
+            "segments": [
+                {
+                    "foreground": "#5f5faf",
+                    "foreground_templates": [
+                        "{{ if gt .Code 0 }}#540a0a{{ end }}"
+                    ],
+                    "properties": {
+                        "always_enabled": true
+                    },
+                    "style": "plain",
+                    "template": "\u276f",
+                    "type": "status"
+                },
+                {
+                    "foreground": "#7598d1",
+                    "foreground_templates": [
+                        "{{ if gt .Code 0 }}#990f84{{ end }}"
+                    ],
+                    "properties": {
+                        "always_enabled": true
+                    },
+                    "style": "plain",
+                    "template": "\u276f ",
+                    "type": "status"
+                }
+            ],
+            "type": "prompt"
+        }
+    ],
+    "secondary_prompt": {
+        "background": "transparent",
+        "foreground": "#444444",
+        "template": " : "
+    },
+    "transient_prompt": {
+        "background": "transparent",
+        "foreground": "#ffffff",
+        "newline": true,
+        "filler": "-",
+        "_template": "{{ .Segments.Prompt.Output }}> ",
+        "template": "<#5f5faf>\u276f</><#7598d1>\u276f</> "
+    },
+    "version": 2
+}

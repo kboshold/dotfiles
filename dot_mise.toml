@@ -1,0 +1,27 @@
+[tools]
+node = 'lts'
+java = 'lts'
+python = 'latest'
+bun = 'latest'
+deno = 'latest'
+# rust = 'lts' # Should not be used atm. Use rustup directly for now.
+
+# May add other software too?
+# "npm:@angular/cli" = "latest"
+# "ubi:neovim/neovim" = "latest"
+# "go:github.com/junegunn/fzf" = "latest"
+# "ubi:junegunn/fzf" = "latest"
+
+# TODO: Replace with ubi otherwise you have to wait 20min on the first installation :)
+"cargo:yazi-fm" = "latest"
+"cargo:yazi-cli" = "latest"
+"cargo:ripgrep" = "latest"
+"cargo:fd-find" = "latest"
+"cargo:zoxide" = "latest"
+"cargo:nu" = "latest"
+"cargo:atuin" = "latest"
+"cargo:bat" = "latest"
+"cargo:exa" = "latest"
+"cargo:bottom" = "latest"
+"cargo:starship" = "latest" # Required Software: cmake
+"cargo:gitui" = "latest"
