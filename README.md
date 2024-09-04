@@ -11,9 +11,9 @@
    </p>
    <hr>
    <p>
-      <span style="font-size:24px;">My awesome .dotfiles</span>
-      <br>
-      <strong>THIS FILES ARE STILL UNDER DEVELOPMENT - DO NOT USE IT FOR PRODUCTION USE</strong>
+      <h3>⚠️🚧 This project is not yet working at all. Please do not use it 🚧⚠️<h3>
+      <h3>💤 Want to be a lazy ninja? 💤</h3>
+      <div>My personal dotfile configurations.</div>
    </p>
 </div>
 
@@ -31,9 +31,3 @@ sh -c "$(curl -fsLS get.chezmoi.io/lb)" -- init --apply git@github.com:kpalatzky
 ## Overview
 
 ### Programs
-
-### Keybindings
-
-#### NeoVIM
-
-NeoVIM keybindings can be accessed in NeoVIM via `<space>ch`.
