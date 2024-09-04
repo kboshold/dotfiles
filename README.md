@@ -1,12 +1,12 @@
 <div align="center">
    <p>
-      <a href="https://github.com/kpalatzky/dotfiles#is=awesome">
+      <a href="https://github.com/kboshold/dotfiles#is=awesome">
         <img src="assets/dotfile_logo.svg" alt="DOTFILE Logo" width="80%"/>
       </a>
    </p>
    <p>
-      <a href="https://github.com/kpalatzky/dotfiles/blob/master/LICENSE">
-        <img src="https://img.shields.io/github/license/kpalatzky/dotfiles.svg" alt="MIT License">
+      <a href="https://github.com/kboshold/dotfiles/blob/master/LICENSE">
+        <img src="https://img.shields.io/github/license/kboshold/dotfiles.svg" alt="MIT License">
       </a>
    </p>
    <hr>
