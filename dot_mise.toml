@@ -25,3 +25,4 @@ deno = 'latest'
 "cargo:bottom" = "latest"
 "cargo:starship" = "latest" # Required Software: cmake
 "cargo:gitui" = "latest"
+"cargo:zellij" = "latest"
