@@ -91,7 +91,7 @@ cmd_indicator = ""
 xonsh_indicator = "󰽯"
 tcsh_indicator = "󰇴"
 format = "[$indicator ]($style)"
-style = "bg:blue fg:base"
+style = "bg:blue fg:surface1"
 disabled = false
 
 [directory]
