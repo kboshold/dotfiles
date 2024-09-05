@@ -1,3 +1,6 @@
+[settings]
+experimental = true
+
 [tools]
 node = 'lts'
 java = 'lts'
@@ -10,19 +13,44 @@ deno = 'latest'
 # "npm:@angular/cli" = "latest"
 # "ubi:neovim/neovim" = "latest"
 # "go:github.com/junegunn/fzf" = "latest"
-# "ubi:junegunn/fzf" = "latest"
 
-# TODO: Replace with ubi otherwise you have to wait 20min on the first installation :)
-"cargo:yazi-fm" = "latest"
-"cargo:yazi-cli" = "latest"
-"cargo:ripgrep" = "latest"
-"cargo:fd-find" = "latest"
-"cargo:zoxide" = "latest"
+"cargo:ubi-cli" = "latest"
+"ubi:junegunn/fzf" = "latest"
+
+# Cargo replace
+#
+"ubi:sxyazi/yazi" = "latest"
+"ubi:sharkdp/fd" = "latest"
+"ubi:ajeetdsouza/zoxide" = "latest"
+"ubi:sharkdp/bat" = "latest"
+"ubi:ogham/exa" = "latest"
+"ubi:starship/starship" = "latest"
+"ubi:extrawurst/gitui" = "latest"
+"ubi:zellij-org/zellij" = "latest"
+
+# Does currently not work using ubi.
+#
+# "ubi:neovim/neovim" = "latest"
+# "ubi:BurntSushi/ripgrep" = "latest"
+# "ubi:nushell/nushell" = "latest"
+# "ubi:ClementTsang/bottom" = "latest"
+# "ubi:atuinsh/atuin" = "latest"
+
+# Should be ubi but is not possible at the moment
+#
 "cargo:nu" = "latest"
-"cargo:atuin" = "latest"
-"cargo:bat" = "latest"
-"cargo:exa" = "latest"
+"cargo:ripgrep" = "latest"
 "cargo:bottom" = "latest"
-"cargo:starship" = "latest" # Required Software: cmake
-"cargo:gitui" = "latest"
-"cargo:zellij" = "latest"
+"cargo:atuin" = "latest"
+
+# Just store it... may ubi is broken one day ;) 
+#
+# "cargo:yazi-fm" = "latest"
+# "cargo:yazi-cli" = "latest"
+# "cargo:fd-find" = "latest"
+# "cargo:zoxide" = "latest"
+# "cargo:bat" = "latest"
+# "cargo:exa" = "latest"
+# "cargo:starship" = "latest" # Required Software: cmake
+# "cargo:gitui" = "latest"
+# "cargo:zellij" = "latest"

@@ -35,8 +35,8 @@ fish_add_path -g ~/.local/bin /usr/local/sbin /opt/nvim/bin
 
 # Load mise
 if command -sq mise
-    # mise activate fish | source
-    fish_add_path ~/.local/share/mise/shims
+    mise activate fish | source
+    mise hook-env -s fish | source;
 end
 
 # Modules must be loaded using `|source', otherwise the missing packages will not be available.
@@ -65,3 +65,4 @@ if command -sq starship
 
     enable_transience
 end
+

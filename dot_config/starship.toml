@@ -38,7 +38,6 @@ right_format = """
 $status$cmd_duration$time\
 """
 
-
 add_newline = true
 command_timeout = 300
 scan_timeout = 20
