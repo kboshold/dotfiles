@@ -13,9 +13,9 @@ if [ ! -z ${WSL_DISTRO_NAME-} ] && [ ! -d "/run/user/$UID" ]; then
   fi
 fi
 
-# if command -v mise &> /dev/null; then
-#     eval "$(mise activate bash)"
-# fi
+if command -v mise &> /dev/null; then
+    eval "$(mise activate bash)"
+fi
 
 # Check if zellij or tmux should be used as terminal mutiplexer
 if [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ] && [ -z "$ZELLIJ" ]; then

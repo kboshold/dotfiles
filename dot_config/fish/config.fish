@@ -67,3 +67,4 @@ if command -sq starship
     enable_transience
 end
 
+source $HOME/.config/fish/aliases.fish
