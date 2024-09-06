@@ -42,8 +42,8 @@ if command -sq mise
 end
 
 if command -sq atuin
-    atuin init fish | source
-    atuin gen-completions --shell fish | source
+    source ~/.config/fish/atuin.fish
+    # atuin init fish | source
 end
 
 if command -sq zoxide
@@ -61,7 +61,7 @@ if command -sq starship
     end
 
     # Use custom prompt until https://github.com/starship/starship/issues/6180 is released
-    cat ~/.config/fish/starship_init.fish | source
+    source ~/.config/fish/starship_init.fish
     # starship init fish | source
 
     enable_transience

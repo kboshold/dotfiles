@@ -19,6 +19,9 @@ for i in (seq 1 9)
     alias "cd$i" "cd $levels"
 end
 
+alias cg 'git rev-parse && cd "$(git rev-parse --show-cdup)"'
+alias cdg cg
+
 # Override ls with eza
 if command -sq eza
     alias ls "eza --git --icons"
@@ -45,4 +48,4 @@ if command -sq btm
     alias top "btm"
 end
 
-#alias ..g='git rev-parse && cd "$(git rev-parse --show-cdup)"'
+#
