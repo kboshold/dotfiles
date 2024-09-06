@@ -34,9 +34,9 @@ function _atuin_ux_render_history
         return
     end
 
-    set -l ATUIN_HISTORY "$(ATUIN_SHELL_FISH=t ATUIN_LOG=error atuin history list --session --cmd-only --reverse false)"
-    set -l ATUIN_LINE "$(echo $ATUIN_HISTORY | awk '{gsub(/\x0A/, "\n"); print}' | awk "NR==$_atuin_ux_history_index")"
-    
+    # set -l ATUIN_HISTORY "$(ATUIN_SHELL_FISH=t ATUIN_LOG=error atuin history list --session --cmd-only --reverse false)"
+    set -l ATUIN_LINE "$(ATUIN_SHELL_FISH=t ATUIN_LOG=error atuin search --filter-mode session --cmd-only --offset $_atuin_ux_history_index --limit 1 --reverse)"
+
     commandline -r "$ATUIN_LINE # Index: $_atuin_ux_history_index"
     commandline -f repaint
 end
