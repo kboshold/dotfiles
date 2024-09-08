@@ -22,7 +22,6 @@ function _atuin_ux_render_history
     commandline -f repaint
 end
 
-echo "$(ATUIN_SHELL_FISH=t ATUIN_LOG=error atuin history list --session --cmd-only --reverse false )"
 function _atuin_ux_bind_up 
     if [ "$_atuin_ux_history_index" = "-1" ]
         set -g _atuin_ux_history_commannd "$(commandline -b)"
