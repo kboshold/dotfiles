@@ -69,3 +69,5 @@ if bind -M insert > /dev/null 2>&1
 end
 
 _autin_ux_reset
+
+# TODO: Reset on Ctrl-C
