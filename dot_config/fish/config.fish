@@ -42,8 +42,8 @@ if command -sq mise
 end
 
 if command -sq atuin
-    source ~/.config/fish/atuin.fish
-    # atuin init fish | source
+    atuin init fish | source    
+    source ~/.config/fish/atuin_history.fish
 end
 
 if command -sq zoxide
