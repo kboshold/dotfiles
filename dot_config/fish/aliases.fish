@@ -19,8 +19,20 @@ for i in (seq 1 9)
     alias "cd$i" "cd $levels"
 end
 
-alias cg 'git rev-parse && cd "$(git rev-parse --show-cdup)"'
+
+alias cg 'git rev-parse 2>/dev/null && cd "$(git rev-parse --show-cdup)"'
 alias cdg cg
+
+if command -sq fd
+    function cdf 
+        set -l directory (fd -0 --type d --hidden | fzf --read0)
+        if test -n "$directory"
+            cd $directory
+        end
+    end
+
+    alias cf cdf
+end
 
 # Override ls with eza
 if command -sq eza
@@ -44,6 +56,7 @@ if command -sq nvim
     alias vim "nvim"
 end
 
+# If possible use bottom
 if command -sq btm
     alias top "btm"
 end
