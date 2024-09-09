@@ -51,20 +51,19 @@ if command -sq zoxide
 end
 
 if command -sq starship
+
     # Prompt settings
-    function starship_transient_prompt_func
-        starship module character
-    end
+    source ~/.config/fish/starship_async.fish
+    
+    # function starship_transient_prompt_func
+    #     starship module character
+    # end
         
-    function starship_transient_rprompt_func
-        starship prompt --right $argv
-    end
-
-    # Use custom prompt until https://github.com/starship/starship/issues/6180 is released
-    source ~/.config/fish/starship_init.fish
-    # starship init fish | source
-
-    enable_transience
+    # function starship_transient_rprompt_func
+    #     starship prompt --right $argv
+    # end
+    # source ~/.config/fish/starship_init.fish
+    # enable_transience    
 end
 
 source $HOME/.config/fish/aliases.fish

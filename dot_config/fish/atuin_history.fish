@@ -44,6 +44,7 @@ end
 
 # Bind keys
 bind \cr _atuin_search
+bind \cc _autin_ux_reset # CTRL+C
 
 bind -k up _atuin_ux_bind_up
 bind \eOA _atuin_ux_bind_up
@@ -69,5 +70,3 @@ if bind -M insert > /dev/null 2>&1
 end
 
 _autin_ux_reset
-
-# TODO: Reset on Ctrl-C

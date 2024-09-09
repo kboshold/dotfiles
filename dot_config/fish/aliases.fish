@@ -5,7 +5,6 @@ alias sl ls
 alias pdw pwd
 alias dir ls
 
-
 # Set up to 9 level of cd
 set dots ""
 set levels ""
@@ -18,7 +17,6 @@ for i in (seq 1 9)
     alias "cd.$dots" "cd $levels"
     alias "cd$i" "cd $levels"
 end
-
 
 alias cg 'git rev-parse 2>/dev/null && cd "$(git rev-parse --show-cdup)"'
 alias cdg cg
@@ -60,5 +58,3 @@ end
 if command -sq btm
     alias top "btm"
 end
-
-#

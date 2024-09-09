@@ -30,6 +30,7 @@ $nim\
 $rust\
 $scala\
 $docker_context\
+${custom.delay}\
 \
 $line_break$character\
 """
@@ -39,8 +40,8 @@ $status$cmd_duration$time\
 """
 
 add_newline = true
-command_timeout = 300
-scan_timeout = 20
+command_timeout = 1000
+scan_timeout = 50
 continuation_prompt = "[ : ](fg:#444444)"
 palette = "catppuccin_mocha"
 
@@ -187,6 +188,17 @@ version_format = "${raw}"
 #format = "[ $output ]($style)"
 #when = true
 #shell = [ 'pwd' ]
+
+[custom.delay]
+#Add: ${custom.directory}\
+style = "bg:#303030 fg:#CCCCCC"
+format = "[ $output ]($style)"
+when = true
+disabled = true
+require_repo = true
+ignore_timeout = true
+command = "sleep 1; random"
+
 
 [palettes.catppuccin_mocha]
 rosewater = "#f5e0dc"
