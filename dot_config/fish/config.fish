@@ -51,7 +51,6 @@ if command -sq zoxide
 end
 
 if command -sq starship
-
     # Prompt settings
     source ~/.config/fish/starship_async.fish
     

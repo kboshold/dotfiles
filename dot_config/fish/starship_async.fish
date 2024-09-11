@@ -19,8 +19,11 @@ if not test -e "$__starship_async_instant_file"
 end
 
 # Fish propmpts
-function fish_prompt
+function fish_prompt    
+    __starship_update_variables
+
     if test $TRANSIENT -eq 1 &> /dev/null
+        printf \e\[0J\n
         __starship_left_transient_prompt
     else 
         __starship_left_prompt
@@ -28,6 +31,8 @@ function fish_prompt
 end
 
 function fish_right_prompt
+    __starship_update_variables
+
     if test $TRANSIENT -eq 1 &> /dev/null
         __starship_right_transient_prompt
     else 
@@ -36,6 +41,23 @@ function fish_right_prompt
 end
 
 # Custom functions
+
+function __starship_update_variables 
+    # Get properties for fish
+    switch "$fish_key_bindings"
+        case fish_hybrid_key_bindings fish_vi_key_bindings
+            set -g STARSHIP_KEYMAP "$fish_bind_mode"
+        case '*'
+            set -g STARSHIP_KEYMAP insert
+    end
+
+    set -g STARSHIP_CMD_PIPESTATUS $pipestatus
+    set -g STARSHIP_CMD_STATUS $status
+    set -g CUSTOM_CMD_STATUS $status
+    set -g STARSHIP_DURATION "$CMD_DURATION$cmd_duration"
+    set -g STARSHIP_JOBS (count (jobs -p))
+end
+
 function __starship_left_prompt
     if test -e "$__starship_async_tmpdir/$fish_pid""_fish_prompt"
         # set PROMPT (cat $__starship_async_tmpdir/$fish_pid""_fish_prompt)
@@ -59,7 +81,7 @@ function __starship_left_prompt
 end
 
 function __starship_right_prompt
-    starship prompt --right $argv
+    starship prompt --right --terminal-width="$COLUMNS" --status=$STARSHIP_CMD_STATUS --pipestatus="$STARSHIP_CMD_PIPESTATUS" --keymap=$STARSHIP_KEYMAP --cmd-duration=$STARSHIP_DURATION --jobs=$STARSHIP_JOBS
 end
 
 function __starship_left_transient_prompt
@@ -67,23 +89,11 @@ function __starship_left_transient_prompt
 end
 
 function __starship_right_transient_prompt
-    starship prompt --right $argv
+    __starship_right_prompt
 end
 
 function __starship_async_fire --on-event fish_prompt
-    # Get properties for fish
-    switch "$fish_key_bindings"
-        case fish_hybrid_key_bindings fish_vi_key_bindings
-            set STARSHIP_KEYMAP "$fish_bind_mode"
-        case '*'
-            set STARSHIP_KEYMAP insert
-    end
-
-    set STARSHIP_CMD_PIPESTATUS $pipestatus
-    set STARSHIP_CMD_STATUS $status
-    set -g CUSTOM_CMD_STATUS $status
-    set STARSHIP_DURATION "$CMD_DURATION$cmd_duration"
-    set STARSHIP_JOBS (count (jobs -p))
+    __starship_update_variables
 
     set -l tmpfile "$__starship_async_tmpdir/$fish_pid""_fish_prompt"
 
