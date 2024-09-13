@@ -19,7 +19,7 @@ layout {
 					mode_pane          "#[bg=#cba6f7,fg=#181825,bold] PANEL #[fg=#cba6f7]"
 					mode_tab           "#[bg=#a6e3a1,fg=#181825,bold] TAB #[fg=#a6e3a1]"
 					mode_scroll        "#[bg=#89dceb,fg=#181825,bold] SCOLL #[fg=#89dceb]"
-					mode_enter_search  "#[bg=#f9e2af,fg=#181825,bold] ENTER SEARCH #[fg=#f9e2af]"
+					mode_enter_search  "#[bg=#f9e2af,fg=#181825,bold] SEARCH #[fg=#f9e2af]"
 					mode_search        "#[bg=#f9e2af,fg=#181825,bold] SEARCH #[fg=#f9e2af]"
 					mode_rename_tab    "#[bg=#a6e3a1,fg=#181825,bold] RENAME TAB #[fg=#a6e3a1]"
 					mode_rename_pane   "#[bg=#cba6f7,fg=#181825,bold] RENAME PANE #[fg=#cba6f7]"
