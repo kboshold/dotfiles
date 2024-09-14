@@ -67,8 +67,6 @@ keybinds clear-defaults=true {
 
         bind "b" { BreakPane; SwitchToMode "Normal"; }
         bind "H" { BreakPaneRight; SwitchToMode "Normal"; }
-        bind "J" { BreakPaneBottom; SwitchToMode "Normal"; }
-        bind "K" { BreakPaneTop; SwitchToMode "Normal"; }
         bind "L" { BreakPaneLeft; SwitchToMode "Normal"; }
 
         bind "1" { GoToTab 1; SwitchToMode "Normal"; }
@@ -128,33 +126,31 @@ keybinds clear-defaults=true {
         bind "Esc" { UndoRenamePane; SwitchToMode "Pane"; }
     }
 
-    session {
-        bind "Ctrl o" { SwitchToMode "Normal"; }
-        bind "Ctrl s" { SwitchToMode "Scroll"; }
-        bind "d" { Detach; }
-        bind "w" {
+    session { }
+
+    tmux {
+        // switch modes
+        bind "s" { SwitchToMode "Scroll"; }
+        bind "f" { SwitchToMode "EnterSearch"; }
+        bind "t" { SwitchToMode "Tab"; }
+        bind "p" { SwitchToMode "Pane"; }
+        bind "m" { SwitchToMode "Move"; }
+        bind "r" { SwitchToMode "RenameTab"; TabNameInput 0; }
+
+        bind "D" { Detach; }
+        bind "d" {
             LaunchOrFocusPlugin "session-manager" {
                 floating true
                 move_to_focused_tab true
             };
             SwitchToMode "Normal"
         }
-    }
 
-    tmux {
-        // switch modes
-        bind "s" { SwitchToMode "Scroll"; }
-        bind "f" { SwitchToMode "Search"; }
-        bind "F" { SwitchToMode "EnterSearch"; }
-        bind "t" { SwitchToMode "Tab"; }
-        bind "p" { SwitchToMode "Pane"; }
-        bind "m" { SwitchToMode "Move"; }
-        bind "r" { SwitchToMode "RenameTab"; TabNameInput 0; }
-
-        bind "y" { SwitchToMode "Scroll"; }
+        bind "a" { SwitchToMode "Scroll"; }
 
         // shortcuts for stuff we use often
         bind "n" { NewTab; SwitchToMode "Normal"; }
+        bind "x" { CloseFocus; SwitchToMode "Normal"; }
 
         bind "h" "Left" { MoveFocusOrTab "Left"; }
         bind "l" "Right" { MoveFocusOrTab "Right"; }
@@ -164,7 +160,8 @@ keybinds clear-defaults=true {
         // exit tmux mode
         bind "Alt z" { Write 2; SwitchToMode "Normal"; }
         bind "z" { SwitchToMode "Normal"; } 
-     
+
+        bind "Enter" "Esc" { SwitchToMode "Normal"; }
     }
 
     shared_except "locked" {
@@ -184,8 +181,12 @@ keybinds clear-defaults=true {
         bind "Alt 9" { GoToTab 9; }
     }
 
+    shared_except "normal" "tmux" {
+        bind "Enter" "Esc" { SwitchToMode "Tmux"; }
+    }
+
     shared_except "normal" {
-        bind "Enter" "Esc" { SwitchToMode "Normal"; }
+        bind "q" { SwitchToMode "Normal"; }
     }
 
     shared_except "tmux" {
@@ -198,7 +199,7 @@ plugins {
     // status-bar location="zellij:status-bar"
     // strider location="zellij:strider"
     // compact-bar location="zellij:compact-bar"
-    session-manager location="zellij:session-manager"
+    session-manager location="zellij:session-manager" 
     // welcome-screen location="zellij:session-manager" {
     //    welcome_screen true
     // }
