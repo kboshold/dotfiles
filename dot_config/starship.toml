@@ -31,6 +31,8 @@ $rust\
 $scala\
 $docker_context\
 ${custom.delay}\
+[](fg:blue)\
+[  ](bg:blue)\
 \
 $line_break$character\
 """
