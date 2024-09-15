@@ -79,9 +79,7 @@ end
 # At least required for the scroll. Otherwise Up/Down will not work well.
 set -U fish_sequence_key_delay_ms 60
 
+# Add tty to GPG_TTY for improved pinentry usage
+set -gx GPG_TTY (tty)
 
 source $HOME/.config/fish/aliases.fish
-
-bind aa -M insert 'echo test'
-
-set -gx GPG_TTY (tty)
