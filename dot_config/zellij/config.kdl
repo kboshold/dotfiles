@@ -159,6 +159,11 @@ keybinds clear-defaults=true {
         bind "j" "Down" { MoveFocus "Down"; }
         bind "k" "Up" { MoveFocus "Up"; }
 
+        bind "H" "Left" { NewPane "Left"; SwitchToMode "Normal"; }
+        bind "J" "Down" { NewPane "Down"; SwitchToMode "Normal"; }
+        bind "K" "Up" { NewPane "Up"; SwitchToMode "Normal"; }
+        bind "L" "Right" { NewPane "Right"; SwitchToMode "Normal"; }
+
         // exit tmux mode
         bind "Alt z" { Write 2; SwitchToMode "Normal"; }
         bind "z" { SwitchToMode "Normal"; } 
@@ -273,7 +278,24 @@ session_serialization false
 // Choose the theme that is specified in the themes section.
 // Default: default
 //
+themes {
+				kboshold {
+								fg "#D7C8A7"
+								bg "#1E1E2E"
+								black "#1A1B26"
+								red "#F28FAD"
+								green "#ABE9B3"
+								yellow "#F8E231"
+								blue "#96CDFB"
+								magenta "#F5C2E7"
+								cyan "#89DCEB"
+								white "#C9CBFF"
+								orange "#FFA07A"
+				}
+}
+// theme "kboshold" 
 theme "catppuccin-mocha" 
+
 
 // The name of the default layout to load on startup
 // Default: "default"
