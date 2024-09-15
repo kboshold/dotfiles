@@ -52,6 +52,9 @@ set -gx VISUAL vim
 # If possible use neovim
 if command -sq nvim
     alias vim "nvim"
+
+    set -gx EDITOR nvim
+    set -gx VISUAL nvim
 end
 
 # If possible use bottom

@@ -106,9 +106,11 @@ keybinds clear-defaults=true {
 
         bind "e" { SwitchToMode "EnterSearch"; }
 
-        bind "i" { SearchToggleOption "CaseSensitivity"; }
-        bind "w" { SearchToggleOption "Wrap"; }
-        bind "b" { SearchToggleOption "WholeWord"; }
+        bind "I" { SearchToggleOption "CaseSensitivity"; }
+        bind "W" { SearchToggleOption "Wrap"; }
+        bind "B" { SearchToggleOption "WholeWord"; }
+
+        bind "i" { SwitchToMode "Normal"; }
     }
 
     entersearch {
@@ -182,10 +184,7 @@ keybinds clear-defaults=true {
     }
 
     shared_except "normal" "tmux" {
-        bind "Enter" "Esc" { SwitchToMode "Tmux"; }
-    }
-
-    shared_except "normal" {
+        bind "Enter" "Esc" { SwitchToMode "Normal"; }
         bind "q" { SwitchToMode "Normal"; }
     }
 

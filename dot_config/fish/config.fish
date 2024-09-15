@@ -65,4 +65,23 @@ if command -sq starship
     # enable_transience    
 end
 
+if command -sq zellij
+    bind  \e\[A\e\[A\e\[A 'zellij action switch-mode search'
+    bind  \e\[B\e\[B\e\[B 'zellij action switch-mode search'
+
+    bind -M insert \e\[A\e\[A\e\[A 'zellij action switch-mode search'
+    bind -M insert \e\[B\e\[B\e\[B 'zellij action switch-mode search'
+
+    bind -M visual \e\[A\e\[A\e\[A 'zellij action switch-mode search'
+    bind -M visual \e\[B\e\[B\e\[B 'zellij action switch-mode search'
+end
+
+# At least required for the scroll. Otherwise Up/Down will not work well.
+set -U fish_sequence_key_delay_ms 60
+
+
 source $HOME/.config/fish/aliases.fish
+
+bind aa -M insert 'echo test'
+
+set -gx GPG_TTY (tty)
