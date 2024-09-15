@@ -65,19 +65,20 @@ if command -sq starship
     # enable_transience    
 end
 
-if command -sq zellij
-    bind  \e\[A\e\[A\e\[A 'zellij action switch-mode search'
-    bind  \e\[B\e\[B\e\[B 'zellij action switch-mode search'
+## TODO: Does not work as expected
+# if command -sq zellij
+#     bind  \e\[A\e\[A\e\[A 'zellij action switch-mode search'
+#     bind  \e\[B\e\[B\e\[B 'zellij action switch-mode search'
 
-    bind -M insert \e\[A\e\[A\e\[A 'zellij action switch-mode search'
-    bind -M insert \e\[B\e\[B\e\[B 'zellij action switch-mode search'
+#     bind -M insert \e\[A\e\[A\e\[A 'zellij action switch-mode search'
+#     bind -M insert \e\[B\e\[B\e\[B 'zellij action switch-mode search'
 
-    bind -M visual \e\[A\e\[A\e\[A 'zellij action switch-mode search'
-    bind -M visual \e\[B\e\[B\e\[B 'zellij action switch-mode search'
-end
+#     bind -M visual \e\[A\e\[A\e\[A 'zellij action switch-mode search'
+#     bind -M visual \e\[B\e\[B\e\[B 'zellij action switch-mode search'
+# end
 
 # At least required for the scroll. Otherwise Up/Down will not work well.
-set -U fish_sequence_key_delay_ms 60
+# set -U fish_sequence_key_delay_ms 60
 
 # Add tty to GPG_TTY for improved pinentry usage
 set -gx GPG_TTY (tty)
