@@ -23,14 +23,14 @@ alias cdg cg
 
 if command -sq fd
     function cdf 
-        set -l directory (fd -0 --type d --hidden | fzf --read0)
+        set -l directory (fd -0 --type d --hidden | fzf --read0 --preview 'eza --long --color=always --all --icons --git  --hyperlink -g {}')
         if test -n "$directory"
             cd $directory
         end
     end
 
     alias cf cdf
-end
+end 
 
 # Override ls with eza
 if command -sq eza

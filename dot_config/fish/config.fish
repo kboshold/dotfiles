@@ -65,6 +65,12 @@ if command -sq starship
     # enable_transience    
 end
 
+if command -sq fd
+    set -gx  FZF_DEFAULT_COMMAND 'fd --type f'
+else if command -sq rg
+    set -gx  FZF_DEFAULT_COMMAND 'rg --files --hidden --glob=!.git/'
+end
+
 ## TODO: Does not work as expected
 # if command -sq zellij
 #     bind  \e\[A\e\[A\e\[A 'zellij action switch-mode search'
@@ -84,3 +90,11 @@ end
 set -gx GPG_TTY (tty)
 
 source $HOME/.config/fish/aliases.fish
+
+function __fzf_inline_search
+    set -l result (fzf)
+    commandline -a $result
+    commandline -f repaint
+end
+
+bind \ef -M insert __fzf_inline_search
