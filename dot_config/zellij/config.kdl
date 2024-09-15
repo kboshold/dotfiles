@@ -279,21 +279,21 @@ session_serialization false
 // Default: default
 //
 themes {
-				kboshold {
-								fg "#D7C8A7"
-								bg "#1E1E2E"
-								black "#1A1B26"
-								red "#F28FAD"
-								green "#ABE9B3"
-								yellow "#F8E231"
-								blue "#96CDFB"
-								magenta "#F5C2E7"
-								cyan "#89DCEB"
-								white "#C9CBFF"
-								orange "#FFA07A"
+				defaut {
+								fg "#FF0000"
+								bg "#FF0000"
+								black "#FF0000"
+								red "#FF0000"
+								green "#FF0000"
+								yellow "#FF0000"
+								blue "#FF0000"
+								magenta "#FF0000"
+								cyan "#FF0000"
+								white "#FF0000"
+								orange "#FF0000"
 				}
 }
-// theme "kboshold" 
+// theme "default" 
 theme "catppuccin-mocha" 
 
 
