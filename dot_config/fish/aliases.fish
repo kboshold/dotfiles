@@ -23,7 +23,13 @@ alias cdg cg
 
 if command -sq fd
     function cdf 
-        set -l directory (fd -0 --type d --hidden | fzf --read0 --preview 'eza --long --color=always --all --icons --git  --hyperlink -g {}')
+				if command -sq eza
+					set -l CDF_FZF_PREVIEW_COMMAND "eza --long --color=always --all --icons --git  --hyperlink -g {}"
+				else
+					set -l CDF_FZF_PREVIEW_COMMAND "ls -la"
+				end
+
+        set -l directory (fd -0 --type d --hidden | fzf --read0 --preview "$CDF_FZF_PREVIEW_COMMAND")
         if test -n "$directory"
             cd $directory
         end
