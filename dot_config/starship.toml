@@ -9,13 +9,10 @@ $shell\
 [](fg:lavender)\
 $directory\
 [](fg:lavender)\
-\
-$fill\
-\
-\
 $git_branch\
 $git_status\
 \
+$fill\
 \
 $c\
 $elixir\
@@ -137,52 +134,53 @@ style = "fg:red"
 [docker_context]
 symbol = " "
 style = "bg:sky fg:mantle"
-format = "[](fg:sky)[ $symbol $context ]($style)"
+format = "[](fg:sky)[ $symbol $context ]($style)[](fg:sky)"
 
 [c]
 symbol = " "
 style = "bg:sky fg:mantle"
-format = "[](fg:sky)[ $symbol ($version) ]($style)"
+format = "[](fg:sky)[ $symbol ($version) ]($style)[](fg:sky)"
 
 [golang]
 symbol = " "
 style = "bg:sky fg:mantle"
-format = "[](fg:sky)[ $symbol ($version) ]($style)"
+format = "[](fg:sky)[ $symbol ($version) ]($style)[](fg:sky)"
 
 [gradle]
 style = "bg:sky fg:mantle"
-format = "[](fg:sky)[ $symbol ($version) ]($style)"
+format = "[](fg:sky)[ $symbol ($version) ]($style)[](fg:sky)"
 
 [java]
 symbol = " "
 style = "bg:sky fg:mantle"
-format = "[](fg:sky)[ $symbol ($version) ]($style)"
+format = "[](fg:sky)[ $symbol ($version) ]($style)[](fg:sky)"
 
 [nodejs]
 symbol = ""
 style = "bg:sky fg:mantle"
-format = "[](fg:sky)[ $symbol ($version) ]($style)"
+format = "[](fg:sky)[ $symbol ($version) ]($style)[](fg:sky)"
 
 [rust]
 symbol = ""
 style = "bg:sky fg:mantle"
-format = "[](fg:sky)[ $symbol ($version) ]($style)"
+format = "[](fg:sky)[ $symbol ($version) ]($style)[](fg:sky)"
 
 [package]
-format = " [pkg](italic dimmed) [$symbol$version]($style)"
+format = "[](fg:sky)[ $symbol ($version) ]($style)[](fg:sky)"
 version_format = "${raw}"
+style = "bg:sky fg:mantle"
 symbol = "◨ "
-style = "dimmed yellow italic bold"
 
 [lua]
-format = " [lua](italic) [${symbol}${version}]($style)"
+format = "[](fg:sky)[ $symbol ($version) ]($style)[](fg:sky)"
 version_format = "${raw}"
 symbol = "⨀ "
-style = "bold bright-yellow"
+style = "bg:sky fg:mantle"
 
 [deno]
-format = " [deno](italic) [∫ $version](green bold)"
+format = "[](fg:sky)[ $symbol ($version) ]($style)[](fg:sky)"
 version_format = "${raw}"
+style = "bg:sky fg:mantle"
 
 #[custom.directory]
 ##Add: ${custom.directory}\
