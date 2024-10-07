@@ -1,25 +1,43 @@
 <div align="center">
    <p>
       <a href="https://github.com/kboshold/dotfiles#is=awesome">
-        <img src="assets/dotfile_logo.svg" alt="DOTFILE Logo" width="80%"/>
+         <picture>
+            <source media="(prefers-color-scheme: dark)" type="image/svg+xml" srcset="./docs/assets/logo_dark.svg">
+            <img alt="Logo with the text 'Dotfiles & the magic of the terminal' and a wizard on the left" src="./docs/assets/logo_light.svg">
+         </picture>
       </a>
    </p>
    <p>
-      <a href="https://github.com/kboshold/dotfiles/blob/master/LICENSE">
-        <img src="https://img.shields.io/github/license/kboshold/dotfiles.svg" alt="MIT License">
+      <a href="https://github.com/kpalatzky/dotfiles/blob/master/LICENSE">
+         <picture>
+            <source media="(prefers-color-scheme: dark)" type="image/svg+xml" srcset="https://img.shields.io/github/license/kpalatzky/dotfiles.svg?color=cba6f7&labelColor=b4befe">
+            <img src="https://img.shields.io/github/license/kpalatzky/dotfiles.svg?color=8839ef" alt="MIT License"/>
+         </picture>
       </a>
    </p>
    <hr>
    <p>
-      <h3>⚠️🚧 This project is not yet working at all. Please do not use it 🚧⚠️<h3>
-      <h3>💤 Want to be a lazy ninja? 💤</h3>
+      <h3>⚠️🚧 This configuration is still under development 🚧⚠️<h3>
+      <h3>✨ Want to be a terminal wizard? ✨</h3>
       <div>My personal dotfile configurations.</div>
    </p>
 </div>
 
-## Get started
+> [!IMPORTANT]  
+> I already use this configuration. But it is not yet ready for you to test it. 
 
-### Installation
+
+## ✨ Get started
+
+TBD
+
+### ⚡️ Requirements
+
+TBD
+
+### 🛠️ Installation
+
+TBD.
 
 The dotfiles are managed via [chezmoi](https://www.chezmoi.io/), so this must be installed first. 
 Install the correct binary for your operating system and architecture in `~/.local/bin` with a single command:
@@ -28,6 +46,16 @@ Install the correct binary for your operating system and architecture in `~/.loc
 sh -c "$(curl -fsLS get.chezmoi.io/lb)" -- init --apply git@github.com:kboshold/dotfiles.git
 ```
 
-## Overview
+#### 🦄 Uni-Line Installation
 
-### Programs
+TBD
+
+
+## 🫅 Usage
+
+TBD
+
+
+### ⌨️ Keymaps
+
+TBD
