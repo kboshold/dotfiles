@@ -18,7 +18,10 @@ config.scrollback_lines = 0
 config.color_scheme = 'Catppuccin Mocha'	
 
 -- JetBrainsMono is the best font ever created and it is shipped with wezterm
-config.font = wezterm.font('JetBrains Mono')
+config.font = wezterm.font_with_fallback {
+	'JetBrainsMono Nerd Font', -- try to use installed fonts over builtin to use the latest font
+	'Jetbrains Mono'
+}
 config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
 
 config.window_padding = {
