@@ -13,6 +13,8 @@ ln -s $SCRIPT_DIR/dot_fdignore $HOME/.fdignore
 
 mv   $HOME/.config/nvim $HOME/.config/nvim.bak
 ln -s $SCRIPT_DIR/dot_config/nvim $HOME/.config/nvim
+mv   $HOME/.config/tmux $HOME/.config/tmux.bak
+ln -s $SCRIPT_DIR/dot_config/tmux $HOME/.config/tmux
 mv   $HOME/.config/mise $HOME/.config/mise.bak
 ln -s $SCRIPT_DIR/dot_config/mise $HOME/.config/mise
 mv   $HOME/.config/fish $HOME/.config/fish.bak
