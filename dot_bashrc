@@ -16,7 +16,7 @@ fi
 
 if command -v mise &> /dev/null; then
     eval "$(mise activate bash)"
-    eval "$(mise hook-env -s bash)"
+    eval "$(mise env -s bash)"
 fi
 
 # Check if zellij or tmux should be used as terminal mutiplexer
