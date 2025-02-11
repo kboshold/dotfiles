@@ -28,6 +28,13 @@ end
 function fish_greeting
 end
 
+# Magic stuff
+# we go over A-Z and a-z and set a default that a Meta+A (and the other letters) does not trigger the escape in vi mode
+for key in (string split '' 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz')
+    bind -s -M visual \e$key ''
+    bind -s -M insert \e$key ''
+end
+
 # General settings
 fish_vi_key_bindings 
 
