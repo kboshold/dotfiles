@@ -15,54 +15,19 @@
     starship
     # zellij
     # zsh
-    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    nerd-fonts.jetbrains-mono
   ];
-
-  home.file."~/.config/eza" = {
-    source = ./config/eza;
-    recursive = true;
+  home.file = {
+    "~/.config/eza".source = ../config/eza;
+    "~/.config/fish".source = ../config/fish;
+    "~/.config/atuin".source = ../config/atuin;
+    "~/.config/mise".source = ../config/mise;
+    "~/.config/nushell".source = ../config/nushell;
+    "~/.config/oh-my-posh".source = ../config/oh-my-posh;
+    "~/.config/starship".source = ../config/starship;
+    "~/.config/zsh".source = ../config/zsh;
+    "~/.config/zellij".source = ../config/zellij;
+    "~/.config/.fdignore".source = ../config/fdignore;
+    "~/.config/.rgignore".source = ../config/rgignore;
   };
-
-  home.file."~/.config/fish" = {
-    source = ./config/fish;
-    recursive = true;
-  };
-
-  home.file."~/.config/atuin" = {
-    source = ./config/atuin;
-    recursive = true;
-  };
-
-  home.file."~/.config/mise" = {
-    source = ./config/mise;
-    recursive = true;
-  };
-
-  home.file."~/.config/nushell" = {
-    source = ./config/nushell;
-    recursive = true;
-  };
-
-  home.file."~/.config/oh-my-posh" = {
-    source = ./config/oh-my-posh;
-    recursive = true;
-  };
-
-  home.file."~/.config/starship" = {
-    source = ./config/starship;
-    recursive = true;
-  };
-
-  home.file."~/.config/zsh" = {
-    source = ./config/zsh;
-    recursive = true;
-  };
-
-  home.file."~/.config/zellij" = {
-    source = ./config/zellij;
-    recursive = true;
-  };
-
-  home.file."~/.config/.fdignore" = ./config/fdignore;
-  home.file."~/.config/.rgignore" = ./config/rgignore;
 }

@@ -1,5 +1,7 @@
 { config, pkgs, ... }:
 {
+  home.username = "kboshold";
+  home.homeDirectory = "/home/kboshold";
   home.stateVersion = "24.11";
 
   home.packages = with pkgs; [
@@ -7,14 +9,10 @@
     tmux
     git
   ];
-
-  home.file."~/.config/nvim" = {
-    source = ./config/nvim;
-    recursive = true;
+  
+  home.file = {
+    "~/.config/nvim".source = ../config/nvim;
+    "~/.config/tmux".source = ../config/tmux;
   };
 
-  home.file."~/.config/tmux" = {
-    source = ./config/tmux;
-    recursive = true;
-  };
 }
