@@ -3,7 +3,6 @@
   imports = [ ./base.nix ];
 
   fonts.fontconfig.enable = true;
-
   home.packages = with pkgs; [
     bat
     fzf

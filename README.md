@@ -35,7 +35,7 @@
 ### 🦄 Quick Install
 
 ```sh
-sh <(curl -L https://raw.githubusercontent.com/kboshold/dotfiles/refs/heads/main/install.sh)
+bash <(curl -L https://raw.githubusercontent.com/kboshold/dotfiles/refs/heads/main/install.sh)
 ```
 
 ### 🛠️ Manual Installation

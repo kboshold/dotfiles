@@ -129,6 +129,7 @@ if git -C "$SCRIPT_DIR" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
         if [ ! -d "$DOTFILES_DIR" ]; then
             echo "Cloning the dotfiles repository into $DOTFILES_DIR..."
             git clone --depth=1 "$DOTFILES_REPO" "$DOTFILES_DIR"
+            git checkout feature/DOT-3
         else
             echo "Dotfiles repository already exists at $DOTFILES_DIR."
         fi
