@@ -1,15 +1,15 @@
-[submodule "dot_config/nvim"]
-	path = dot_config/nvim
+[submodule "config/nvim"]
+	path = config/nvim
 	url = https://github.com/kboshold/nvim.dotfiles
-[submodule "dot_config/zsh/plugins/zsh-autosuggestions"]
-	path = dot_config/zsh/plugins/zsh-autosuggestions
+[submodule "config/zsh/plugins/zsh-autosuggestions"]
+	path = config/zsh/plugins/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
-[submodule "dot_config/zsh/plugins/zsh-completions"]
-	path = dot_config/zsh/plugins/zsh-completions
+[submodule "config/zsh/plugins/zsh-completions"]
+	path = config/zsh/plugins/zsh-completions
 	url = https://github.com/zsh-users/zsh-completions
-[submodule "dot_config/zsh/plugins/zsh-syntax-highlighting"]
-	path = dot_config/zsh/plugins/zsh-syntax-highlighting
+[submodule "config/zsh/plugins/zsh-syntax-highlighting"]
+	path = config/zsh/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting
-[submodule "dot_config/zsh/plugins/zsh-vi-mode"]
-	path = dot_config/zsh/plugins/zsh-vi-mode
+[submodule "config/zsh/plugins/zsh-vi-mode"]
+	path = config/zsh/plugins/zsh-vi-mode
 	url = https://github.com/jeffreytse/zsh-vi-mode

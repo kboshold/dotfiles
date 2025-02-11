@@ -27,35 +27,39 @@
 > I already use this configuration. But it is not yet ready for you to test it. 
 
 
-## ✨ Get started
-
-TBD
+## ✨ Get Started
 
 ### ⚡️ Requirements
 
-TBD
 
-### 🛠️ Installation
+### 🦄 Quick Install
 
-TBD.
-
-The dotfiles are managed via [chezmoi](https://www.chezmoi.io/), so this must be installed first. 
-Install the correct binary for your operating system and architecture in `~/.local/bin` with a single command:
-
-```bash
-sh -c "$(curl -fsLS get.chezmoi.io/lb)" -- init --apply git@github.com:kboshold/dotfiles.git
+```sh
+sh <(curl -L https://raw.githubusercontent.com/kboshold/dotfiles/refs/heads/main/install.sh)
 ```
 
-#### 🦄 Uni-Line Installation
-
-TBD
+### 🛠️ Manual Installation
 
 
-## 🫅 Usage
+```sh
+sh <(curl -L https://nixos.org/nix/install) --no-daemon
+source $HOME/.nix-profile/etc/profile.d/nix.sh
+```
 
-TBD
+```sh
+nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
+nix-channel --update
+
+nix-shell '<home-manager>' -A install
+``` 
+
+```sh
+git clone https://github.com/kboshold/website ~/.local/dotfiles
+``` 
 
 
-### ⌨️ Keymaps
+```
+home-manager switch --flake ./.local/dotfiles/modules/home.nix
+```
 
-TBD
+## Overview
