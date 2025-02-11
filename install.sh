@@ -4,8 +4,8 @@
 install_nix_home_manager() {
   if ! command -v nix &> /dev/null; then
     echo "Installing Nix..."
-    sh <(curl -L https://nixos.org/nix/install) --daemon
-    source $HOME/.nix-profile/etc/profile.d/nix.sh
+    curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install --no-confirm
+    . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
   fi
 
   if ! command -v home-manager &> /dev/null; then
@@ -137,7 +137,8 @@ else
     # We're not in a git repo, use the default behavior with cloning
     if [ ! -d "$DOTFILES_DIR" ]; then
         echo "Cloning the dotfiles repository into $DOTFILES_DIR..."
-        git clone --depth=1 "$DOTFILES_REPO" "$DOTFILES_DIR"
+        git clone "$DOTFILES_REPO" "$DOTFILES_DIR"
+        git checkout feature/DOT-3
     else
         echo "Dotfiles repository already exists at $DOTFILES_DIR."
     fi
