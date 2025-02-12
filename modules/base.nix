@@ -15,10 +15,10 @@
   ];
   
   home.file = {
-    "~/.config/nvim".source = ../config/nvim;
-    "~/.config/tmux".source = ../config/tmux;
-    "~/.config/bash".source =  config.lib.file.mkOutOfStoreSymlink ../config/bash;
-    "~/.bashrc".source =  config.lib.file.mkOutOfStoreSymlink  ../config/bash/dot_bashrc;
+    ".config/nvim".source = ../config/nvim;
+    ".config/tmux".source = ../config/tmux;
+    ".config/bash".source =  config.lib.file.mkOutOfStoreSymlink ../config/bash;
+    ".bashrc".source =  config.lib.file.mkOutOfStoreSymlink  ../config/bash/dot_bashrc;
   };
 
 }
