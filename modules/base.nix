@@ -5,22 +5,22 @@
   home.homeDirectory = if builtins.getEnv "HOME" == ""
     then "/home/${builtins.getEnv "USER"}"
     else builtins.getEnv "HOME";
-  
-
 
   home.packages = with pkgs; [
+    gcc
+    gnumake
     neovim
-	fish
+    fish
     tmux
     git
   ];
-  
-  home.file = {
-    ".config/nvim".source = ../config/nvim;
-    ".config/fish".source = ../config/fish;
-    ".config/tmux".source = ../config/tmux;
-    ".config/bash".source =  config.lib.file.mkOutOfStoreSymlink ../config/bash;
-    ".bashrc".source =  config.lib.file.mkOutOfStoreSymlink  ../config/bash/dot_bashrc;
-  };
 
+  home.file = {
+    ".config/bash".source = ../config/bash;
+    ".bashrc".source = config.ux.symlink ../config/bash/dot_bashrc;
+    ".config/nvim".source = config.ux.symlink ../config/nvim;
+    ".config/fish".source = config.ux.symlink ../config/fish;
+    ".config/tmux".source = config.ux.symlink ../config/tmux;
+  };
 }
+

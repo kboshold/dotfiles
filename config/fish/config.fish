@@ -60,16 +60,6 @@ end
 if command -sq starship
     # Prompt settings
     source ~/.config/fish/starship_async.fish
-    
-    # function starship_transient_prompt_func
-    #     starship module character
-    # end
-        
-    # function starship_transient_rprompt_func
-    #     starship prompt --right $argv
-    # end
-    # source ~/.config/fish/starship_init.fish
-    # enable_transience    
 end
 
 if command -sq fd
@@ -77,18 +67,6 @@ if command -sq fd
 else if command -sq rg
     set -gx  FZF_DEFAULT_COMMAND 'rg --files --hidden --glob=!.git/'
 end
-
-## TODO: Does not work as expected
-# if command -sq zellij
-#     bind  \e\[A\e\[A\e\[A 'zellij action switch-mode search'
-#     bind  \e\[B\e\[B\e\[B 'zellij action switch-mode search'
-
-#     bind -M insert \e\[A\e\[A\e\[A 'zellij action switch-mode search'
-#     bind -M insert \e\[B\e\[B\e\[B 'zellij action switch-mode search'
-
-#     bind -M visual \e\[A\e\[A\e\[A 'zellij action switch-mode search'
-#     bind -M visual \e\[B\e\[B\e\[B 'zellij action switch-mode search'
-# end
 
 # At least required for the scroll. Otherwise Up/Down will not work well.
 # set -U fish_sequence_key_delay_ms 60
