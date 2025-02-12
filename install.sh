@@ -3,16 +3,36 @@
 # Install Nix and Home Manager (if not already installed)
 install_nix_home_manager() {
   if ! command -v nix &> /dev/null; then
-    echo "Installing Nix..."
-    curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install --no-confirm
-    . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+      echo "Installing Nix..."
+      sudo apt-get update
+      sudo apt-get install -y acl
+      curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sudo sh -s -- install --no-confirm
+      
+      # Set correct permissions
+      sudo chown -R $(whoami):$(whoami) /nix
+      
+      # Source Nix environment
+      . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+      . /nix/var/nix/profiles/default/etc/profile.d/nix.sh
   fi
 
   if ! command -v home-manager &> /dev/null; then
-    echo "Installing Home Manager..."
-    nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
-    nix-channel --update
-    nix-shell '<home-manager>' -A install
+      echo "Installing Home Manager..."
+      sudo mkdir -p /nix/var/nix/profiles/per-user/$(whoami)
+      sudo mkdir -p /nix/var/nix/gcroots/per-user/$(whoami)
+      sudo chown -R $(whoami):$(whoami) /nix/var/nix/profiles/per-user/$(whoami)
+      sudo chown -R $(whoami):$(whoami) /nix/var/nix/gcroots/per-user/$(whoami)
+      
+      # Add channels as user
+      nix-channel --add https://nixos.org/channels/nixpkgs-unstable
+      nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
+      nix-channel --update
+      
+      # Install home-manager
+      nix-shell '<home-manager>' -A install
+      
+      # Create the profile directory if it doesn't exist
+      mkdir -p $HOME/.nix-profile/etc/profile.d
   fi
 }
 
@@ -157,10 +177,7 @@ install_nix_home_manager
 # Apply the Home Manager configuration
 if [ -d "$DOTFILES_DIR" ]; then
     echo "Applying Home Manager configuration..."
-    home-manager switch --flake "$DOTFILES_DIR#$DOTFILES_MODE"
-else
-    echo "Error: Dotfiles directory not found. Cannot apply configuration."
-    exit 1
+    home-manager switch --flake "$DOTFILES_DIR?submodules=1#$DOTFILES_MODE" --impure
 fi
 
 echo "Done!"
