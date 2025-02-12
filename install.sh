@@ -65,7 +65,6 @@ check_missing_packages() {
 
     echo "Detected package manager: $PM_COMMAND"
 
-    # Check if auto-install is enabled
     if [ "${DOTFILES_AUTOINSTALL,,}" = "true" ]; then
       echo "Auto-installing missing packages..."
       eval "$INSTALL_CMD"
@@ -93,45 +92,46 @@ check_missing_packages() {
 }
 
 # Set default values if not provided
-if [ -z "${DOTFILES_DIR}" ]; then
-  DOTFILES_DIR="$HOME/.local/dotfiles"
-fi
+DOTFILES_DIR="${DOTFILES_DIR:-$HOME/.local/dotfiles}"
+DOTFILES_AUTOINSTALL="${DOTFILES_AUTOINSTALL:-false}"
+DOTFILES_AUTOSETUP="${DOTFILES_AUTOSETUP:-false}"
+DOTFILES_MODE="${DOTFILES_MODE:-home}"
 
-if [ -z "${DOTFILES_AUTOINSTALL}" ]; then
-  DOTFILES_AUTOINSTALL="false"
-fi
-
-if [ -z "${DOTFILES_AUTOSETUP}" ]; then
-  DOTFILES_AUTOSETUP="false"
-fi
 if [ "${DOTFILES_AUTOSETUP,,}" = "true" ]; then
   DOTFILES_AUTOINSTALL="true"
 fi
 
-if [ -z "${DOTFILES_MODE}" ]; then
-  DOTFILES_MODE="home"
-fi
-
 DOTFILES_REPO="https://github.com/kboshold/dotfiles.git"
-
-# Get the directory where the script is located
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-# Function to get the remote origin URL of a git repository
+# Function to get the remote origin URL
 get_remote_origin_url() {
     local dir="$1"
     git -C "$dir" config --get remote.origin.url
 }
 
-# Determine if we're running from within a git repo
+# Clone or update repository with submodules
+clone_or_update_repo() {
+    local target_dir="$1"
+    if [ ! -d "$target_dir" ]; then
+        echo "Cloning the dotfiles repository into $target_dir..."
+        git clone --recursive "$DOTFILES_REPO" "$target_dir"
+        git -C "$target_dir" checkout feature/DOT-3
+        git -C "$target_dir" submodule update --init --recursive
+    else
+        echo "Updating existing repository at $target_dir..."
+        git -C "$target_dir" fetch origin
+        git -C "$target_dir" checkout feature/DOT-3
+        git -C "$target_dir" pull --recurse-submodules
+        git -C "$target_dir" submodule update --init --recursive
+    fi
+}
+
+# Handle repository setup
 if git -C "$SCRIPT_DIR" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-    # We're in a git repo, get the root of that repo
     REPO_ROOT="$(git -C "$SCRIPT_DIR" rev-parse --show-toplevel)"
-    
-    # Get the remote origin URL
     REMOTE_URL=$(get_remote_origin_url "$REPO_ROOT")
     
-    # Normalize the URLs for comparison (remove .git suffix and handle SSH format)
     NORMALIZED_REMOTE=${REMOTE_URL%.git}
     NORMALIZED_REMOTE=${NORMALIZED_REMOTE#git@github.com:}
     NORMALIZED_REMOTE=${NORMALIZED_REMOTE#https://github.com/}
@@ -140,29 +140,16 @@ if git -C "$SCRIPT_DIR" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
     NORMALIZED_DOTFILES=${NORMALIZED_DOTFILES#git@github.com:}
     NORMALIZED_DOTFILES=${NORMALIZED_DOTFILES#https://github.com/}
     
-    # Check if we're in the correct repo or in Codespaces
     if [ "$NORMALIZED_REMOTE" = "$NORMALIZED_DOTFILES" ] || [ "$CODESPACES" = "true" ]; then
         echo "Using existing repository at $REPO_ROOT"
         DOTFILES_DIR="$REPO_ROOT"
+        git -C "$DOTFILES_DIR" submodule update --init --recursive
     else
         echo "Current repository is not the dotfiles repository"
-        if [ ! -d "$DOTFILES_DIR" ]; then
-            echo "Cloning the dotfiles repository into $DOTFILES_DIR..."
-            git clone --depth=1 "$DOTFILES_REPO" "$DOTFILES_DIR"
-            git checkout feature/DOT-3
-        else
-            echo "Dotfiles repository already exists at $DOTFILES_DIR."
-        fi
+        clone_or_update_repo "$DOTFILES_DIR"
     fi
 else
-    # We're not in a git repo, use the default behavior with cloning
-    if [ ! -d "$DOTFILES_DIR" ]; then
-        echo "Cloning the dotfiles repository into $DOTFILES_DIR..."
-        git clone "$DOTFILES_REPO" "$DOTFILES_DIR"
-        git checkout feature/DOT-3
-    else
-        echo "Dotfiles repository already exists at $DOTFILES_DIR."
-    fi
+    clone_or_update_repo "$DOTFILES_DIR"
 fi
 
 # List of required programs
@@ -177,7 +164,7 @@ install_nix_home_manager
 # Apply the Home Manager configuration
 if [ -d "$DOTFILES_DIR" ]; then
     echo "Applying Home Manager configuration..."
-    home-manager switch --flake "$DOTFILES_DIR?submodules=1#$DOTFILES_MODE" --impure -b bckp
+    home-manager switch --flake "$DOTFILES_DIR#$DOTFILES_MODE" --impure -b bckp
 fi
 
 echo "Done!"
