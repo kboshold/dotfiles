@@ -1,0 +1,3 @@
+if [ -f "$HOME/.config/bash/config.bash" ]; then
+. "$HOME/.config/bash/config.bash"
+fi
