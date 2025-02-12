@@ -1,5 +1,7 @@
 { config, pkgs, ... }:
 {
+  imports = [ ./lib.nix ];
+
   home.stateVersion = "24.11";
   home.username = builtins.getEnv "USER";
   home.homeDirectory = if builtins.getEnv "HOME" == ""
