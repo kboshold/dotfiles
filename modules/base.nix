@@ -10,12 +10,14 @@
 
   home.packages = with pkgs; [
     neovim
+	fish
     tmux
     git
   ];
   
   home.file = {
     ".config/nvim".source = ../config/nvim;
+    ".config/fish".source = ../config/fish;
     ".config/tmux".source = ../config/tmux;
     ".config/bash".source =  config.lib.file.mkOutOfStoreSymlink ../config/bash;
     ".bashrc".source =  config.lib.file.mkOutOfStoreSymlink  ../config/bash/dot_bashrc;
