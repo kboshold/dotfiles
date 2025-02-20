@@ -19,10 +19,10 @@
 
   home.file = {
     ".config/bash".source = ../config/bash;
-    ".bashrc".source = config.ux.symlink ../config/bash/dot_bashrc;
+    ".bashrc".source = ../config/bash/dot_bashrc;
     ".config/nvim".source = config.ux.symlink ../config/nvim;
-    ".config/fish".source = config.ux.symlink ../config/fish;
-    ".config/tmux".source = config.ux.symlink ../config/tmux;
+    ".config/fish".source = config.lib.file.mkOutOfStoreSymlink ../config/fish;
+    ".config/tmux".source = config.lib.file.mkOutOfStoreSymlink ../config/tmux;
   };
 }
 
