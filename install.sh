@@ -5,7 +5,7 @@ install_nix_home_manager() {
   if ! command -v nix &> /dev/null; then
       echo "Installing Nix..."
       sudo apt-get update
-      sudo apt-get install -y acl
+      sudo apt-get install -y acl && sudo setfacl -k /tmp
 
       curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sudo sh -s -- install --no-confirm
       sudo chown -R $(whoami):$(whoami) /nix
