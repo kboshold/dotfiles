@@ -170,4 +170,10 @@ if [ -d "$DOTFILES_DIR" ]; then
 	home-manager switch --flake "$DOTFILES_DIR?submodules=1#$DOTFILES_MODE" --impure -b bckp
 fi
 
+if command -v nvim &> /dev/null; then
+	echo "Installing nvim dependencies"
+	nvim --headless -c 'Lazy install' -c 'qa'
+fi
+
+
 echo "Done!"
