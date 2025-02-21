@@ -14,6 +14,24 @@
             <img src="https://img.shields.io/github/license/kpalatzky/dotfiles.svg?color=8839ef" alt="MIT License"/>
          </picture>
       </a>
+      <a href="https://github.com/kpalatzky/dotfiles/blob/master/flake.nix">
+         <picture>
+            <source media="(prefers-color-scheme: dark)" type="image/svg+xml" srcset="https://img.shields.io/badge/a-nix%20flake-blue?logo=nixos&label=&color=1e1e2e">
+            <img src="https://img.shields.io/badge/a-nix%20flake-blue?logo=nixos&label=&color=dce0e8" alt="Nix Flake"/>
+         </picture>
+      </a>
+      <a href="https://github.com/kpalatzky/dotfiles/blob/master/config/tmux">
+         <picture>
+            <source media="(prefers-color-scheme: dark)" type="image/svg+xml" srcset="https://img.shields.io/badge/%3E%3D3.5a-313244?logo=tmux&label=tmux&labelColor=a6e3a1&logoColor=313244">
+            <img alt="Tmux configuration" src="https://img.shields.io/badge/%3E%3D3.5a-ccd0da?logo=tmux&label=tmux&labelColor=40a02b&logoColor=ccd0da">
+         </picture>
+      </a>
+      <a href="https://github.com/kpalatzky/nvim.dotfiles">
+         <picture>
+            <source media="(prefers-color-scheme: dark)" type="image/svg+xml" srcset="https://img.shields.io/badge/%3E%3D0.10.0-a6e3a1?logo=neovim&label=neovim&labelColor=74c7ec&logoColor=313244">
+            <img alt="Neovim configuration" src="https://img.shields.io/badge/%3E%3D0.10.0-40a02b?logo=neovim&label=neovim&labelColor=1e66f5">
+         </picture>
+      </a>
    </p>
    <hr>
    <p>
