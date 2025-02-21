@@ -53,6 +53,7 @@ alias nano 'vim'
 alias emacs 'vim'
 
 set -gx EDITOR vim
+set -gx GIT_EDITOR vim
 set -gx VISUAL vim
 
 # If possible use neovim
@@ -60,6 +61,7 @@ if command -sq nvim
     alias vim "nvim"
 
     set -gx EDITOR nvim
+    set -gx GIT_EDITOR nvim
     set -gx VISUAL nvim
 end
 
