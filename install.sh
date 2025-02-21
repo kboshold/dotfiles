@@ -6,14 +6,15 @@ install_nix_home_manager() {
       echo "Installing Nix..."
       sudo apt-get update
       sudo apt-get install -y acl
-      curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sudo sh -s -- install --no-confirm
-      
-      # Set correct permissions
-      sudo chown -R $(whoami):$(whoami) /nix
-      
-      # Source Nix environment
-      . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
-      . /nix/var/nix/profiles/default/etc/profile.d/nix.sh
+      if [ "$CODESPACES" = "true" ]; then
+          curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install --no-daemon --no-confirm
+          . $HOME/.nix-profile/etc/profile.d/nix.sh
+      else
+          curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sudo sh -s -- install --no-confirm
+          sudo chown -R $(whoami):$(whoami) /nix
+          . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+          . /nix/var/nix/profiles/default/etc/profile.d/nix.sh
+      fi
   fi
 
   if ! command -v home-manager &> /dev/null; then
@@ -27,9 +28,14 @@ install_nix_home_manager() {
       nix-channel --add https://nixos.org/channels/nixpkgs-unstable
       nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
       nix-channel --update
+
+      echo "Before install"
       
       # Install home-manager
       nix-shell '<home-manager>' -A install
+
+      
+      echo "After install"
       
       # Create the profile directory if it doesn't exist
       mkdir -p $HOME/.nix-profile/etc/profile.d
