@@ -28,8 +28,8 @@
       </a>
       <a href="https://github.com/kpalatzky/dotfiles/blob/master/LICENSE">
          <picture>
-            <source media="(prefers-color-scheme: dark)" type="image/svg+xml" srcset="https://img.shields.io/github/license/kpalatzky/dotfiles.svg?color=cba6f7&labelColor=b4befe">
-            <img src="https://img.shields.io/github/license/kpalatzky/dotfiles.svg?color=8839ef" alt="MIT License"/>
+            <source media="(prefers-color-scheme: dark)" type="image/svg+xml" srcset="https://img.shields.io/github/license/kpalatzky/dotfiles.svg?color=cba6f7&labelColor=313244">
+            <img src="https://img.shields.io/github/license/kpalatzky/dotfiles.svg?color=8839ef&labelColor=ccd0da" alt="MIT License"/>
          </picture>
       </a>
    </p>
