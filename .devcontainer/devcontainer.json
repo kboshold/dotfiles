@@ -1,0 +1,30 @@
+{
+    "name": "Workspace",
+    "image": "mcr.microsoft.com/devcontainers/universal:linux",
+    "features": {},
+    "postStartCommand": "",
+    "customizations": {
+      // Configure properties specific to VS Code.
+      "vscode": {
+        // Add the IDs of extensions you want installed when the container is created.
+        "extensions": [
+          "pkief.material-icon-theme",
+          "editorconfig.editorconfig",
+          "catppuccin.catppuccin-vsc"
+        ],
+        "settings": {
+          "workbench.iconTheme": "material-icon-theme",
+          "workbench.colorTheme": "Catppuccin Mocha",
+          "editor.fontFamily": "'JetBrainsMonoNL Nerd Font Mono','JetBrainsMono Nerd Font Mono', Consolas, 'Courier New', monospace",
+          "workbench.startupEditor": "terminal",
+          "zenMode.centerLayout": false,
+          "zenMode.hideActivityBar": true,
+          "zenMode.hideLineNumbers": true,
+          "zenMode.hideStatusBar": true,
+          "zenMode.showTabs": "none",
+          "zenMode.fullScreen": false,
+          "catppuccin.accentColor": "lavender"
+        }
+      }
+    }
+  }
