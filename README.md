@@ -8,12 +8,6 @@
       </a>
    </p>
    <p>
-      <a href="https://github.com/kpalatzky/dotfiles/blob/master/LICENSE">
-         <picture>
-            <source media="(prefers-color-scheme: dark)" type="image/svg+xml" srcset="https://img.shields.io/github/license/kpalatzky/dotfiles.svg?color=cba6f7&labelColor=b4befe">
-            <img src="https://img.shields.io/github/license/kpalatzky/dotfiles.svg?color=8839ef" alt="MIT License"/>
-         </picture>
-      </a>
       <a href="https://github.com/kpalatzky/dotfiles/blob/master/flake.nix">
          <picture>
             <source media="(prefers-color-scheme: dark)" type="image/svg+xml" srcset="https://img.shields.io/badge/nix-flake-b4befe?logo=nixos&labelColor=1e1e2e">
@@ -30,6 +24,12 @@
          <picture>
             <source media="(prefers-color-scheme: dark)" type="image/svg+xml" srcset="https://img.shields.io/badge/%3E%3D0.10.0-a6e3a1?logo=neovim&label=neovim&labelColor=74c7ec&logoColor=313244">
             <img alt="Neovim configuration" src="https://img.shields.io/badge/%3E%3D0.10.0-40a02b?logo=neovim&label=neovim&labelColor=1e66f5">
+         </picture>
+      </a>
+      <a href="https://github.com/kpalatzky/dotfiles/blob/master/LICENSE">
+         <picture>
+            <source media="(prefers-color-scheme: dark)" type="image/svg+xml" srcset="https://img.shields.io/github/license/kpalatzky/dotfiles.svg?color=cba6f7&labelColor=b4befe">
+            <img src="https://img.shields.io/github/license/kpalatzky/dotfiles.svg?color=8839ef" alt="MIT License"/>
          </picture>
       </a>
    </p>
