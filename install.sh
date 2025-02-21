@@ -94,7 +94,7 @@ check_missing_packages() {
 }
 
 # Set default values if not provided
-DOTFILES_DIR="${DOTFILES_DIR:-$HOME/.local/dotfiles}"
+DOTFILES_DIR="${DOTFILES_DIR:-$HOME/.local/share/dotfiles}"
 DOTFILES_AUTOINSTALL="${DOTFILES_AUTOINSTALL:-false}"
 DOTFILES_AUTOSETUP="${DOTFILES_AUTOSETUP:-false}"
 DOTFILES_MODE="${DOTFILES_MODE:-home}"
