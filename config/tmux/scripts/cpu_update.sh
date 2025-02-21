@@ -1,6 +1,6 @@
 #!/bin/bash
+TMP_FILE="$1"
 
-# Otherwise, compute the CPU usage using awk and /proc/stat
 LC_NUMERIC=C awk '{
   u = $2 + $4;
   t = $2 + $4 + $5;

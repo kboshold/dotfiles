@@ -1,9 +1,8 @@
 #!/bin/bash
 
-# Define a persistent file location that keeps the previous value
 TMP_FILE=/tmp/tmux_cpu_usage_persistent
 
-~/.config/tmux/scripts/cpu_update.sh&
+~/.config/tmux/scripts/cpu_update.sh "$TMP_FILE"&
 
 # Immediately print the current (last) value from the persistent file,
 # so that subsequent calls show the old value until a new calculation completes.

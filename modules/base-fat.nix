@@ -4,6 +4,7 @@
 
 	fonts.fontconfig.enable = true;
 	home.packages = with pkgs; [
+		gh
 		bat
 		fzf
 		ripgrep
@@ -14,6 +15,7 @@
 		nushell
 		starship
 		bottom
+		zoxide
 		# zellij
 		# zsh
 		nerd-fonts.jetbrains-mono

@@ -14,7 +14,6 @@
 		neovim
 		fish
 		tmux
-		git
 	];
 
 	home.file = {
@@ -23,10 +22,26 @@
 		".config/nvim".source = ../config/nvim;
 		".config/fish".source = ../config/fish;
 		".config/tmux".source = ../config/tmux;
+		".config/git/allowed_signers".source = ../config/git/allowed_signers;
 	};
 
 	home.activation.neovimSetup = lib.hm.dag.entryAfter ["writeBoundary"] ''
 		$DRY_RUN_CMD ${pkgs.neovim}/bin/nvim --headless -c 'Lazy install' -c 'qa'
 	'';
+
+	programs.git = {
+		enable = true;
+		userName = "Kevin Boshold";
+		userEmail = "github@proxy.boshol.de";
+		extraConfig = {
+			gpg.format = "ssh";
+			gpg.ssh.allowedSignersFile = "~/.config/git/allowed_signers";
+			commit.gpgSign = true;
+			tag.gpgSign = true;
+			user.signingKey = "~/.ssh/gitsign.pub";
+		};
+	};
+
+
 }
 
