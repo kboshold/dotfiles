@@ -52,8 +52,9 @@ home-manager switch --flake "~/.local/share/dotfiles?submodules=1#home" --impure
 ```
 
 ## 🕺 Overview
-
+The configuration includes some cool features: a stunning Nvim configuration, as well as Tmux, Fish and more!
+See it in action:
 <details> 
-<summary><h3>Showcase <i>(Click to expand)</i></h3></summary>
+<summary><b>📸 Showcase <i>(Click to expand)</i></b></summary>
 A1: JavaScript 
 </details>
