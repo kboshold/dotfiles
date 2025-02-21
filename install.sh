@@ -6,15 +6,12 @@ install_nix_home_manager() {
       echo "Installing Nix..."
       sudo apt-get update
       sudo apt-get install -y acl
-      if [ "$CODESPACES" = "true" ]; then
-          curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install --no-daemon --no-confirm
-          . $HOME/.nix-profile/etc/profile.d/nix.sh
-      else
-          curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sudo sh -s -- install --no-confirm
-          sudo chown -R $(whoami):$(whoami) /nix
-          . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
-          . /nix/var/nix/profiles/default/etc/profile.d/nix.sh
-      fi
+
+      curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sudo sh -s -- install --no-confirm
+      sudo chown -R $(whoami):$(whoami) /nix
+      . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+      . /nix/var/nix/profiles/default/etc/profile.d/nix.sh
+
   fi
 
   if ! command -v home-manager &> /dev/null; then
