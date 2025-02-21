@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 {
 	imports = [ ./base.nix ];
 
@@ -30,4 +30,8 @@
 		".config/.fdignore".source = ../config/fdignore;
 		".config/.rgignore".source = ../config/rgignore;
 	};
+
+	home.activation.miseSetup = lib.hm.dag.entryAfter ["writeBoundary"] ''
+		$DRY_RUN_CMD ${pkgs.mise}/bin/mise install
+	'';
 }

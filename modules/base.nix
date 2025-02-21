@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 {
 
 	home.stateVersion = "24.11";
@@ -23,5 +23,9 @@
 		".config/fish".source = ../config/fish;
 		".config/tmux".source = ../config/tmux;
 	};
+
+	home.activation.neovimSetup = lib.hm.dag.entryAfter ["writeBoundary"] ''
+		$DRY_RUN_CMD ${pkgs.neovim}/bin/nvim --headless -c 'Lazy install' -c 'qa'
+	'';
 }
 
