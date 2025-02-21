@@ -1,9 +1,9 @@
 { config, pkgs, ... }:
 {
-  imports = [ 
-    ./server.nix
-    ./base-fat.nix
-  ];
+	imports = [ 
+		./server.nix
+		./base-fat.nix
+	];
 
-  home.packages = with pkgs; [];
+	home.packages = with pkgs; [];
 }

@@ -21,23 +21,22 @@ install_nix_home_manager() {
 		sudo chown -R $(whoami):$(whoami) /nix/var/nix/profiles/per-user/$(whoami)
 		sudo chown -R $(whoami):$(whoami) /nix/var/nix/gcroots/per-user/$(whoami)
 
-	  # Add channels as user
-	  nix-channel --add https://nixos.org/channels/nixpkgs-unstable
-	  nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
-	  nix-channel --update
-
-	  echo "Before install"
-
-	  # Install home-manager
-	  nix-shell '<home-manager>' -A install
-
-
-	  echo "After install"
-
-	  # Create the profile directory if it doesn't exist
-	  mkdir -p $HOME/.nix-profile/etc/profile.d
-	  fi
-  }
+		# Add channels as user
+		nix-channel --add https://nixos.org/channels/nixpkgs-unstable
+		nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
+		nix-channel --update
+	
+		 echo "Before install"
+	
+		# Install home-manager
+		nix-shell '<home-manager>' -A install
+	
+		echo "After install"
+	
+		# Create the profile directory if it doesn't exist
+		mkdir -p $HOME/.nix-profile/etc/profile.d
+	 fi
+ }
 
 # Check required packages
 check_missing_packages() {

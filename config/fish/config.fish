@@ -22,7 +22,7 @@ set -g fish_color_user brgreen
 set -g fish_color_valid_path --underline
 
 if ! status is-interactive
-    exit;
+	exit;
 end
 
 function fish_greeting
@@ -31,8 +31,8 @@ end
 # Magic stuff
 # we go over A-Z and a-z and set a default that a Meta+A (and the other letters) does not trigger the escape in vi mode
 for key in (string split '' 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz')
-    bind -s -M visual \e$key ''
-    bind -s -M insert \e$key ''
+	bind -s -M visual \e$key ''
+	bind -s -M insert \e$key ''
 end
 
 # General settings
@@ -42,30 +42,35 @@ fish_add_path -g ~/.local/bin /usr/local/sbin /opt/nvim/bin
 
 # Load mise
 if command -sq mise
-    mise activate fish | source
+	mise activate fish | source
 
-    # hook-env is required that the tools are directly available below
-    mise hook-env -s fish | source;
+	# hook-env is required that the tools are directly available below
+	mise hook-env -s fish | source;
 end
 
 if command -sq atuin
-    atuin init fish | source    
-    source ~/.config/fish/atuin_history.fish
+	atuin init fish | source    
+	source ~/.config/fish/atuin_history.fish
 end
 
 if command -sq zoxide
-    zoxide init --cmd cd fish | source
+	zoxide init --cmd cd fish | source
 end
 
 if command -sq starship
-    # Prompt settings
-    source ~/.config/fish/starship_async.fish
+	# Prompt settings
+	source ~/.config/fish/starship_async.fish
 end
 
 if command -sq fd
-    set -gx  FZF_DEFAULT_COMMAND 'fd --type f'
+	set -gx  FZF_DEFAULT_COMMAND 'fd --type f'
 else if command -sq rg
-    set -gx  FZF_DEFAULT_COMMAND 'rg --files --hidden --glob=!.git/'
+	set -gx  FZF_DEFAULT_COMMAND 'rg --files --hidden --glob=!.git/'
+end
+
+if test -f "/nix/var/nix/profiles/default/etc/profile.d/nix.fish"
+	source "/nix/var/nix/profiles/default/etc/profile.d/nix.fish"
+	source "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish"
 end
 
 # At least required for the scroll. Otherwise Up/Down will not work well.
@@ -77,9 +82,9 @@ set -gx GPG_TTY (tty)
 source $HOME/.config/fish/aliases.fish
 
 function __fzf_inline_search
-    set -l result (fzf)
-    commandline -a $result
-    commandline -f repaint
+	set -l result (fzf)
+	commandline -a $result
+	commandline -f repaint
 end
 
 bind \ef -M insert __fzf_inline_search
