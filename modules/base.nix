@@ -8,6 +8,7 @@
 	else builtins.getEnv "HOME";
 
 	home.packages = with pkgs; [
+		home-manager
 		gcc
 		gnumake
 		neovim
