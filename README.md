@@ -16,14 +16,14 @@
       </a>
       <a href="https://github.com/kpalatzky/dotfiles/blob/master/config/tmux">
          <picture>
-            <source media="(prefers-color-scheme: dark)" type="image/svg+xml" srcset="https://img.shields.io/badge/%3E%3D3.5a-313244?logo=tmux&label=tmux&labelColor=a6e3a1&logoColor=313244">
-            <img alt="Tmux configuration" src="https://img.shields.io/badge/%3E%3D3.5a-ccd0da?logo=tmux&label=tmux&labelColor=40a02b&logoColor=ccd0da">
+            <source media="(prefers-color-scheme: dark)" type="image/svg+xml" srcset="https://img.shields.io/badge/%3E%3D3.5a-a6e3a1?logo=tmux&label=tmux&labelColor=313244&logoColor=a6e3a1">
+            <img alt="Tmux configuration" src="https://img.shields.io/badge/%3E%3D3.5a-40a02b?logo=tmux&label=tmux&labelColor=ccd0da&logoColor=40a02b">
          </picture>
       </a>
       <a href="https://github.com/kpalatzky/nvim.dotfiles">
          <picture>
-            <source media="(prefers-color-scheme: dark)" type="image/svg+xml" srcset="https://img.shields.io/badge/%3E%3D0.10.0-a6e3a1?logo=neovim&label=neovim&labelColor=74c7ec&logoColor=313244">
-            <img alt="Neovim configuration" src="https://img.shields.io/badge/%3E%3D0.10.0-40a02b?logo=neovim&label=neovim&labelColor=1e66f5">
+            <source media="(prefers-color-scheme: dark)" type="image/svg+xml" srcset="https://img.shields.io/badge/%3E%3D0.10.0-74c7ec?logo=neovim&label=neovim&labelColor=313244&logoColor=74c7ec">
+            <img alt="Neovim configuration" src="https://img.shields.io/badge/%3E%3D0.10.0-1e66f5?logo=neovim&label=neovim&labelColor=ccd0da&logoColor=1e66f5">
          </picture>
       </a>
       <a href="https://github.com/kpalatzky/dotfiles/blob/master/LICENSE">
