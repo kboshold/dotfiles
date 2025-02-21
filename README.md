@@ -14,22 +14,83 @@
             <img src="https://img.shields.io/badge/nix-flake-7287fd?logo=nixos&labelColor=40a02b" alt="Nix Flake"/>
          </picture>
       </a>
-      <a href="https://github.com/kpalatzky/dotfiles/blob/master/config/tmux">
-         <picture>
-            <source media="(prefers-color-scheme: dark)" type="image/svg+xml" srcset="https://img.shields.io/badge/%3E%3D3.5a-a6e3a1?logo=tmux&label=tmux&labelColor=313244&logoColor=a6e3a1">
-            <img alt="Tmux configuration" src="https://img.shields.io/badge/%3E%3D3.5a-40a02b?logo=tmux&label=tmux&labelColor=ccd0da&logoColor=40a02b">
-         </picture>
-      </a>
       <a href="https://github.com/kpalatzky/nvim.dotfiles">
          <picture>
             <source media="(prefers-color-scheme: dark)" type="image/svg+xml" srcset="https://img.shields.io/badge/%3E%3D0.10.0-74c7ec?logo=neovim&label=neovim&labelColor=313244&logoColor=74c7ec">
             <img alt="Neovim configuration" src="https://img.shields.io/badge/%3E%3D0.10.0-1e66f5?logo=neovim&label=neovim&labelColor=ccd0da&logoColor=1e66f5">
          </picture>
       </a>
+      <a href="https://github.com/kpalatzky/dotfiles/blob/master/config/tmux">
+         <picture>
+            <source media="(prefers-color-scheme: dark)" type="image/svg+xml" srcset="https://img.shields.io/badge/%3E%3D3.5a-a6e3a1?logo=tmux&label=tmux&labelColor=313244&logoColor=a6e3a1">
+            <img alt="Tmux configuration" src="https://img.shields.io/badge/%3E%3D3.5a-40a02b?logo=tmux&label=tmux&labelColor=ccd0da&logoColor=40a02b">
+         </picture>
+      </a>
+      <a href="https://github.com/kpalatzky/dotfiles/blob/master/config/fish">
+         <picture>
+            <source media="(prefers-color-scheme: dark)" type="image/svg+xml" srcset="https://img.shields.io/badge/%3E%3D3.7.1-74c7ec?label=%F0%9F%90%9F%20fish&labelColor=313244">
+            <img alt="" src="https://img.shields.io/badge/%3E%3D3.7.1-1e66f5?label=%F0%9F%90%9F%20fish&labelColor=ccd0da">
+         </picture>
+      </a>
       <a href="https://github.com/kpalatzky/dotfiles/blob/master/LICENSE">
          <picture>
             <source media="(prefers-color-scheme: dark)" type="image/svg+xml" srcset="https://img.shields.io/github/license/kpalatzky/dotfiles.svg?color=cba6f7&labelColor=313244">
             <img src="https://img.shields.io/github/license/kpalatzky/dotfiles.svg?color=8839ef&labelColor=ccd0da" alt="MIT License"/>
+         </picture>
+      </a>
+      <br>
+      <a href="https://github.com/sharkdp/bat">
+         <picture>
+            <source media="(prefers-color-scheme: dark)" type="image/svg+xml" srcset="https://img.shields.io/badge/bat-74c7ec?label=%E2%9C%A8&labelColor=313244&logoColor=74c7ec">
+            <img alt="" src="">
+         </picture>
+      </a>
+      <a href="https://github.com/junegunn/fzf">
+         <picture>
+            <source media="(prefers-color-scheme: dark)" type="image/svg+xml" srcset="https://img.shields.io/badge/fzf-74c7ec?label=%E2%9C%A8&labelColor=313244&logoColor=74c7ec">
+            <img alt="" src="">
+         </picture>
+      </a>
+      <a href="https://github.com/BurntSushi/ripgrep">
+         <picture>
+            <source media="(prefers-color-scheme: dark)" type="image/svg+xml" srcset="https://img.shields.io/badge/ripgrep-74c7ec?label=%E2%9C%A8&labelColor=313244&logoColor=74c7ec">
+            <img alt="" src="">
+         </picture>
+      </a>
+      <a href="https://github.com/eza-community/eza">
+         <picture>
+            <source media="(prefers-color-scheme: dark)" type="image/svg+xml" srcset="https://img.shields.io/badge/eza-74c7ec?label=%E2%9C%A8&labelColor=313244&logoColor=74c7ec">
+            <img alt="" src="">
+         </picture>
+      </a>
+      <a href="https://github.com/jdx/mise">
+         <picture>
+            <source media="(prefers-color-scheme: dark)" type="image/svg+xml" srcset="https://img.shields.io/badge/mise-74c7ec?label=%E2%9C%A8&labelColor=313244&logoColor=74c7ec">
+            <img alt="" src="">
+         </picture>
+      </a>
+      <a href="https://github.com/atuinsh/atuin">
+         <picture>
+            <source media="(prefers-color-scheme: dark)" type="image/svg+xml" srcset="https://img.shields.io/badge/atuin-74c7ec?label=%E2%9C%A8&labelColor=313244&logoColor=74c7ec">
+            <img alt="" src="">
+         </picture>
+      </a>
+      <a href="https://github.com/starship/starship">
+         <picture>
+            <source media="(prefers-color-scheme: dark)" type="image/svg+xml" srcset="https://img.shields.io/badge/starship-74c7ec?label=%E2%9C%A8&labelColor=313244&logoColor=74c7ec">
+            <img alt="" src="">
+         </picture>
+      </a>
+      <a href="https://github.com/ClementTsang/bottom">
+         <picture>
+            <source media="(prefers-color-scheme: dark)" type="image/svg+xml" srcset="https://img.shields.io/badge/bottom-74c7ec?label=%E2%9C%A8&labelColor=313244&logoColor=74c7ec">
+            <img alt="" src="">
+         </picture>
+      </a>
+      <a href="https://github.com/ajeetdsouza/zoxide">
+         <picture>
+            <source media="(prefers-color-scheme: dark)" type="image/svg+xml" srcset="https://img.shields.io/badge/zoxide-74c7ec?label=%E2%9C%A8&labelColor=313244&logoColor=74c7ec">
+            <img alt="" src="">
          </picture>
       </a>
    </p>
