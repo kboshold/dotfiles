@@ -16,8 +16,8 @@
       </a>
       <a href="https://github.com/kpalatzky/dotfiles/blob/master/flake.nix">
          <picture>
-            <source media="(prefers-color-scheme: dark)" type="image/svg+xml" srcset="https://img.shields.io/badge/a-nix%20flake-blue?logo=nixos&label=&color=1e1e2e">
-            <img src="https://img.shields.io/badge/a-nix%20flake-blue?logo=nixos&label=&color=dce0e8" alt="Nix Flake"/>
+            <source media="(prefers-color-scheme: dark)" type="image/svg+xml" srcset="https://img.shields.io/badge/nix-flake-b4befe?logo=nixos&labelColor=1e1e2e">
+            <img src="https://img.shields.io/badge/nix-flake-7287fd?logo=nixos&labelColor=eff1f5" alt="Nix Flake"/>
          </picture>
       </a>
       <a href="https://github.com/kpalatzky/dotfiles/blob/master/config/tmux">
