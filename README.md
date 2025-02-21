@@ -17,20 +17,12 @@
    </p>
    <hr>
    <p>
-      <h3>⚠️🚧 This configuration is still under development 🚧⚠️<h3>
       <h3>✨ Want to be a terminal wizard? ✨</h3>
       <div>My personal dotfile configurations.</div>
    </p>
 </div>
 
-> [!IMPORTANT]  
-> I already use this configuration. But it is not yet ready for you to test it. 
-
-
 ## ✨ Get Started
-
-### ⚡️ Requirements
-
 
 ### 🦄 Quick Install
 
@@ -38,28 +30,30 @@
 bash <(curl -L https://raw.githubusercontent.com/kboshold/dotfiles/refs/heads/main/install.sh)
 ```
 
-### 🛠️ Manual Installation
+### 🛠️ Manual Installation (Using Nix)
 
+**⚡️ Requirements**
 
-```sh
-sh <(curl -L https://nixos.org/nix/install) --no-daemon
-source $HOME/.nix-profile/etc/profile.d/nix.sh
-```
+- `nix`
+- `home-manager`
 
-```sh
-nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
-nix-channel --update
+**🌱 Installation**
 
-nix-shell '<home-manager>' -A install
-``` 
+Clone the respository to have the dotfile locally:
 
 ```sh
-git clone https://github.com/kboshold/website ~/.local/dotfiles
-``` 
-
-
-```
-home-manager switch --flake ./.local/dotfiles/modules/home.nix
+git clone https://github.com/kboshold/website ~/.local/share/dotfiles
+git -C "~/.local/share/dotfiles" submodule update --init --recursive
 ```
 
-## Overview
+Now enable the flake using the following command
+```sh
+home-manager switch --flake "~/.local/share/dotfiles?submodules=1#home" --impure -b bckp
+```
+
+## 🕺 Overview
+
+<details> 
+<summary><h3>Showcase <i>(Click to expand)</i></h3></summary>
+A1: JavaScript 
+</details>

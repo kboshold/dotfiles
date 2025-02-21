@@ -118,12 +118,10 @@ clone_or_update_repo() {
 	if [ ! -d "$target_dir" ]; then
 		echo "Cloning the dotfiles repository into $target_dir..."
 		git clone --recursive "$DOTFILES_REPO" "$target_dir"
-		git -C "$target_dir" checkout feature/DOT-3
 		git -C "$target_dir" submodule update --init --recursive
 	else
 		echo "Updating existing repository at $target_dir..."
 		git -C "$target_dir" fetch origin
-		git -C "$target_dir" checkout feature/DOT-3
 		git -C "$target_dir" pull --recurse-submodules
 		git -C "$target_dir" submodule update --init --recursive
 	fi
