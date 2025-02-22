@@ -41,55 +41,55 @@
       <br>
       <a href="https://github.com/sharkdp/bat">
          <picture>
-            <source media="(prefers-color-scheme: dark)" type="image/svg+xml" srcset="https://img.shields.io/badge/bat-74c7ec?label=%E2%9C%A8&labelColor=313244&logoColor=74c7ec">
+            <source media="(prefers-color-scheme: dark)" type="image/svg+xml" srcset="https://img.shields.io/badge/bat-585b70?label=%E2%9C%A8&labelColor=313244&logoColor=585b70">
             <img alt="" src="">
          </picture>
       </a>
       <a href="https://github.com/junegunn/fzf">
          <picture>
-            <source media="(prefers-color-scheme: dark)" type="image/svg+xml" srcset="https://img.shields.io/badge/fzf-74c7ec?label=%E2%9C%A8&labelColor=313244&logoColor=74c7ec">
+            <source media="(prefers-color-scheme: dark)" type="image/svg+xml" srcset="https://img.shields.io/badge/fzf-585b70?label=%E2%9C%A8&labelColor=313244&logoColor=585b70">
             <img alt="" src="">
          </picture>
       </a>
       <a href="https://github.com/BurntSushi/ripgrep">
          <picture>
-            <source media="(prefers-color-scheme: dark)" type="image/svg+xml" srcset="https://img.shields.io/badge/ripgrep-74c7ec?label=%E2%9C%A8&labelColor=313244&logoColor=74c7ec">
+            <source media="(prefers-color-scheme: dark)" type="image/svg+xml" srcset="https://img.shields.io/badge/ripgrep-585b70?label=%E2%9C%A8&labelColor=313244&logoColor=585b70">
             <img alt="" src="">
          </picture>
       </a>
       <a href="https://github.com/eza-community/eza">
          <picture>
-            <source media="(prefers-color-scheme: dark)" type="image/svg+xml" srcset="https://img.shields.io/badge/eza-74c7ec?label=%E2%9C%A8&labelColor=313244&logoColor=74c7ec">
+            <source media="(prefers-color-scheme: dark)" type="image/svg+xml" srcset="https://img.shields.io/badge/eza-585b70?label=%E2%9C%A8&labelColor=313244&logoColor=585b70">
             <img alt="" src="">
          </picture>
       </a>
       <a href="https://github.com/jdx/mise">
          <picture>
-            <source media="(prefers-color-scheme: dark)" type="image/svg+xml" srcset="https://img.shields.io/badge/mise-74c7ec?label=%E2%9C%A8&labelColor=313244&logoColor=74c7ec">
+            <source media="(prefers-color-scheme: dark)" type="image/svg+xml" srcset="https://img.shields.io/badge/mise-585b70?label=%E2%9C%A8&labelColor=313244&logoColor=585b70">
             <img alt="" src="">
          </picture>
       </a>
       <a href="https://github.com/atuinsh/atuin">
          <picture>
-            <source media="(prefers-color-scheme: dark)" type="image/svg+xml" srcset="https://img.shields.io/badge/atuin-74c7ec?label=%E2%9C%A8&labelColor=313244&logoColor=74c7ec">
+            <source media="(prefers-color-scheme: dark)" type="image/svg+xml" srcset="https://img.shields.io/badge/atuin-585b70?label=%E2%9C%A8&labelColor=313244&logoColor=585b70">
             <img alt="" src="">
          </picture>
       </a>
       <a href="https://github.com/starship/starship">
          <picture>
-            <source media="(prefers-color-scheme: dark)" type="image/svg+xml" srcset="https://img.shields.io/badge/starship-74c7ec?label=%E2%9C%A8&labelColor=313244&logoColor=74c7ec">
+            <source media="(prefers-color-scheme: dark)" type="image/svg+xml" srcset="https://img.shields.io/badge/starship-585b70?label=%E2%9C%A8&labelColor=313244&logoColor=585b70">
             <img alt="" src="">
          </picture>
       </a>
       <a href="https://github.com/ClementTsang/bottom">
          <picture>
-            <source media="(prefers-color-scheme: dark)" type="image/svg+xml" srcset="https://img.shields.io/badge/bottom-74c7ec?label=%E2%9C%A8&labelColor=313244&logoColor=74c7ec">
+            <source media="(prefers-color-scheme: dark)" type="image/svg+xml" srcset="https://img.shields.io/badge/bottom-585b70?label=%E2%9C%A8&labelColor=313244&logoColor=585b70">
             <img alt="" src="">
          </picture>
       </a>
       <a href="https://github.com/ajeetdsouza/zoxide">
          <picture>
-            <source media="(prefers-color-scheme: dark)" type="image/svg+xml" srcset="https://img.shields.io/badge/zoxide-74c7ec?label=%E2%9C%A8&labelColor=313244&logoColor=74c7ec">
+            <source media="(prefers-color-scheme: dark)" type="image/svg+xml" srcset="https://img.shields.io/badge/zoxide-585b70?label=%E2%9C%A8&labelColor=313244&logoColor=585b70">
             <img alt="" src="">
          </picture>
       </a>
