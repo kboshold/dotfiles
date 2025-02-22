@@ -22,9 +22,9 @@
 		".config/nvim".source = ../config/nvim;
 		".config/fish".source = ../config/fish;
 		".config/tmux".source = ../config/tmux;
-		".config/git/allowed_signers".text = lib.optionalString (data.git != null && data.git.signkey != null)
+		".config/git/allowed_signers".text = lib.optionalString (data ? git && data.git.signkey != null)
 			"${data.git.email} ${data.git.signkey}";
-		".ssh/gitsign.pub".text = lib.optionalString (data.git != null && data.git.signkey != null)
+		".ssh/gitsign.pub".text = lib.optionalString (data ? git && data.git.signkey != null)
 			"${data.git.signkey} ${data.git.email}";
 	};
 
@@ -32,11 +32,11 @@
 		$DRY_RUN_CMD ${pkgs.neovim}/bin/nvim --headless -c 'Lazy install' -c 'qa'
 	'';
 
-	programs.git = {
+	programs.git = { 
 		enable = true;
-		userName = lib.optionalString (data.git != null && data.git.name != null) data.git.name;
-		userEmail = lib.optionalString (data.git != null && data.git.email != null) data.git.email;
-		extraConfig = lib.optionalAttrs (data.git != null && data.git.signkey != null) {
+		userName = lib.optionalString (data ? git && data.git.name != null) data.git.name;
+		userEmail = lib.optionalString (data ? git && data.git.email != null) data.git.email;
+		extraConfig = lib.optionalAttrs (data ? git && data.git.signkey != null) {
 			gpg.format = "ssh";
 			gpg.ssh.allowedSignersFile = "~/.config/git/allowed_signers";
 			commit.gpgSign = true;
