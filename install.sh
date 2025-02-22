@@ -28,7 +28,7 @@ install_nix_home_manager() {
 	
 		 echo "Before install"
 	
-		# Install home-manager
+		# Install home-manager 
 		nix-shell '<home-manager>' -A install
 	
 		echo "After install"
@@ -144,6 +144,11 @@ if git -C "$SCRIPT_DIR" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
 		echo "Using existing repository at $REPO_ROOT"
 		DOTFILES_DIR="$REPO_ROOT"
 		git -C "$DOTFILES_DIR" submodule update --init --recursive
+
+		# Disable git generation for codespaces
+		if [ "$CODESPACES" = "true" ]; then
+			sed -i 's/^\[git\]/[git_disabled]/' "$DOTFILES_DIR/data.toml"
+		fi
 	else
 		echo "Current repository is not the dotfiles repository"
 		clone_or_update_repo "$DOTFILES_DIR"
@@ -164,14 +169,7 @@ install_nix_home_manager
 # Apply the Home Manager configuration
 if [ -d "$DOTFILES_DIR" ]; then
 	echo "Applying Home Manager configuration..."
-	whereis home-manager
 	home-manager switch --flake "$DOTFILES_DIR?submodules=1#$DOTFILES_MODE" --impure -b bckp
 fi
-
-if command -v nvim &> /dev/null; then
-	echo "Installing nvim dependencies"
-	nvim --headless -c 'Lazy install' -c 'qa'
-fi
-
 
 echo "Done!"
