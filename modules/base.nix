@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, data, ... }:
 {
 
 	home.stateVersion = "24.11";
@@ -22,7 +22,10 @@
 		".config/nvim".source = ../config/nvim;
 		".config/fish".source = ../config/fish;
 		".config/tmux".source = ../config/tmux;
-		".config/git/allowed_signers".source = ../config/git/allowed_signers;
+		".config/git/allowed_signers".text = lib.optionalString (data.git != null && data.git.signkey != null)
+			"${data.git.email} ${data.git.signkey}";
+		".ssh/gitsign.pub".text = lib.optionalString (data.git != null && data.git.signkey != null)
+			"${data.git.signkey} ${data.git.email}";
 	};
 
 	home.activation.neovimSetup = lib.hm.dag.entryAfter ["writeBoundary"] ''
@@ -31,9 +34,9 @@
 
 	programs.git = {
 		enable = true;
-		userName = "Kevin Boshold";
-		userEmail = "github@proxy.boshol.de";
-		extraConfig = {
+		userName = lib.optionalString (data.git != null && data.git.name != null) data.git.name;
+		userEmail = lib.optionalString (data.git != null && data.git.email != null) data.git.email;
+		extraConfig = lib.optionalAttrs (data.git != null && data.git.signkey != null) {
 			gpg.format = "ssh";
 			gpg.ssh.allowedSignersFile = "~/.config/git/allowed_signers";
 			commit.gpgSign = true;
@@ -41,7 +44,5 @@
 			user.signingKey = "~/.ssh/gitsign.pub";
 		};
 	};
-
-
 }
 
