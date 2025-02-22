@@ -32,11 +32,11 @@
 		$DRY_RUN_CMD ${pkgs.neovim}/bin/nvim --headless -c 'Lazy install' -c 'qa'
 	'';
 
-	programs.git = { 
+	programs.git = lib.optionalAttrs (data ? git) { 
 		enable = true;
-		userName = lib.optionalString (data ? git && data.git.name != null) data.git.name;
-		userEmail = lib.optionalString (data ? git && data.git.email != null) data.git.email;
-		extraConfig = lib.optionalAttrs (data ? git && data.git.signkey != null) {
+		userName = lib.optionalString (data.git.name != null) data.git.name;
+		userEmail = lib.optionalString (data.git.email != null) data.git.email;
+		extraConfig = lib.optionalAttrs (data.git.signkey != null) {
 			gpg.format = "ssh";
 			gpg.ssh.allowedSignersFile = "~/.config/git/allowed_signers";
 			commit.gpgSign = true;
