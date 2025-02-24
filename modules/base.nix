@@ -18,7 +18,6 @@
 
 	home.file = {
 		".config/bash".source = ../config/bash;
-		".bashrc".source = ../config/bash/dot_bashrc;
 		".config/nvim".source = ../config/nvim;
 		".config/fish".source = ../config/fish;
 		".config/tmux".source = ../config/tmux;
@@ -31,6 +30,15 @@
 	home.activation.neovimSetup = lib.hm.dag.entryAfter ["writeBoundary"] ''
 		$DRY_RUN_CMD ${pkgs.neovim}/bin/nvim --headless -c 'Lazy install' -c 'qa'
 	'';
+
+	programs.bash = {
+		enable = true;
+		initExtra = ''
+			if [ -f "$HOME/.config/bash/config.bash" ]; then
+				. "$HOME/.config/bash/config.bash"
+			fi
+		'';
+	};
 
 	programs.git = lib.optionalAttrs (data ? git) { 
 		enable = true;

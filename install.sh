@@ -97,6 +97,7 @@ check_missing_packages() {
 DOTFILES_DIR="${DOTFILES_DIR:-$HOME/.local/share/dotfiles}"
 DOTFILES_AUTOINSTALL="${DOTFILES_AUTOINSTALL:-false}"
 DOTFILES_AUTOSETUP="${DOTFILES_AUTOSETUP:-false}"
+DOTFILES_MODE="${DOTFILES_MODE:-${CODESPACES:+codespaces}}"
 DOTFILES_MODE="${DOTFILES_MODE:-home}"
 
 if [ "${DOTFILES_AUTOSETUP,,}" = "true" ]; then
