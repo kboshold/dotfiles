@@ -39,6 +39,12 @@
 					modules = [ ./modules/server-fat.nix ];
 					extraSpecialArgs = { inherit data; };
 				};
+
+				codespaces = home-manager.lib.homeManagerConfiguration {
+					pkgs = pkgs;
+					modules = [ ./modules/codespaces.nix ];
+					extraSpecialArgs = { inherit data; };
+				};
 			};
 		};
 }
