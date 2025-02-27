@@ -8,3 +8,4 @@
 	url = git@github.com:kboshold/secrets.dotfiles.git
 	branch = main
 	update = none
+	ignore = dirty

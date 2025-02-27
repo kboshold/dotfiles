@@ -7,9 +7,14 @@
 			url = "github:nix-community/home-manager";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+
+		secrets = {
+			url = "path:./secrets";
+			flake = false;
+		};
 	};
 
-	outputs = { self, nixpkgs, home-manager, ... }:
+	outputs = { self, nixpkgs, secrets ? null, home-manager, ... }:
 		let
 			# Use the system from the environment or default to x86_64-linux
 			system = builtins.currentSystem or "x86_64-linux";
@@ -21,31 +26,31 @@
 				home = home-manager.lib.homeManagerConfiguration {
 					inherit pkgs;
 					modules = [ ./modules/home.nix ];
-					extraSpecialArgs = { inherit data; };
+					extraSpecialArgs = { inherit data secrets; };
 				};
 
 				work = home-manager.lib.homeManagerConfiguration {
 					inherit pkgs;
 					modules = [ ./modules/work.nix ];
-					extraSpecialArgs = { inherit data; };
+					extraSpecialArgs = { inherit data secrets; };
 				};
 
 				server = home-manager.lib.homeManagerConfiguration {
 					inherit pkgs;
 					modules = [ ./modules/server.nix ];
-					extraSpecialArgs = { inherit data; };
+					extraSpecialArgs = { inherit data secrets; };
 				};
 
 				server-fat = home-manager.lib.homeManagerConfiguration {
 					inherit pkgs;
 					modules = [ ./modules/server-fat.nix ];
-					extraSpecialArgs = { inherit data; };
+					extraSpecialArgs = { inherit data secrets; };
 				};
 
 				codespaces = home-manager.lib.homeManagerConfiguration {
 					inherit pkgs;
 					modules = [ ./modules/codespaces.nix ];
-					extraSpecialArgs = { inherit data; };
+					extraSpecialArgs = { inherit data secrets; };
 				};
 			};
 		};

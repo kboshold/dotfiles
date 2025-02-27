@@ -177,6 +177,7 @@ install_nix_home_manager
 if [ -d "$DOTFILES_DIR" ]; then
 	echo "Applying Home Manager configuration..."
 	home-manager switch --flake "$DOTFILES_DIR?submodules=1#$DOTFILES_MODE" --impure -b bckp
+	#home-manager switch --flake "$DOTFILES_DIR#$DOTFILES_MODE" --impure -b bckp
 fi
 
 echo "Done!"
