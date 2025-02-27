@@ -4,3 +4,4 @@
 [submodule "secrets"]
 	path = secrets
 	url = git@github.com:kboshold/secrets.dotfiles.git
+	update = none
