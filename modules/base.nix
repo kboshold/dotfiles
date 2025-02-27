@@ -2,10 +2,10 @@
 {
 
 	home.stateVersion = "24.11";
-	home.username = builtins.getEnv "USER";
-	home.homeDirectory = if builtins.getEnv "HOME" == ""
+	home.username = lib.mkDefault (builtins.getEnv "USER");
+	home.homeDirectory = lib.mkDefault (if builtins.getEnv "HOME" == ""
 		then "/home/${builtins.getEnv "USER"}"
-	else builtins.getEnv "HOME";
+	else builtins.getEnv "HOME");
 
 	nixpkgs.config.allowUnfree = true;
 
