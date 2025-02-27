@@ -7,6 +7,8 @@
 		then "/home/${builtins.getEnv "USER"}"
 	else builtins.getEnv "HOME";
 
+	nixpkgs.config.allowUnfree = true;
+
 	home.packages = with pkgs; [
 		home-manager
 		gcc
@@ -14,6 +16,8 @@
 		neovim
 		fish
 		tmux
+		curl
+		jq
 	];
 
 	home.file = {
@@ -28,7 +32,7 @@
 	};
 
 	home.activation.neovimSetup = lib.hm.dag.entryAfter ["writeBoundary"] ''
-		$DRY_RUN_CMD ${pkgs.neovim}/bin/nvim --headless -c 'Lazy install' -c 'qa'
+		${pkgs.neovim}/bin/nvim --headless -c 'Lazy install' -c 'qa'
 	'';
 
 	programs.bash = {

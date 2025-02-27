@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 let
   isWSL = builtins.getEnv "WSL_DISTRO_NAME" != "";
 in {
