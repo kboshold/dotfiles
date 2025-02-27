@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ "$DOTFILES_INSTALLED" = "true" ]; then
+	echo "Dotfiles are already installed. Done."
+	exit 0;
+fi
+
 # Install Nix and Home Manager (if not already installed)
 install_nix_home_manager() {
 	if ! command -v nix &> /dev/null; then
@@ -160,6 +165,7 @@ fi
 
 # List of required programs
 required_programs=(git curl)
+
 
 # Check and install required packages
 check_missing_packages
