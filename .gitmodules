@@ -3,8 +3,3 @@
 	url = https://github.com/kboshold/nvim.dotfiles
 	branch = main
 	fetchRecurseSubmodules = true
-[submodule "secrets"]
-	path = secrets
-	url = git@github.com:kboshold/secrets.dotfiles.git
-	branch = main
-	update = none
