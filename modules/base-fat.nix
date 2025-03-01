@@ -7,6 +7,7 @@
 	home.packages = with pkgs; [
 		gh
 		gh-copilot
+    aria2
 		fd
 		bat
 		fzf
