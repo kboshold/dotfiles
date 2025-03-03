@@ -29,6 +29,12 @@
 					extraSpecialArgs = { inherit data secrets; };
 				};
 
+				home-wsl = home-manager.lib.homeManagerConfiguration {
+					inherit pkgs;
+					modules = [ ./modules/home-wsl.nix ];
+					extraSpecialArgs = { inherit data secrets; };
+				};
+
 				work = home-manager.lib.homeManagerConfiguration {
 					inherit pkgs;
 					modules = [ ./modules/work.nix ];

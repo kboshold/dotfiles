@@ -20,6 +20,8 @@
 		starship
 		bottom
 		zoxide
+    cargo 
+    unzip
 		# zellij
 		# zsh
 		nerd-fonts.jetbrains-mono

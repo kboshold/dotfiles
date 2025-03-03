@@ -5,13 +5,16 @@
   home.packages = with pkgs; [
     flutter
     chromedriver
-    google-chrome
     ansible
     kubectl
+
+    wslu
   ];
 
-  home.sessionVariables = {
-    CHROME_EXECUTABLE = "${pkgs.google-chrome}/bin/google-chrome";
+  home.sessionVariables =  {
+    XDG_RUNTIME_DIR = "/tmp";
+    CHROME_EXECUTABLE = "wslview";
+    BROWSER = "wslview";
   };
 }
 
