@@ -9,7 +9,7 @@ ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
 RUN apt-get update -y;
-RUN apt-get install -y sudo;
+RUN apt-get install -y sudo git;
 
 RUN groupadd --gid $USER_GID $USERNAME;
 RUN useradd --uid $USER_UID --gid $USER_GID -m $USERNAME;
@@ -21,9 +21,9 @@ WORKDIR /opt/dotfiles
 
 COPY . .
 
-ENV CODESPACES="true"
-ENV USER=$USERNAME
-ENV HOME="/home/$USERNAME"
+ENV CODESPACES "true"
+ENV USER $USERNAME
+ENV HOME "/home/$USERNAME"
 RUN ./install.sh
 
 ENV DOTFILES_INSTALLED="true"

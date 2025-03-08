@@ -38,7 +38,14 @@
 	};
 
 	home.activation.neovimSetup = lib.hm.dag.entryAfter ["writeBoundary"] ''
+		export PATH="${pkgs.git}/bin:$PATH"
 		${pkgs.neovim}/bin/nvim --headless -c 'Lazy install' -c 'qa'
+	'';
+
+	home.activation.tmuxSetup = lib.hm.dag.entryAfter ["writeBoundary"] ''
+		export PATH="${pkgs.git}/bin:$PATH"
+		. ${config.home.homeDirectory}/.nix-profile/etc/profile.d/hm-session-vars.sh
+		${pkgs.tmux}/bin/tmux -c exit
 	'';
 
 	programs.bash = {
