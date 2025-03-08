@@ -44,7 +44,6 @@
 
 	home.activation.tmuxSetup = lib.hm.dag.entryAfter ["writeBoundary"] ''
 		export PATH="${pkgs.git}/bin:$PATH"
-		. ${config.home.homeDirectory}/.nix-profile/etc/profile.d/hm-session-vars.sh
 		${pkgs.tmux}/bin/tmux -c exit
 	'';
 

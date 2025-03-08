@@ -35,4 +35,4 @@ jobs:
           file: .devcontainer/Dockerfile
           push: true
           tags: ghcr.io/kboshold/codespace:latest
-
+          timeout-minutes: 30
