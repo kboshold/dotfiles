@@ -4,6 +4,10 @@ ARG USERNAME=codespace
 ARG USER_UID=1001
 ARG USER_GID=$USER_UID
 
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US:en
+ENV LC_ALL en_US.UTF-8
+
 RUN apt-get update -y;
 RUN apt-get install -y sudo;
 
