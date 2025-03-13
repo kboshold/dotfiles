@@ -29,7 +29,8 @@
 	home.file = {
 		".config/bash".source = ../config/bash;
 		".config/nvim".source = ../config/nvim;
-		".config/fish".source = ../config/fish;
+		".config/fish/lib".source = ../config/fish/lib;
+		".config/fish/config.fish".source = ../config/fish/config.fish;
 		".config/tmux".source = ../config/tmux;
 		".config/git/allowed_signers".text = lib.optionalString (data ? git && data.git.signkey != null)
 			"${data.git.email} ${data.git.signkey}";

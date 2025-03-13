@@ -2,14 +2,15 @@
 {
   imports = [ ./base-fat.nix ];
 
+
   home.packages = with pkgs; [
-    flutter
     chromedriver
     ansible
     kubectl
-
     wslu
+    flutter
   ];
+
 
   home.sessionVariables =  {
     XDG_RUNTIME_DIR = "/tmp";
