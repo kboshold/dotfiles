@@ -4,6 +4,7 @@ alias dc cd
 alias sl ls
 alias pdw pwd
 alias dir ls
+alias q exit
 
 # Set up to 9 level of cd
 set dots ""
