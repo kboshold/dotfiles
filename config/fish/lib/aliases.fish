@@ -23,14 +23,12 @@ alias cdg cg
 
 if command -sq fd
     function cdf
-        # Use function-scoped variable (remove -l flag)
         if command -sq eza
             set CDF_FZF_PREVIEW_COMMAND "eza --long --color=always --all --icons --git --hyperlink -g {}"
         else
             set CDF_FZF_PREVIEW_COMMAND "ls -la"
         end
 
-        # Handle directory selection with proper variable scope
         set -l directory (fd -0 --type d --hidden | fzf --read0 --preview "$CDF_FZF_PREVIEW_COMMAND" --query "$argv")
         
         if test -n "$directory"
