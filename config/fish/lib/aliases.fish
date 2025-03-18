@@ -21,23 +21,45 @@ end
 alias cg 'git rev-parse 2>/dev/null && cd "$(git rev-parse --show-cdup)"'
 alias cdg cg
 
-if command -sq fd
-    function cdf
+if command -sq fd && command -sq fzf
+    # Shared preview commands
+    function _get_dir_preview
         if command -sq eza
-            set CDF_FZF_PREVIEW_COMMAND "eza --long --color=always --all --icons --git --hyperlink -g {}"
+            echo "eza --long --color=always --all --icons --git --hyperlink -g {}"
         else
-            set CDF_FZF_PREVIEW_COMMAND "ls -la"
-        end
-
-        set -l directory (fd -0 --type d --hidden | fzf --read0 --preview "$CDF_FZF_PREVIEW_COMMAND" --query "$argv")
-        
-        if test -n "$directory"
-            cd "$directory"
+            echo "ls -la {}"
         end
     end
 
-    alias cf="cdf"
+    function _get_file_preview
+        if command -sq bat
+            echo "bat --color=always --style=plain {}"
+        else
+            echo "cat {}"
+        end
+    end
+
+    function cdf -d "Change to selected directory"
+        set -l dir_preview (_get_dir_preview)
+        set -l directory (fd -0 --type d --hidden | fzf --read0 --preview $dir_preview --query "$argv")
+        test -n "$directory" && cd "$directory"
+    end
+    alias cf cdf
+
+    function ef -d "Change to directory and edit file or current directory"
+        set -l preview_cmd "test -d {} && $(_get_dir_preview) || $(_get_file_preview)"
+        set -l selection (fd -0 --hidden | fzf --read0 --preview $preview_cmd --query "$argv")
+
+        if test -d "$selection"
+            cd "$selection"
+            $EDITOR
+        else if test -f "$selection"
+            $EDITOR "$selection"
+        end
+    end
+
 end
+
 
 # Override ls with eza
 if command -sq eza
