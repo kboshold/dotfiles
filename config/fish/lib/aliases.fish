@@ -22,21 +22,24 @@ alias cg 'git rev-parse 2>/dev/null && cd "$(git rev-parse --show-cdup)"'
 alias cdg cg
 
 if command -sq fd
-	function cdf 
-		if command -sq eza
-			set -l CDF_FZF_PREVIEW_COMMAND "eza --long --color=always --all --icons --git  --hyperlink -g {}"
-		else
-			set -l CDF_FZF_PREVIEW_COMMAND "ls -la"
-		end
+    function cdf
+        # Use function-scoped variable (remove -l flag)
+        if command -sq eza
+            set CDF_FZF_PREVIEW_COMMAND "eza --long --color=always --all --icons --git --hyperlink -g {}"
+        else
+            set CDF_FZF_PREVIEW_COMMAND "ls -la"
+        end
 
-		set -l directory (fd -0 --type d --hidden | fzf --read0 --preview "$CDF_FZF_PREVIEW_COMMAND")
-		if test -n "$directory"
-			cd $directory
-		end
-	end
+        # Handle directory selection with proper variable scope
+        set -l directory (fd -0 --type d --hidden | fzf --read0 --preview "$CDF_FZF_PREVIEW_COMMAND" --query "$argv")
+        
+        if test -n "$directory"
+            cd "$directory"
+        end
+    end
 
-	alias cf cdf
-end 
+    alias cf="cdf"
+end
 
 # Override ls with eza
 if command -sq eza
