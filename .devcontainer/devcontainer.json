@@ -1,6 +1,6 @@
 {
     "name": "Workspace",
-    "image": "mcr.microsoft.com/devcontainers/universal:linux",
+    "image": "ghcr.io/kboshold/codespace:latest",
     "features": {},
     "postStartCommand": "",
     "customizations": {
