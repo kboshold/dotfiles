@@ -1,6 +1,12 @@
+[user]
+name = "kboshold"
+
 [git]
 name = "Kevin Boshold"
 email = "github@proxy.boshol.de"
 signkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIExQKoHZzMxF6i+KX71WoGXJUg6kOrnZN+Un4litVIvc"
 
-
+[paths]
+projects = "~/workspace"
+documents = "~/documents"
+downloads = "~/downloads"

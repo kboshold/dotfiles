@@ -15,16 +15,28 @@
 			url = "github:Mic92/sops-nix";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+
+		secrets = {
+			url = "github:kboshold/secrets.dotfiles";
+			flake = false;
+			optional = true;
+		};
 	};
 
-	outputs = { self, nixpkgs, home-manager, flake-utils, sops-nix, ... }@inputs:
+	outputs = { self, nixpkgs, home-manager,  secrets ? null, flake-utils, sops-nix, ... }@inputs:
 		let
 			system = builtins.currentSystem or "x86_64-linux";
 			pkgs = import nixpkgs { inherit system; };
-			data = builtins.fromTOML (builtins.readFile ./data.toml);
 
 			supportedSystems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
 			forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
+
+			data = builtins.fromTOML (builtins.readFile ./data.toml);
+			secretImports = nixpkgs.lib.optionalAttrs (secrets) {
+				general = "${secrets}/general";
+				private = "${secrets}/private";
+				work = "${secrets}/work";
+			};
 		in {
 			nixosConfigurations = {
 				laptop = nixpkgs.lib.nixosSystem {
@@ -68,25 +80,25 @@
 				wsl = home-manager.lib.homeManagerConfiguration {
 					inherit pkgs;
 					modules = [ ./systems/home/wsl.nix ];
-					extraSpecialArgs = { inherit data; };
+					extraSpecialArgs = { inherit data inputs; };
 				};
 
 				server-light = home-manager.lib.homeManagerConfiguration {
 					inherit pkgs;
 					modules = [ ./systems/server/light.nix ];
-					extraSpecialArgs = { inherit data; };
+					extraSpecialArgs = { inherit data inputs; };
 				};
 
 				server-fat = home-manager.lib.homeManagerConfiguration {
 					inherit pkgs;
 					modules = [ ./systems/server/server-fat.nix ];
-					extraSpecialArgs = { inherit data; };
+					extraSpecialArgs = { inherit data inputs; };
 				};
 
 				devcontainer = home-manager.lib.homeManagerConfiguration {
 					inherit pkgs;
 					modules = [ ./systems/server/devcontainer.nix ];
-					extraSpecialArgs = { inherit data; };
+					extraSpecialArgs = { inherit data inputs; };
 				};
 			};
 
