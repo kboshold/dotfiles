@@ -4,12 +4,12 @@
 	
 	imports = [
 		# Hardware-Konfiguration
-		./hardware-configuration.nix
+		/etc/nixos/hardware-configuration.nix
 
 		# Module
-		../../modules/core
-		../../modules/desktop
-		../../modules/development
+		../../modules/desktop/hyperland.nix
+		../../modules/core/git.nix
+		../../modules/development/default.nix
 	];
 
 	networking.hostName = "laptop";
