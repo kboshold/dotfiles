@@ -15,13 +15,16 @@
 	networking.hostName = "laptop";
 
 	system.stateVersion = "24.11";
+
 	users.users.${data.user.name} = {
 		isNormalUser = true;
 		extraGroups = [ "wheel" "networkmanager" ];
 		shell = pkgs.bash;
 	};
 
-	home.stateVersion = "24.11";
-	home.username = data.user.name;
-	home.homeDirectory = "/home/${data.user.name}";
+	home-manager.users.${data.user.name} = {
+		home.stateVersion = "24.11";
+		home.username = data.user.name;
+		home.homeDirectory = "/home/${data.user.name}";
+	};
 }
