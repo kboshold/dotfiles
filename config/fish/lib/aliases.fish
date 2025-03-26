@@ -22,7 +22,7 @@ end
 _define_cd_levels
 
 if command -sq fd && command -sq fzf
-    # Shared preview commands
+      # Shared preview commands
     function _get_dir_preview
         if command -sq eza
             echo "eza --long --color=always --all --icons --git --hyperlink -g {}"
@@ -39,16 +39,29 @@ if command -sq fd && command -sq fzf
         end
     end
 
-    function cdf -d "Change to selected directory"
+    function select-file
+        set -l file_preview (_get_file_preview)
+        echo (fd -0 --type f --hidden | fzf --read0 --preview $file_preview --query "$argv")
+    end
+
+    function select-directory 
         set -l dir_preview (_get_dir_preview)
-        set -l directory (fd -0 --type d --hidden | fzf --read0 --preview $dir_preview --query "$argv")
+        echo (fd -0 --type d --hidden | fzf --read0 --preview $dir_preview --query "$argv")
+    end
+    
+    function select-any
+        set -l preview_cmd "test -d {} && $(_get_dir_preview) || $(_get_file_preview)"
+        echo (fd -0 --hidden | fzf --read0 --preview $preview_cmd --query "$argv")
+    end
+
+    function cdf -d "Change to selected directory"
+        set -l directory (select-directory)
         test -n "$directory" && cd "$directory"
     end
     alias cf cdf
 
     function ef -d "Change to directory and edit file or current directory"
-        set -l preview_cmd "test -d {} && $(_get_dir_preview) || $(_get_file_preview)"
-        set -l selection (fd -0 --hidden | fzf --read0 --preview $preview_cmd --query "$argv")
+        set -l selection (select-any)
 
         if test -d "$selection"
             cd "$selection"
@@ -57,6 +70,20 @@ if command -sq fd && command -sq fzf
             $EDITOR "$selection"
         end
     end
+
+    function _select_any_no_args 
+        select-any
+    end
+    function _select_file_no_args 
+        select-file
+    end
+    function _select_directory_no_args 
+        select-directory
+    end
+
+    abbr -a @sa --position anywhere --function _select_any_no_args
+    abbr -a @sd --position anywhere --function _select_directory_no_args
+    abbr -a @sf --position anywhere --function _select_file_no_args
 
 end
 
@@ -177,3 +204,13 @@ abbr emacs "$EDITOR"
 if command -sq btm
     abbr top "btm"
 end
+
+abbr -a @y --position anywhere "| fish_clipboard_copy"
+abbr -a @p --position anywhere "fish_clipboard_paste"
+
+if command -sq bat
+    abbr -a @l --position anywhere "| bat"
+else
+    abbr -a @l --position anywhere "| less"
+end 
+abbr -a @e --position anywhere "| $EDITOR"
