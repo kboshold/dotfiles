@@ -39,52 +39,89 @@ if command -sq fd && command -sq fzf
         end
     end
 
-    function select-file
+    function find-file
         set -l file_preview (_get_file_preview)
         echo (fd -0 --type f --hidden | fzf --read0 --preview $file_preview --query "$argv")
     end
 
-    function select-directory 
+    function find-directory 
         set -l dir_preview (_get_dir_preview)
         echo (fd -0 --type d --hidden | fzf --read0 --preview $dir_preview --query "$argv")
     end
     
-    function select-any
+    function find-any
         set -l preview_cmd "test -d {} && $(_get_dir_preview) || $(_get_file_preview)"
         echo (fd -0 --hidden | fzf --read0 --preview $preview_cmd --query "$argv")
     end
 
-    function cdf -d "Change to selected directory"
-        set -l directory (select-directory)
-        test -n "$directory" && cd "$directory"
-    end
-    alias cf cdf
+    function find-url
+        set -l input ""
+        while read -lz line
+            set -a input $line
+        end
 
-    function ef -d "Change to directory and edit file or current directory"
-        set -l selection (select-any)
+        set -l urls (string match -ar 'https?://[^\s]+' "$input")
 
-        if test -d "$selection"
-            cd "$selection"
-            $EDITOR
-        else if test -f "$selection"
-            $EDITOR "$selection"
+        if test (count $urls) -gt 1
+            string join \n $urls | fzf --query "$argv"
+        else if test (count $urls) -eq 1
+            echo $urls[1]
         end
     end
 
-    function _select_any_no_args 
-        select-any
-    end
-    function _select_file_no_args 
-        select-file
-    end
-    function _select_directory_no_args 
-        select-directory
+    function _find_change_directory -d "Change to selected directory"
+        set -l selection (find-directory)
+        if test -d "$selection"
+            echo "cd $selection"
+        end
     end
 
-    abbr -a @sa --position anywhere --function _select_any_no_args
-    abbr -a @sd --position anywhere --function _select_directory_no_args
-    abbr -a @sf --position anywhere --function _select_file_no_args
+    function _find_edit_any -d "Find and edit anything"
+        set -l selection (find-any)
 
+        if test -d "$selection"
+            echo "cd $selection && $EDITOR"
+        else if test -f "$selection"
+            echo "$EDITOR $selection"
+        end
+    end
+
+    function _find_edit_file -d "Find and edit file"
+        set -l selection (find-file)
+        if test -f "$selection"
+            echo "$EDITOR $selection"
+        end
+    end
+
+    function _find_edit_directory -d "Find and edit directory"
+        set -l selection (find-directory)
+        if test -d "$selection"
+            echo "cd $selection && $EDITOR"
+        end
+    end
+
+    function _find_any_no_args 
+        find-any
+    end
+    function _find_file_no_args 
+        find-file
+    end
+    function _find_directory_no_args 
+        find-directory
+    end
+
+    abbr -a @fa --position anywhere --function _find_any_no_args
+    abbr -a @fd --position anywhere --function _find_directory_no_args
+    abbr -a @ff --position anywhere --function _find_file_no_args
+    abbr -a @f --position anywhere "| fzf"
+    abbr -a @yu --position anywhere "| find-url | fish_clipboard_copy"
+
+    abbr fcd --function _find_change_directory
+    abbr cf --function _find_change_directory
+
+    abbr ed --function _find_edit_directory
+    abbr ef --function _find_edit_file
+    abbr ea --function _find_edit_any
 end
 
 if command -sq git
@@ -208,9 +245,16 @@ end
 abbr -a @y --position anywhere "| fish_clipboard_copy"
 abbr -a @p --position anywhere "fish_clipboard_paste"
 
+abbr -a @e --position anywhere "| $EDITOR"
+abbr -a @n --position anywhere "&>/dev/null"
+
 if command -sq bat
     abbr -a @l --position anywhere "| bat"
 else
     abbr -a @l --position anywhere "| less"
 end 
-abbr -a @e --position anywhere "| $EDITOR"
+if command -sq rg
+    abbr -a @g --position anywhere "| rg"
+else
+    abbr -a @g --position anywhere "| grep"
+end 
