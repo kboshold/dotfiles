@@ -28,8 +28,8 @@
       </a>
       <a href="https://github.com/kpalatzky/dotfiles/blob/master/config/fish">
          <picture>
-            <source media="(prefers-color-scheme: dark)" type="image/svg+xml" srcset="https://img.shields.io/badge/%3E%3D3.7.1-74c7ec?label=%F0%9F%90%9F%20fish&labelColor=313244">
-            <img alt="Fish >= 3.7.1" src="https://img.shields.io/badge/%3E%3D3.7.1-1e66f5?label=%F0%9F%90%9F%20fish&labelColor=ccd0da">
+            <source media="(prefers-color-scheme: dark)" type="image/svg+xml" srcset="https://img.shields.io/badge/%3E%3D4.0.2-74c7ec?label=%F0%9F%90%9F%20fish&labelColor=313244">
+            <img alt="Fish >= 4.0.2" src="https://img.shields.io/badge/%3E%3D4.0.2-1e66f5?label=%F0%9F%90%9F%20fish&labelColor=ccd0da">
          </picture>
       </a>
       <a href="https://github.com/kpalatzky/dotfiles/blob/master/LICENSE">
