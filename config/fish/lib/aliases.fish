@@ -281,10 +281,79 @@ else
     abbr -a @g --position anywhere "| grep"
 end
 
-function _test
-    set -l current_line (commandline)
-    commandline -r ""
-    echo test
+function _last_history_item
+    echo (atuin-history 0)
 end
+abbr -a !! --position anywhere --function _last_history_item
 
-abbr -a @test --position anywhere --function _test
+function _last_history_item_sudo
+    echo sudo (atuin-history 0)
+end
+abbr -a !!! --position anywhere --function _last_history_item_sudo
+
+# Helper function that handles the common functionality
+# function _abbr_transform_command
+#     set -l transformer $argv[2]
+#     set -l current_line (commandline -b)
+#     set -l new_line (string replace $argv[1] "" $current_line)
+#     set -l new_line (string trim $new_line)
+#
+#     # Apply transformation
+#     if functions -q $transformer
+#         set new_line ($transformer $new_line)
+#     end
+#
+#     # TODO: Verify :+2 and :+5 after release of https://github.com/fish-shell/fish-shell/issues/11324
+#     set -l pos (string match -n -r $argv[1] $current_line | string split " ")
+#     set -l replacement (string sub -s $pos[1] -l $pos[2] $new_line)
+#
+#     commandline -r $new_line
+#     echo $replacement
+# end
+
+# function _abbr_yank_line
+#     # Define a unique function name using the calling function's name as prefix
+#     set -l transformer "_transform_"(random)
+#
+#     function $transformer
+#         set -l escaped_line (string escape $argv[1] | string replace -a "\"" "\\\"")
+#         echo "echo $escaped_line | yank"
+#
+#         # Self-destruct after use
+#         functions -e $transformer
+#     end
+#
+#     _abbr_transform_command $argv[1] $transformer
+# end
+# abbr -a @yl --position anywhere --function _abbr_yank_line
+#
+# function _abbr_bash
+#     # Define a unique function name using the calling function's name as prefix
+#     set -l transformer "_transform_"(random)
+#
+#     function $transformer
+#         set -l escaped_line (string escape $argv[1] | string replace -a "\"" "\\\"")
+#         echo "bash -c $escaped_line"
+#
+#         # Self-destruct after use
+#         functions -e $transformer
+#     end
+#
+#     _abbr_transform_command $argv[1] $transformer
+# end
+# abbr -a @bash --position anywhere --function _abbr_bash
+#
+# function _abbr_time
+#     # Define a unique function name using the calling function's name as prefix
+#     set -l transformer "_transform_"(random)
+#
+#     function $transformer
+#         echo "time begin $argv[1]; end"
+#
+#         # Self-destruct after use
+#         functions -e $transformer
+#     end
+#
+#     _abbr_transform_command $argv[1] $transformer
+# end
+# abbr -a @time --position anywhere --function _abbr_time
