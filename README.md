@@ -16,8 +16,8 @@
       </a>
       <a href="https://github.com/kpalatzky/nvim.dotfiles">
          <picture>
-            <source media="(prefers-color-scheme: dark)" type="image/svg+xml" srcset="https://img.shields.io/badge/%3E%3D0.10.0-74c7ec?logo=neovim&label=neovim&labelColor=313244&logoColor=74c7ec">
-            <img alt="Neovim >= 0.10.0" src="https://img.shields.io/badge/%3E%3D0.10.0-1e66f5?logo=neovim&label=neovim&labelColor=ccd0da&logoColor=1e66f5">
+            <source media="(prefers-color-scheme: dark)" type="image/svg+xml" srcset="https://img.shields.io/badge/%3E%3D0.11.0-74c7ec?logo=neovim&label=neovim&labelColor=313244&logoColor=74c7ec">
+            <img alt="Neovim >= 0.11.0" src="https://img.shields.io/badge/%3E%3D0.11.0-1e66f5?logo=neovim&label=neovim&labelColor=ccd0da&logoColor=1e66f5">
          </picture>
       </a>
       <a href="https://github.com/kpalatzky/dotfiles/blob/master/config/tmux">
