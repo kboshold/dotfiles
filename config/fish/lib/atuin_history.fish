@@ -72,8 +72,8 @@ if bind -M insert >/dev/null 2>&1
     bind -M insert \eOB _atuin_ux_bind_down
     bind -M insert \e\[B _atuin_ux_bind_down
 
-    bind -M visual -M default j _atuin_ux_bind_down
-    bind -M visual -M default k _atuin_ux_bind_up
+    bind -M visual -M default -M insert \cn _atuin_ux_bind_down
+    bind -M visual -M default -M insert \cp _atuin_ux_bind_up
 end
 
 _autin_ux_reset

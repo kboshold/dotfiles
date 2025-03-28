@@ -19,11 +19,11 @@ if not test -e "$__starship_async_instant_file"
 end
 
 # Fish propmpts
-function fish_prompt    
+function fish_prompt
     __starship_update_variables
 
     if test $TRANSIENT -eq 1 &> /dev/null
-        printf \e\[0J\n
+         printf \e\[0J\n
         __starship_left_transient_prompt
     else 
         __starship_left_prompt
@@ -105,6 +105,7 @@ function __starship_async_fire --on-event fish_prompt
 end
 
 function __starship_async_mode_switch --on-variable fish_bind_mode
+    commandline -f repaint
     __starship_async_fire
 end
 
@@ -114,6 +115,10 @@ end
 
 function __starship_async_cancel_repaint --on-event fish_cancel
     set -g TRANSIENT 0
+    commandline -f repaint
+end
+
+function __starship_async_focus_repaint --on-event fish_focus_in
     commandline -f repaint
 end
 
@@ -135,12 +140,17 @@ function __starship_async_edit_command_buffer
 end
 
 function __starship_async_maybe_execute
+    if test "$fish_bind_mode" != "insert"
+        set fish_bind_mode insert
+    end
+
     if commandline --is-valid
         set -g TRANSIENT 1
         commandline -f repaint
     else
         set -g TRANSIENT 0
     end
+
     commandline -f execute
 end
 
@@ -159,3 +169,4 @@ if bind -M insert > /dev/null 2>&1
     bind --user -M insert \ee __starship_async_edit_command_buffer # ALT+E
     bind --user -M insert \ev __starship_async_edit_command_buffer # ALT+V
 end
+
