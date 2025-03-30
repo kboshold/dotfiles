@@ -1,129 +1,79 @@
 {
-	description = "Dotfiles & the magic of the terminal";
+  description = "Your new nix config";
 
-	inputs = {
-		nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+  inputs = {
+    # Nixpkgs
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    # You can access packages and modules from different nixpkgs revs
+    # at the same time. Here's an working example:
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
 
-		home-manager = {
-			url = "github:nix-community/home-manager";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
+    # Home manager
+    home-manager.url = "github:nix-community/home-manager/release-23.11";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+  };
 
-		flake-utils.url = "github:numtide/flake-utils";
+  outputs = {
+    self,
+    nixpkgs,
+    home-manager,
+    ...
+  } @ inputs: let
+    inherit (self) outputs;
+    # Supported systems for your flake packages, shell, etc.
+    systems = [
+      "aarch64-linux"
+      "i686-linux"
+      "x86_64-linux"
+      "aarch64-darwin"
+      "x86_64-darwin"
+    ];
+    # This is a function that generates an attribute by calling a function you
+    # pass to it, with each system as an argument
+    forAllSystems = nixpkgs.lib.genAttrs systems;
+  in {
+    # Your custom packages
+    # Accessible through 'nix build', 'nix shell', etc
+    packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
+    # Formatter for your nix files, available through 'nix fmt'
+    # Other options beside 'alejandra' include 'nixpkgs-fmt'
+    formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
 
-		sops-nix = {
-			url = "github:Mic92/sops-nix";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
+    # Your custom packages and modifications, exported as overlays
+    overlays = import ./overlays {inherit inputs;};
+    # Reusable nixos modules you might want to export
+    # These are usually stuff you would upstream into nixpkgs
+    nixosModules = import ./modules/nixos;
+    # Reusable home-manager modules you might want to export
+    # These are usually stuff you would upstream into home-manager
+    homeManagerModules = import ./modules/home-manager;
 
-		secrets = {
-			url = "path:./secrets";
-			flake = false;
-		};
-	};
+    # NixOS configuration entrypoint
+    # Available through 'nixos-rebuild --flake .#your-hostname'
+    nixosConfigurations = {
+      # FIXME replace with your hostname
+      your-hostname = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs outputs;};
+        modules = [
+          # > Our main nixos configuration file <
+          ./nixos/configuration.nix
+        ];
+      };
+    };
 
-	outputs = { self, nixpkgs, home-manager,  secrets ? null, flake-utils, sops-nix, ... }@inputs:
-		let
-			system = builtins.currentSystem or "x86_64-linux";
-			pkgs = import nixpkgs { inherit system; };
-
-			supportedSystems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
-			forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
-
-			data = builtins.fromTOML (builtins.readFile ./data.toml);
-			secretImports = nixpkgs.lib.optionalAttrs (secrets) {
-				general = "${secrets}/general";
-				private = "${secrets}/private";
-				work = "${secrets}/work";
-			};
-		in {
-
-			###
-			# NixOS Configuration
-			### 
-			nixosConfigurations = {
-				laptop = nixpkgs.lib.nixosSystem {
-					system = "x86_64-linux";
-					modules = [
-						./systems/home/laptop.nix
-						home-manager.nixosModules.home-manager
-						sops-nix.nixosModules.sops
-						{
-							_module.args = { inherit data inputs; };
-							nix.settings.experimental-features = [ "nix-command" "flakes" ];
-						}
-					];
-				};
-
-				desktop = nixpkgs.lib.nixosSystem {
-					system = "x86_64-linux";
-					modules = [
-						./systems/home/desktop.nix
-						home-manager.nixosModules.home-manager
-						sops-nix.nixosModules.sops
-						{
-							_module.args = { inherit data inputs; };
-						}
-					];
-				};
-
-				work = nixpkgs.lib.nixosSystem {
-					system = "x86_64-linux";
-					modules = [
-						./systems/work/default.nix
-						home-manager.nixosModules.home-manager
-						sops-nix.nixosModules.sops
-						{
-							_module.args = { inherit data inputs; };
-						}
-					];
-				};
-			};
-
-			###
-			# Home Manager Configurations
-			###
-			homeConfigurations = {
-				wsl = home-manager.lib.homeManagerConfiguration {
-					inherit pkgs;
-					modules = [ ./systems/home/wsl.nix ];
-					extraSpecialArgs = { inherit data inputs; };
-				};
-
-				server-light = home-manager.lib.homeManagerConfiguration {
-					inherit pkgs;
-					modules = [ ./systems/server/light.nix ];
-					extraSpecialArgs = { inherit data inputs; };
-				};
-
-				server-fat = home-manager.lib.homeManagerConfiguration {
-					inherit pkgs;
-					modules = [ ./systems/server/server-fat.nix ];
-					extraSpecialArgs = { inherit data inputs; };
-				};
-
-				devcontainer = home-manager.lib.homeManagerConfiguration {
-					inherit pkgs;
-					modules = [ ./systems/server/devcontainer.nix ];
-					extraSpecialArgs = { inherit data inputs; };
-				};
-			};
-
-			###
-			# Dev Shell Configurations
-			###
-			devShells = forAllSystems (system:
-				let pkgs = nixpkgs.legacyPackages.${system};
-				in {
-					default = pkgs.mkShell {
-						buildInputs = with pkgs; [
-							git
-							sops
-							ssh-to-age
-							age
-						];
-					};
-				}
-			);
-		};
+    # Standalone home-manager configuration entrypoint
+    # Available through 'home-manager --flake .#your-username@your-hostname'
+    homeConfigurations = {
+      # FIXME replace with your username@hostname
+      "your-username@your-hostname" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+        extraSpecialArgs = {inherit inputs outputs;};
+        modules = [
+          # > Our main home-manager configuration file <
+          ./home-manager/home.nix
+        ];
+      };
+    };
+  };
 }
