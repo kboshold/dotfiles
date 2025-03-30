@@ -1,5 +1,9 @@
 { config, pkgs, lib, data, ... }:
 {
+	home.packages = with pkgs; [
+		git
+	];
+
 	programs.git = lib.optionalAttrs (data ? git) { 
 		enable = true;
 		userName = lib.optionalString (data.git.name != null) data.git.name;

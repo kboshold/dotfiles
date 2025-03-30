@@ -1,8 +1,6 @@
 {
 	description = "Dotfiles & the magic of the terminal";
 
-	nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
 	inputs = {
 		nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
@@ -18,10 +16,10 @@
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
-		# secrets = {
-		# 	url = "github:kboshold/secrets.dotfiles";
-		# 	flake = false;
-		# };
+		secrets = {
+			url = "path:./secrets";
+			flake = false;
+		};
 	};
 
 	outputs = { self, nixpkgs, home-manager,  secrets ? null, flake-utils, sops-nix, ... }@inputs:
@@ -39,6 +37,10 @@
 				work = "${secrets}/work";
 			};
 		in {
+
+			###
+			# NixOS Configuration
+			### 
 			nixosConfigurations = {
 				laptop = nixpkgs.lib.nixosSystem {
 					system = "x86_64-linux";
@@ -48,6 +50,7 @@
 						sops-nix.nixosModules.sops
 						{
 							_module.args = { inherit data inputs; };
+							nix.settings.experimental-features = [ "nix-command" "flakes" ];
 						}
 					];
 				};
@@ -77,6 +80,9 @@
 				};
 			};
 
+			###
+			# Home Manager Configurations
+			###
 			homeConfigurations = {
 				wsl = home-manager.lib.homeManagerConfiguration {
 					inherit pkgs;
@@ -103,6 +109,9 @@
 				};
 			};
 
+			###
+			# Dev Shell Configurations
+			###
 			devShells = forAllSystems (system:
 				let pkgs = nixpkgs.legacyPackages.${system};
 				in {
