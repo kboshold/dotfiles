@@ -124,6 +124,58 @@ if command -sq fd && command -sq fzf
     abbr ea --function _find_edit_any
 end
 
+if command -sq docker 
+    function _find_docker_container_preview
+        set -l lines 500;
+        echo -e "\n\033[1;36m===== Container Logs (last $lines lines) =====\033[0m"; 
+        docker logs --tail $lines $argv[1] 2>/dev/null || echo "No logs available";
+
+        echo -e "\n\n\033[1;36m===== Container Info =====\033[0m";
+        docker ps --no-trunc --format "{{json .}}" --filter id="$argv[1]" | jq -C .; 
+    end
+
+    function _find_docker_shell
+        set -l container $(find-docker-container)
+        if test -n "$container" 
+
+            docker exec $container bash &> /dev/null
+            if test $status -eq 0
+                echo "docker exec -it $container bash"
+            else 
+                echo "docker exec -it $container sh"
+            end
+        end
+    end
+
+    function find-docker-container 
+        echo $(
+        docker ps \
+        --filter status=running \
+        --format "table {{.Names}}\t{{.Image}}\t{{.ID}}" \
+        | \
+        fzf \
+        --header-lines=1 \
+        --preview "$(functions _find_docker_container_preview); _find_docker_container_preview {3}" \
+        --preview-window 'right,50%,follow' \
+        --bind 'ctrl-r:reload(docker ps --filter status=running --format "table {{.Names}}\t{{.Image}}\t{{.ID}}")' \
+        --bind 'enter:become(echo {3})' \
+        --color header:italic \
+        )
+    end
+
+    abbr dup 'docker compose up --build --force-recreate -v'
+    abbr dub 'docker compose up --build --force-recreate -v'
+
+    // TODO: Only enable for fzf
+    abbr dsh --function _find_docker_shell
+
+    abbr ddo 'docker compose down'
+    abbr dkl 'docker kill $(docker ps -q)'
+    abbr dkla 'docker kill $(docker ps -q)'
+    abbr dcl 'docker system prune --volumes -f'
+    abbr dcla 'docker system prune --volumes -f -a'
+end
+
 if command -sq git
 
     function _git_abbr
