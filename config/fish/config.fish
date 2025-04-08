@@ -56,7 +56,7 @@ if command -sq atuin
 end
 
 if command -sq zoxide
-    zoxide init --cmd cd fish | source
+    zoxide init --cmd cs fish | source
 end
 
 if command -sq starship
@@ -82,11 +82,3 @@ end
 set -gx GPG_TTY (tty)
 
 source $HOME/.config/fish/lib/aliases.fish
-
-function __fzf_inline_search
-    set -l result (fzf)
-    commandline -a $result
-    commandline -f repaint
-end
-
-bind \ef -M insert __fzf_inline_search
