@@ -167,8 +167,8 @@ if command -sq docker
         )
     end
 
-    abbr dup 'docker compose up --build --force-recreate -v'
-    abbr dub 'docker compose up --build --force-recreate -v'
+    abbr dup 'docker compose up'
+    abbr dub 'docker compose up --build --force-recreate -V'
 
     # TODO: Only enable for fzf
     abbr dsh --function _find_docker_shell
