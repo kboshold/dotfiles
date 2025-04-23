@@ -187,13 +187,22 @@ if command -sq git
         set -l body $argv[2..-1]
 
         function _current_branch
+            command git rev-parse --git-dir &>/dev/null; or begin
+                echo main
+                return
+            end
+
             begin
                 git symbolic-ref HEAD; or git rev-parse --short HEAD; or return
             end 2>/dev/null | sed -e 's|^refs/heads/||'
         end
 
         function _default_branch
-            command git rev-parse --git-dir &>/dev/null; or return
+            command git rev-parse --git-dir &>/dev/null; or begin
+                echo main
+                return
+            end
+
             if set -l default_branch (command git config --get init.defaultBranch)
                 and command git show-ref -q --verify refs/heads/{$default_branch}
                 echo $default_branch
