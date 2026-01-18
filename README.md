@@ -101,7 +101,7 @@
    </p>
 </div>
 
-> [!IMPORTANT]  
+> [!Caution]  
 > I am currently recreating my configuration for NixOS + Flakes. This configuration is currently not actively maintained. <br>
 > However, this configuration is still relatively up-to-date 
 
